@@ -172,37 +172,95 @@
                 </div>
             </div>
             <div class="modal fade" id="cadExternoModal" tabindex="-1" aria-labelledby="cadExternoModalLabel" aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="cadExternoModalLabel">Cadastrar Empresa Parceira</h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                            </div> 
-                            <div class="modal-body">
-                                <form id="cad-externo-form">
-                                    <span id="msgAlertaErroCad"></span>
-                                    <div class="mb-3">
-                                        <label for="Nome" class="col-form-label">Nome:</label>
-                                        <input type="text" name="Nome" class="form-control" id="Nome" placeholder="Digite o nome completo" required>
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="Descricao" class="col-form-label">Descrição:</label>
-                                        <input type="text" name="Descricao" class="form-control" id="Descricao" placeholder="Digite a Descrição" required>
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="link" class="col-form-label">Link:</label>
-                                        <input type="text" name="link" class="form-control" id="link" placeholder="Digite o link" required>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
-                                        <Input type="submit" class="btn btn-primary" id="cad-externo-btn" value="Cadastrar" />
-                                    </div>
-                                </form>
-                            </div>
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                             <h5 class="modal-title" id="cadExternoModalLabel">Cadastrar Empresa Parceira</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div> 
+                        <div class="modal-body">
+                            <form id="cad-externo-form">
+                                <span id="msgAlertaErroCad"></span>
+                                <div class="mb-3">
+                                    <label for="Nome" class="col-form-label">Nome:</label>
+                                    <input type="text" name="Nome" class="form-control" id="Nome" placeholder="Digite o nome completo">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="Descricao" class="col-form-label">Descrição:</label>
+                                    <input type="text" name="Descricao" class="form-control" id="Descricao" placeholder="Digite a Descrição">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="link" class="col-form-label">Link:</label>
+                                    <input type="text" name="link" class="form-control" id="link" placeholder="Digite o link">
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                                    <Input type="submit" class="btn btn-primary" id="cad-externo-btn" value="Cadastrar" />
+                                </div>
+                            </form>
                         </div>
                     </div>
-                </div> 
+                </div>
             </div>
+            <div class="modal fade" id="visParceiroModal" tabindex="-1" aria-labelledby="visParceiroModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="visParceiroModalLabel">Detalhes do Usuário</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <span id="msgAlertaErroVis"></span>
+                            <dl class="row">
+                                <dt class="col-sm-3">ID</dt>
+                                <dd class="col-sm-9"><span id="visID_parceiro"></span></dd>
+
+                                <dt class="col-sm-3">Nome</dt>
+                                <dd class="col-sm-9"><span id="visNome"></span></dd>
+
+                                <dt class="col-sm-3">Descrição</dt>
+                                <dd class="col-sm-9"><span id="visDescricao"></span></dd>
+
+                                <dt class="col-sm-3">Link</dt>
+                                <dd class="col-sm-9"><span id="vislink"></span></dd>
+
+                            </dl>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal fade" id="editExternoModal" tabindex="-1" aria-labelledby="editExternoModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                             <h5 class="modal-title" id="editExternoModalLabel">Editar Empresa Parceira</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div> 
+                        <div class="modal-body">
+                            <form id="edit-externo-form">
+                                <span id="msgAlertaErroEdit"></span>
+                                <input type="hidden" name="ID_parceiro" id="editId">
+                                <div class="mb-3">
+                                    <label for="nome" class="col-form-label">Nome:</label>
+                                    <input type="text" name="Nome" class="form-control" id="editNome" placeholder="Digite o nome completo">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="descricao" class="col-form-label">Descrição:</label>
+                                    <input type="text" name="Descricao" class="form-control" id="editDescricao" placeholder="Digite a Descrição">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="link" class="col-form-label">Link:</label>
+                                    <input type="text" name="link" class="form-control" id="editlink" placeholder="Digite o link">
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                                    <Input type="submit" class="btn btn-warning" id="edit-externo-btn" value="Salvar" />
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div> 
         </main>
         <!--inicio Botão de voltar ao topo-->
         <?php 

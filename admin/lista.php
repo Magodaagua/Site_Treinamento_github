@@ -21,7 +21,7 @@
                                 <th>Nome</th>
                                 <th>Descricao</th>
                                 <th>Link</th>
-                                <th>Imagem</th>
+                                <th>Ações</th>
                             </tr>
                         </thead>
                         <tbody>";
@@ -33,6 +33,11 @@
                             <td>$Nome</td>
                             <td>$Descricao</td>
                             <td>$link</td>
+                            <td>
+                                <button id='$ID_parceiro' class='btn btn-outline-primary btn-sm' onclick='visParceiro($ID_parceiro)'>Visualizar</button>
+                                <button id='$ID_parceiro' class='btn btn-outline-warning btn-sm' onclick='editParceiroDados($ID_parceiro)'>Editar</button>
+                                <button id='$ID_parceiro' class='btn btn-outline-danger btn-sm' onclick='apagarParceiroDados($ID_parceiro)'>Apagar</button>
+                            </td>
                         </tr>";
         }
 

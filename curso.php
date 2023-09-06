@@ -41,7 +41,7 @@
         <meta name="description" content="">
         <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
         <meta name="generator" content="Hugo 0.101.0">
-        <title>Site de Treinamento - informatica</title>
+        <title>Site de Treinamento - <?php echo $categoria ?></title>
         <link rel="canonical" href="https://getbootstrap.com/docs/4.6/examples/carousel/">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
         <!-- Bootstrap core CSS -->
@@ -121,7 +121,7 @@
         <main role="main">
             <br><br><br><br>
             <div class="container">
-                <h1> <center>Treinamento de informática</center></h1>
+                <h1> <center>Treinamento de <?php echo $categoria ?></center></h1>
             </div>
             <br><br><br><br>
             <div class="container theme-showcase" role="main">

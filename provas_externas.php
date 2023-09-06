@@ -14,14 +14,14 @@
         $pagina = (isset($_GET['pagina']))? $_GET['pagina'] : 1;
 
         //Selecionar todos os cursos da tabela
-        $result_curso = "SELECT * FROM curso";
+        $result_curso = "SELECT * FROM parceiro";
         $resultado_curso = mysqli_query($conn, $result_curso);
 
         //Contar o total de cursos
         $total_cursos = mysqli_num_rows($resultado_curso);
 
         //Seta a quantidade de cursos por pagina
-        $quantidade_pg = 6;
+        $quantidade_pg = 10;
 
         //calcular o número de pagina necessárias para apresentar os cursos
         $num_pagina = ceil($total_cursos/$quantidade_pg);
