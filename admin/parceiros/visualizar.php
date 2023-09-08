@@ -5,7 +5,7 @@ $ID_parceiro = filter_input(INPUT_GET, "ID_parceiro", FILTER_SANITIZE_NUMBER_INT
 
 if (!empty($ID_parceiro)) {
 
-    $query_parceiro = "SELECT ID_parceiro, Nome, Descricao, link FROM parceiro WHERE ID_parceiro =:ID_parceiro LIMIT 1";
+    $query_parceiro = "SELECT ID_parceiro, Nome, Descricao, link, imagem FROM parceiro WHERE ID_parceiro =:ID_parceiro LIMIT 1";
     $result_parceiro = $conn->prepare($query_parceiro);
     $result_parceiro->bindParam(':ID_parceiro', $ID_parceiro);
     $result_parceiro->execute();

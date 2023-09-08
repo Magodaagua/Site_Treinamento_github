@@ -4,14 +4,13 @@
     $pagina = filter_input(INPUT_GET, "pagina", FILTER_SANITIZE_NUMBER_INT);
 
     if(!empty($pagina)){
-
         //Calcular o inicio visualização
         $qnt_result_pg = 10;
         $inicio = ($pagina * $qnt_result_pg) - $qnt_result_pg;
 
-        $query_cursos = "SELECT ID_curso, Nome, Categoria, Subcategoria, Descricao, Datadecriacao FROM curso ORDER BY ID_curso DESC LIMIT $inicio, $qnt_result_pg ";
-        $result_cursos = $conn->prepare($query_cursos);
-        $result_cursos->execute();
+        $query_curso = "SELECT ID_curso, Nome, Categoria, Subcategoria, Descricao, Datadecriacao, imagem FROM curso ORDER BY ID_curso DESC LIMIT $inicio, $qnt_result_pg ";
+        $result_curso = $conn->prepare($query_curso);
+        $result_curso->execute();
 
         $dados = "<div class='table-responsive'>
                     <table class='table table-striped table-bordered'>
@@ -21,14 +20,15 @@
                                 <th>Nome</th>
                                 <th>Categoria</th>
                                 <th>Subcategoria</th>
-                                <th>Descrição</th>
-                                <th>Data de Criação</th>
+                                <th>Descricao</th>
+                                <th>Datadecriacao</th>
+                                <th>Ações</th>
                             </tr>
                         </thead>
                         <tbody>";
 
-        while($row_cursos = $result_cursos->fetch(PDO::FETCH_ASSOC)){
-            extract($row_cursos);
+        while($row_curso = $result_curso->fetch(PDO::FETCH_ASSOC)){
+            extract($row_curso);
             $dados .= "<tr>
                             <td>$ID_curso</td>
                             <td>$Nome</td>
@@ -36,6 +36,11 @@
                             <td>$Subcategoria</td>
                             <td>$Descricao</td>
                             <td>$Datadecriacao</td>
+                            <td>
+                                <button id='$ID_curso' class='btn btn-outline-primary btn-sm' onclick='visInterno($ID_curso)'>Visualizar</button>
+                                <button id='$ID_curso' class='btn btn-outline-warning btn-sm' onclick='editInternoDados($ID_curso)'>Editar</button>
+                                <button id='$ID_curso' class='btn btn-outline-danger btn-sm' onclick='apagarInternoDados($ID_curso)'>Apagar</button>
+                            </td>
                         </tr>";
         }
 
@@ -55,11 +60,11 @@
         $max_links = 2;
 
         $dados .="<nav aria-label='Page navigation example'> <ul class='pagination pagination-sm justify-content-center'>";
-        $dados .="<li class='page-item'><a class='page-link'onClick='listarCursos(1)' href='#'>Previous</a></li>";
+        $dados .="<li class='page-item'><a class='page-link'onClick='listarInterno(1)' href='#'>Previous</a></li>";
         
         for($pag_ant = $pagina -$max_links; $pag_ant <= $pagina - 1; $pag_ant++){
             if($pag_ant >= 1){
-                $dados .= "<li class='page-item'><a class='page-link' onclick='listarCursos($pag_ant)' href='#'>$pag_ant</a></li>";
+                $dados .= "<li class='page-item'><a class='page-link' onclick='listarInterno($pag_ant)' href='#'>$pag_ant</a></li>";
             }
         }
 
@@ -67,12 +72,12 @@
 
         for($pag_dep = $pagina + 1; $pag_dep <= $pagina + $max_links; $pag_dep++){
             if($pag_dep <= $quantidade_pg){
-                $dados .="<li class='page-item'><a class='page-link' href='#' onclick='listarCursos($pag_dep)'>$pag_dep</a></li>";
+                $dados .="<li class='page-item'><a class='page-link' href='#' onclick='listarInterno($pag_dep)'>$pag_dep</a></li>";
             }
         }
         
         
-        $dados .="<li class='page-item'><a class='page-link' href='#' onClick='listarCursos($quantidade_pg)'>Última</a></li>";
+        $dados .="<li class='page-item'><a class='page-link' href='#' onClick='listarInterno($quantidade_pg)'>Última</a></li>";
         $dados .='</ul></nav>'; 
 
         echo $dados;

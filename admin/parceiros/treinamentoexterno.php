@@ -2,6 +2,7 @@
 <html lang="pt-br">
     <head>
         <?php
+            session_start();
             include_once "conexao.php";
         ?>
         <meta charset="utf-8">
@@ -16,7 +17,7 @@
         <!-- Bootstrap core CSS -->
         <link href="../css/bootstrap.min.css" rel="stylesheet">
         <!--coloca o icone na aba da tela-->
-        <link rel="icon" type="png" href="../img/logo_copi.png">
+        <link rel="icon" type="png" href="../logo/logo_copi.png">
 
         <style>
         .bd-placeholder-img {
@@ -76,7 +77,7 @@
                     <div class="sidebar-sticky pt-3">
                         <ul class="nav flex-column">
                         <li class="nav-item">
-                            <a class="nav-link" href="menu.php">
+                            <a class="nav-link" href="../menu.php">
                             <span data-feather="home"></span>
                             Dashboard <span class="sr-only"></span>
                             </a>
@@ -88,13 +89,13 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="treinamentointerno.php">
+                            <a class="nav-link" href="../cursos/treinamentointerno.php">
                             <span data-feather="file"></span>
                             Treinamento Interno
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="usuarios.php">
+                            <a class="nav-link" href="../usuarios/usuarios.php">
                             <span data-feather="users"></span>
                             Usuários Cadastrados
                             </a>
@@ -193,6 +194,10 @@
                                     <label for="link" class="col-form-label">Link:</label>
                                     <input type="text" name="link" class="form-control" id="link" placeholder="Digite o link">
                                 </div>
+                                <div class="mb-3">
+                                    <label for="imagem" class="col-form-label">Imagem:</label>
+                                    <input type="file" name="imagem" class="form-control" id="imagem">
+                                </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
                                     <Input type="submit" class="btn btn-primary" id="cad-externo-btn" value="Cadastrar" />
@@ -206,7 +211,7 @@
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="visParceiroModalLabel">Detalhes do Usuário</h5>
+                            <h5 class="modal-title" id="visParceiroModalLabel">Detalhes da Empresa Parceira</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
@@ -223,6 +228,9 @@
 
                                 <dt class="col-sm-3">Link</dt>
                                 <dd class="col-sm-9"><span id="vislink"></span></dd>
+
+                                <dt class="col-sm-3">Imagem</dt>
+                                <dd class="col-sm-9"><span id="visimagem"></span></dd>
 
                             </dl>
                         </div>
@@ -241,16 +249,20 @@
                                 <span id="msgAlertaErroEdit"></span>
                                 <input type="hidden" name="ID_parceiro" id="editId">
                                 <div class="mb-3">
-                                    <label for="nome" class="col-form-label">Nome:</label>
+                                    <label for="Nome" class="col-form-label">Nome:</label>
                                     <input type="text" name="Nome" class="form-control" id="editNome" placeholder="Digite o nome completo">
                                 </div>
                                 <div class="mb-3">
-                                    <label for="descricao" class="col-form-label">Descrição:</label>
+                                    <label for="Descricao" class="col-form-label">Descrição:</label>
                                     <input type="text" name="Descricao" class="form-control" id="editDescricao" placeholder="Digite a Descrição">
                                 </div>
                                 <div class="mb-3">
                                     <label for="link" class="col-form-label">Link:</label>
                                     <input type="text" name="link" class="form-control" id="editlink" placeholder="Digite o link">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="imagem" class="col-form-label">Imagem:</label>
+                                    <input type="file" name="imagem" class="form-control" id="editimagem">
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
@@ -272,6 +284,6 @@
         <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
         <script src="../javascript/dashboard.js"></script>
-        <script src="../javascript/admin/custom.js"></script>
+        <script src="javascript/custom.js"></script>
     </body>
 </html>

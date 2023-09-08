@@ -4,12 +4,11 @@
     $pagina = filter_input(INPUT_GET, "pagina", FILTER_SANITIZE_NUMBER_INT);
 
     if(!empty($pagina)){
-
         //Calcular o inicio visualização
         $qnt_result_pg = 10;
         $inicio = ($pagina * $qnt_result_pg) - $qnt_result_pg;
 
-        $query_parceiros = "SELECT ID_parceiro, Nome, Descricao, link FROM parceiro ORDER BY ID_parceiro DESC LIMIT $inicio, $qnt_result_pg ";
+        $query_parceiros = "SELECT ID_parceiro, Nome, Descricao, link, imagem FROM parceiro ORDER BY ID_parceiro DESC LIMIT $inicio, $qnt_result_pg ";
         $result_parceiros = $conn->prepare($query_parceiros);
         $result_parceiros->execute();
 
@@ -21,6 +20,7 @@
                                 <th>Nome</th>
                                 <th>Descricao</th>
                                 <th>Link</th>
+                                <th>Imagem</th>
                                 <th>Ações</th>
                             </tr>
                         </thead>
@@ -33,6 +33,7 @@
                             <td>$Nome</td>
                             <td>$Descricao</td>
                             <td>$link</td>
+                            <td>$imagem</td>
                             <td>
                                 <button id='$ID_parceiro' class='btn btn-outline-primary btn-sm' onclick='visParceiro($ID_parceiro)'>Visualizar</button>
                                 <button id='$ID_parceiro' class='btn btn-outline-warning btn-sm' onclick='editParceiroDados($ID_parceiro)'>Editar</button>

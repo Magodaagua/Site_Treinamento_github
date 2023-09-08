@@ -4,7 +4,6 @@
     $pagina = filter_input(INPUT_GET, "pagina", FILTER_SANITIZE_NUMBER_INT);
 
     if(!empty($pagina)){
-
         //Calcular o inicio visualização
         $qnt_result_pg = 10;
         $inicio = ($pagina * $qnt_result_pg) - $qnt_result_pg;
@@ -17,13 +16,14 @@
                     <table class='table table-striped table-bordered'>
                         <thead>
                             <tr>
-                                <th>ID do Usuário</th>
+                                <th>ID do usuário</th>
                                 <th>Nome</th>
                                 <th>CPF</th>
                                 <th>RG</th>
                                 <th>Cargo</th>
-                                <th>Email</th>
+                                <th>E-mail</th>
                                 <th>Senha</th>
+                                <th>Ação</th>
                             </tr>
                         </thead>
                         <tbody>";
@@ -38,6 +38,11 @@
                             <td>$Cargo</td>
                             <td>$email</td>
                             <td>$senha</td>
+                            <td>
+                                <button id='$ID_usuario' class='btn btn-outline-primary btn-sm' onclick='visUsuario($ID_usuario)'>Visualizar</button>
+                                <button id='$ID_usuario' class='btn btn-outline-warning btn-sm' onclick='editUsuarioDados($ID_usuario)'>Editar</button>
+                                <button id='$ID_usuario' class='btn btn-outline-danger btn-sm' onclick='apagarUsuarioDados($ID_usuario)'>Apagar</button>
+                            </td>
                         </tr>";
         }
 
@@ -79,7 +84,7 @@
 
         echo $dados;
     } else {
-        echo "<div class='alert alert-danger' role='alert'>Nenhuma empresa parceira encontrada!</div>";
+        echo "<div class='alert alert-danger' role='alert'>Nenhum usuário encontrado!</div>";
     }
 
 ?>

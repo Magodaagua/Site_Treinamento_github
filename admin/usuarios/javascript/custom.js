@@ -1,18 +1,18 @@
-const tbody = document.querySelector(".listar-parceiros");
-const cadForm = document.getElementById("cad-externo-form");
-const editForm = document.getElementById("edit-externo-form");
+const tbody = document.querySelector(".listar-usuarios");
+const cadForm = document.getElementById("cad-usuario-form");
+const editForm = document.getElementById("edit-usuario-form");
 const msgAlertaErroCad = document.getElementById("msgAlertaErroCad");
 const msgAlertaErroEdit = document.getElementById("msgAlertaErroEdit");
 const msgAlerta = document.getElementById("msgAlerta");
-const cadModal = new bootstrap.Modal(document.getElementById("cadExternoModal"));
+const cadModal = new bootstrap.Modal(document.getElementById("cadUsuarioModal"));
 
-const listarParceiros = async (pagina) => {
+const listarUsuarios = async (pagina) => {
     const dados = await fetch("./lista.php?pagina=" + pagina);
     const resposta = await dados.text();
     tbody.innerHTML = resposta;
 }
 
-listarParceiros(1);
+listarUsuarios(1);
 
 cadForm.addEventListener("submit", async (e) => {
     e.preventDefault();
@@ -20,7 +20,7 @@ cadForm.addEventListener("submit", async (e) => {
     const dadosForm = new FormData(cadForm);
     dadosForm.append("add", 1);
 
-    document.getElementById("cad-externo-btn").value = "Salvando...";
+    document.getElementById("cad-usuario-btn").value = "Salvando...";
     
     const dados = await fetch("cadastrar.php", {
         method: "POST",
@@ -35,55 +35,62 @@ cadForm.addEventListener("submit", async (e) => {
         msgAlerta.innerHTML = resposta['msg'];
         cadForm.reset();
         cadModal.hide();
-        listarParceiros(1);
+        listarUsuarios(1);
     }
-    document.getElementById("cad-externo-btn").value = "Cadastrar";
+    document.getElementById("cad-usuario-btn").value = "Cadastrar";
 });
 
 
-async function visParceiro(ID_parceiro) {
+async function visUsuario(ID_usuario) {
     //console.log("Acessou: " + id);
-    const dados = await fetch('visualizar.php?ID_parceiro=' + ID_parceiro);
+    const dados = await fetch('visualizar.php?ID_usuario=' + ID_usuario);
     const resposta = await dados.json();
     //console.log(resposta);
 
     if (resposta['erro']) {
         msgAlerta.innerHTML = resposta['msg'];
     } else {
-        const visModal = new bootstrap.Modal(document.getElementById("visParceiroModal"));
+        const visModal = new bootstrap.Modal(document.getElementById("visUsuarioModal"));
         visModal.show();
 
-        document.getElementById("visID_parceiro").innerHTML = resposta['dados'].ID_parceiro;
+        document.getElementById("visID_usuario").innerHTML = resposta['dados'].ID_usuario;
         document.getElementById("visNome").innerHTML = resposta['dados'].Nome;
-        document.getElementById("visDescricao").innerHTML = resposta['dados'].Descricao;
-        document.getElementById("vislink").innerHTML = resposta['dados'].link;
+        document.getElementById("viscpf").innerHTML = resposta['dados'].CPF;
+        document.getElementById("visrg").innerHTML = resposta['dados'].RG;
+        document.getElementById("viscargo").innerHTML = resposta['dados'].Cargo;
+        document.getElementById("visemail").innerHTML = resposta['dados'].email;
+        document.getElementById("vissenha").innerHTML = resposta['dados'].senha;
+
     }
 
 }
 
-async function editParceiroDados(ID_parceiro){
+async function editUsuarioDados(ID_usuario){
     msgAlertaErroEdit.innerHTML = "";
 
-    const dados = await fetch('visualizar.php?ID_parceiro=' + ID_parceiro);
+    const dados = await fetch('visualizar.php?ID_usuario=' + ID_usuario);
     const resposta = await dados.json();
-    //console.log(resposta);
+    console.log(resposta);
 
     if(resposta['erro']){
         msgAlerta.innerHTML = resposta['msg'];
     } else {
-        const editModal = new bootstrap.Modal(document.getElementById("editExternoModal"));
+        const editModal = new bootstrap.Modal(document.getElementById("editUsuarioModal"));
         editModal.show();
-        document.getElementById("editId").value  = resposta['dados'].ID_parceiro;
+        document.getElementById("editId").value  = resposta['dados'].ID_usuario;
         document.getElementById("editNome").value  = resposta['dados'].Nome;
-        document.getElementById("editDescricao").value  = resposta['dados'].Descricao;
-        document.getElementById("editlink").value  = resposta['dados'].link;
+        document.getElementById("editCPF").value  = resposta['dados'].CPF;
+        document.getElementById("editRG").value  = resposta['dados'].RG;
+        document.getElementById("editcargo").value  = resposta['dados'].Cargo;
+        document.getElementById("editemail").value  = resposta['dados'].email;
+        document.getElementById("editsenha").value  = resposta['dados'].senha;
     }
 }
 
 editForm.addEventListener("submit", async (e) => {
     e.preventDefault();
 
-    document.getElementById("edit-externo-btn").value = "Salvando...";
+    document.getElementById("edit-usuario-btn").value = "Salvando...";
 
     const dadosForm = new FormData(editForm);
     //console.log(dadosForm);
@@ -96,6 +103,7 @@ editForm.addEventListener("submit", async (e) => {
         body:dadosForm
     });
 
+    console.log(dados);
     const resposta = await dados.json();
     console.log(resposta);
 
@@ -103,25 +111,25 @@ editForm.addEventListener("submit", async (e) => {
         msgAlertaErroEdit.innerHTML = resposta['msg'];
     }else{
         msgAlertaErroEdit.innerHTML = resposta['msg'];
-        listarParceiros(1);
+        listarUsuarios(1);
     }
 
-    document.getElementById("edit-externo-btn").value = "Salvar";
+    document.getElementById("edit-usuario-btn").value = "Salvar";
 });
 
-async function apagarParceiroDados(ID_parceiro){
+async function apagarUsuarioDados(ID_usuario){
     //console.log("Acessou a função: " + ID_parceiro);
     var confirmar = confirm("Tem certeza que deseja excluir o registro selecionado?");
 
     if(confirmar == true){    
-        const dados = await fetch('apagar.php?ID_parceiro= ' + ID_parceiro);
+        const dados = await fetch('apagar.php?ID_usuario= ' + ID_usuario);
 
         const resposta = await dados.json();
         if(resposta['erro']){
             msgAlerta.innerHTML = resposta['msg'];
         }else{
             msgAlerta.innerHTML = resposta['msg'];
-            listarParceiros(1);
+            listarUsuarios(1);
         }
     }
 }

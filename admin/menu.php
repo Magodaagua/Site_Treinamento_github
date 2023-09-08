@@ -83,19 +83,19 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="treinamentoexterno.php">
+            <a class="nav-link" href="parceiros/treinamentoexterno.php">
               <span data-feather="file"></span>
               Treinamento Externo
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="treinamentointerno.php">
+            <a class="nav-link" href="cursos/treinamentointerno.php">
               <span data-feather="file"></span>
               Treinamento Interno
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="usuarios.php">
+            <a class="nav-link" href="usuarios/usuarios.php">
               <span data-feather="users"></span>
               Usuários Cadastrados
             </a>
