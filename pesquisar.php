@@ -33,10 +33,10 @@
     $num_pagina = ceil($total_cursos/$quantidade_pg);
 
     //Calcular o inicio da visualizacao
-    $incio = ($quantidade_pg*$pagina)-$quantidade_pg;
+    $inicio = ($quantidade_pg*$pagina)-$quantidade_pg;
 
     //Selecionar os cursos a serem apresentado na página
-    $result_cursos = "SELECT * FROM curso WHERE Nome LIKE '%$valor_pesquisar%' limit $incio, $quantidade_pg";
+    $result_cursos = "SELECT * FROM curso WHERE Nome LIKE '%$valor_pesquisar%' limit $inicio, $quantidade_pg";
     $resultado_cursos = mysqli_query($conn, $result_cursos);
     $total_cursos = mysqli_num_rows($resultado_cursos);
 ?>
@@ -50,6 +50,7 @@
         <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
         <meta name="generator" content="Hugo 0.101.0">
         <title>Site de Treinamento - informatica</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
         <link rel="canonical" href="https://getbootstrap.com/docs/4.6/examples/carousel/">
         <!-- Bootstrap core CSS -->
         <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -174,31 +175,41 @@
                             $pagina_anterior = $pagina - 1;
                             $pagina_posterior = $pagina + 1;
                         ?>
-                        <nav class="text-center">
-                            <ul class="pagination">
-                                <li>
+                        <nav aria-label="...">
+                            <ul class="pagination justify-content-center">
+                                <li class="page-item">
                                     <?php
                                     if($pagina_anterior != 0){ ?>
-                                        <a href="pesquisar.php?pagina=<?php echo $pagina_anterior; ?>&pesquisar=<?php echo $valor_pesquisar; ?>" aria-label="Previous">
-                                            <span aria-hidden="true">&laquo;</span>
+                                        <a class="page-link" href="curso.php?Nome_cat=<?php echo $categoria?>&pagina=<?php echo $pagina_anterior; ?>" aria-label="Previous">
+                                            <!--<span aria-hidden="true">&laquo;</span>--> Previous
                                         </a>
                                     <?php }else{ ?>
-                                        <span aria-hidden="true">&laquo;</span>
+                                        <li class="page-item disabled">
+                                            <a class="page-link" href="curso.php?Nome_cat=<?php echo $categoria?>&pagina=<?php echo $pagina_posterior; ?>" aria-label="Next">
+                                                <!--<span aria-hidden="true">&raquo;</span>--> Previous
+                                            </a>
+                                        </li>
                                 <?php }  ?>
                                 </li>
                                 <?php 
                                 //Apresentar a paginacao
                                 for($i = 1; $i < $num_pagina + 1; $i++){ ?>
-                                    <li><a href="pesquisar.php?pagina=<?php echo $i; ?>&pesquisar=<?php echo $valor_pesquisar; ?>"><?php echo $i; ?></a></li>
+                                    <li class="page-item">
+                                        <a class="page-link" href="curso.php?Nome_cat=<?php echo $categoria?>&pagina=<?php echo $i; ?>"><?php echo $i; ?></a>
+                                    </li>
                                 <?php } ?>
-                                <li>
+                                <li class="page-item">
                                     <?php
                                     if($pagina_posterior <= $num_pagina){ ?>
-                                        <a href="pesquisar.php?pagina=<?php echo $pagina_posterior; ?>&pesquisar=<?php echo $valor_pesquisar; ?>" aria-label="Previous">
-                                            <span aria-hidden="true">&raquo;</span>
+                                        <a class="page-link" href="curso.php?Nome_cat=<?php echo $categoria?>&pagina=<?php echo $pagina_posterior; ?>" aria-label="Next">
+                                            <!--<span aria-hidden="true">&raquo;</span>--> Next
                                         </a>
                                     <?php }else{ ?>
-                                        <span aria-hidden="true">&raquo;</span>
+                                        <li class="page-item disabled">
+                                            <a class="page-link" href="curso.php?Nome_cat=<?php echo $categoria?>&pagina=<?php echo $pagina_posterior; ?>" aria-label="Next">
+                                                <!--<span aria-hidden="true">&raquo;</span>--> Next
+                                            </a>
+                                        </li>
                                 <?php }  ?>
                                 </li>
                             </ul>

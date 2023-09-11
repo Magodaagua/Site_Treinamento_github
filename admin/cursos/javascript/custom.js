@@ -76,11 +76,13 @@ async function editInternoDados(ID_curso){
     } else {
         const editModal = new bootstrap.Modal(document.getElementById("editInternoModal"));
         editModal.show();
-        document.getElementById("editId").value  = resposta['dados'].ID_parceiro;
+        document.getElementById("editId").value  = resposta['dados'].ID_curso;
         document.getElementById("editNome").value  = resposta['dados'].Nome;
+        document.getElementById("editCategoria").value  = resposta['dados'].Categoria;
+        document.getElementById("editSubcategoria").value  = resposta['dados'].Subcategoria;
         document.getElementById("editDescricao").value  = resposta['dados'].Descricao;
-        document.getElementById("editlink").value  = resposta['dados'].link;
-        document.getElementById("editimagem").value  = resposta['dados'].imagem;
+        document.getElementById("editDatadecriacao").value  = resposta['dados'].Datadecriacao;
+        //document.getElementById("editimagem").value  = resposta['dados'].imagem;
     }
 }
 

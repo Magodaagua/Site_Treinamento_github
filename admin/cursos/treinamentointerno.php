@@ -191,21 +191,21 @@
                                     <input type="text" name="Categoria" class="form-control" id="Categoria" placeholder="Digite a Descrição">
                                 </div>
                                 <div class="mb-3">
-                                    <label for="link" class="col-form-label">Subcategoria:</label>
-                                    <input type="text" name="link" class="form-control" id="link" placeholder="Digite o link">
+                                    <label for="Subcategoria" class="col-form-label">Subcategoria:</label>
+                                    <input type="text" name="Subcategoria" class="form-control" id="Subcategoria" placeholder="Digite a Subcategoria">
                                 </div>
                                 <div class="mb-3">
                                     <label for="Descricao" class="col-form-label">Descricao:</label>
                                     <input type="text" name="Descricao" class="form-control" id="Descricao">
                                 </div>
                                 <div class="mb-3">
-                                    <label for="data" class="col-form-label">Data de Criação:</label>
-                                    <input type="date" name="data" class="form-control" id="data">
+                                    <label for="Datadecriacao" class="col-form-label">Data de Criação:</label>
+                                    <input type="date" name="Datadecriacao" class="form-control" id="Datadecriacao">
                                 </div>
-                                <div class="mb-3">
+                                <!--<div class="mb-3">
                                     <label for="imagem" class="col-form-label">Imagem:</label>
                                     <input type="file" name="imagem" class="form-control" id="imagem">
-                                </div>
+                                </div>-->
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
                                     <Input type="submit" class="btn btn-primary" id="cad-interno-btn" value="Cadastrar" />
@@ -243,8 +243,8 @@
                                 <dt class="col-sm-3">Data de Criação</dt>
                                 <dd class="col-sm-9"><span id="visdata"></span></dd>
 
-                                <dt class="col-sm-3">Imagem</dt>
-                                <dd class="col-sm-9"><span id="visimagem"></span></dd>
+                                <!--<dt class="col-sm-3">Imagem</dt>
+                                <dd class="col-sm-9"><span id="visimagem"></span></dd>-->
 
                             </dl>
                         </div>
@@ -268,24 +268,24 @@
                                 </div>
                                 <div class="mb-3">
                                     <label for="Categoria" class="col-form-label">Categoria:</label>
-                                    <input type="select" name="Categoria" class="form-control" id="editcategoria" placeholder="Digite a Categoria">
+                                    <input type="select" name="Categoria" class="form-control" id="editCategoria" placeholder="Digite a Categoria">
                                 </div>
                                 <div class="mb-3">
                                     <label for="Subcategoria" class="col-form-label">Subcategoria:</label>
-                                    <input type="text" name="Subcategoria" class="form-control" id="editsubcategoria" placeholder="Digite a Subcategoria">
+                                    <input type="text" name="Subcategoria" class="form-control" id="editSubcategoria" placeholder="Digite a Subcategoria">
                                 </div>
                                 <div class="mb-3">
                                     <label for="Descricao" class="col-form-label">Descrição:</label>
                                     <input type="text" name="Descricao" class="form-control" id="editDescricao" placeholder="Digite a Descrição">
                                 </div>
                                 <div class="mb-3">
-                                    <label for="Data" class="col-form-label">Data:</label>
-                                    <input type="text" name="Data" class="form-control" id="editdata" placeholder="Digite o Data">
+                                    <label for="Datadecriacao" class="col-form-label">Data de criação:</label>
+                                    <input type="text" name="Datadecriacao" class="form-control" id="editDatadecriacao" placeholder="Digite o Data de Criação">
                                 </div>
-                                <div class="mb-3">
+                                <!--<div class="mb-3">
                                     <label for="imagem" class="col-form-label">Imagem:</label>
                                     <input type="file" name="imagem" class="form-control" id="editimagem">
-                                </div>
+                                </div>-->
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
                                     <Input type="submit" class="btn btn-warning" id="edit-externo-btn" value="Salvar" />

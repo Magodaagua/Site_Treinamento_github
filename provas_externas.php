@@ -14,23 +14,23 @@
         $pagina = (isset($_GET['pagina']))? $_GET['pagina'] : 1;
 
         //Selecionar todos os cursos da tabela
-        $result_curso = "SELECT * FROM parceiro";
-        $resultado_curso = mysqli_query($conn, $result_curso);
+        $result_parceiro = "SELECT * FROM parceiro";
+        $resultado_parceiro = mysqli_query($conn, $result_parceiro);
 
         //Contar o total de cursos
-        $total_cursos = mysqli_num_rows($resultado_curso);
+        $total_parceiro = mysqli_num_rows($resultado_parceiro);
 
         //Seta a quantidade de cursos por pagina
-        $quantidade_pg = 10;
+        $quantidade_pg = 6;
 
         //calcular o número de pagina necessárias para apresentar os cursos
-        $num_pagina = ceil($total_cursos/$quantidade_pg);
+        $num_pagina = ceil($total_parceiro/$quantidade_pg);
 
         //Calcular o inicio da visualizacao
-        $incio = ($quantidade_pg*$pagina)-$quantidade_pg;
+        $inicio = ($quantidade_pg*$pagina)-$quantidade_pg;
 
         //Selecionar os cursos a serem apresentado na página
-        $result_parceiro = "SELECT * FROM parceiro limit $incio, $quantidade_pg";
+        $result_parceiro = "SELECT * FROM parceiro limit $inicio, $quantidade_pg";
         $resultado_parceiro = mysqli_query($conn, $result_parceiro);
         $total_parceiros = mysqli_num_rows($resultado_parceiro);
 	?>
@@ -137,6 +137,50 @@
                     </div><!-- /.col-lg-4 -->
                     <?php }?>    
                 </div><!-- /.row -->
+                <?php
+                            //Verificar a pagina anterior e posterior
+                            $pagina_anterior = $pagina - 1;
+                            $pagina_posterior = $pagina + 1;
+                        ?>
+                        <nav aria-label="...">
+                            <ul class="pagination justify-content-center">
+                                <li class="page-item">
+                                    <?php
+                                    if($pagina_anterior != 0){ ?>
+                                        <a class="page-link" href="curso.php?Nome_cat=<?php echo $categoria?>&pagina=<?php echo $pagina_anterior; ?>" aria-label="Previous">
+                                            <!--<span aria-hidden="true">&laquo;</span>--> Previous
+                                        </a>
+                                    <?php }else{ ?>
+                                        <li class="page-item disabled">
+                                            <a class="page-link" href="curso.php?Nome_cat=<?php echo $categoria?>&pagina=<?php echo $pagina_posterior; ?>" aria-label="Next">
+                                                <!--<span aria-hidden="true">&raquo;</span>--> Previous
+                                            </a>
+                                        </li>
+                                <?php }  ?>
+                                </li>
+                                <?php 
+                                //Apresentar a paginacao
+                                for($i = 1; $i < $num_pagina + 1; $i++){ ?>
+                                    <li class="page-item">
+                                        <a class="page-link" href="curso.php?Nome_cat=<?php echo $categoria?>&pagina=<?php echo $i; ?>"><?php echo $i; ?></a>
+                                    </li>
+                                <?php } ?>
+                                <li class="page-item">
+                                    <?php
+                                    if($pagina_posterior <= $num_pagina){ ?>
+                                        <a class="page-link" href="curso.php?Nome_cat=<?php echo $categoria?>&pagina=<?php echo $pagina_posterior; ?>" aria-label="Next">
+                                            <!--<span aria-hidden="true">&raquo;</span>--> Next
+                                        </a>
+                                    <?php }else{ ?>
+                                        <li class="page-item disabled">
+                                            <a class="page-link" href="curso.php?Nome_cat=<?php echo $categoria?>&pagina=<?php echo $pagina_posterior; ?>" aria-label="Next">
+                                                <!--<span aria-hidden="true">&raquo;</span>--> Next
+                                            </a>
+                                        </li>
+                                <?php }  ?>
+                                </li>
+                            </ul>
+                        </nav>                
             </div>    
             <!--inicio Botão de voltar ao topo-->
             <?php 

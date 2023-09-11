@@ -24,7 +24,7 @@
         $cad_curso ->bindParam(':Categoria', $dados['Categoria']);
         $cad_curso ->bindParam(':Subcategoria', $dados['Subcategoria']);
         $cad_curso ->bindParam(':Descricao', $dados['Descricao']);
-        $cad_curso ->bindParam(':Datadedcriacao', $dados['Datadedcriacao']);
+        $cad_curso ->bindParam(':Datadecriacao', $dados['Datadecriacao']);
         //$cad_parceiro ->bindParam(':imagem', $arquivo['name'], PDO::PARAM_STR);
         $cad_curso ->execute();
 
