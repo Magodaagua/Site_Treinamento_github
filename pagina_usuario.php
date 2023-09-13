@@ -113,33 +113,23 @@
           </h1>
 
             <h2>Ficha</h2>
-          <table>
+          <table class="table table-bordered">
+            <thead>
+              <tr>
+                <th scope="col">Nome:</th>
+                <th scope="col">RG:</th>
+                <th scope="col">CPF:</th>
+                <th scope="col">Cargo:</th>
+                <th scope="col">E-mail:</th>
+                <th scope="col">Senha:</th>
+              </tr>
+            </thead>
             <tr>
-              <th>Categoria</th>
-              <th>Informação</th>
-            </tr>
-            <tr>
-              <td>Nome:</td>
               <td><?php echo $row_usuario['Nome']?></td>
-            </tr>
-            <tr>
-              <td>RG:</td>
               <td><?php echo $row_usuario['RG']?></td>
-            </tr>
-            <tr>
-                <td>CPF:</td>
-                <td><?php echo $row_usuario['CPF']?></td>
-            </tr>
-            <tr>
-              <td>Cargo:</td>
+              <td><?php echo $row_usuario['CPF']?></td>
               <td><?php echo $row_usuario['Cargo']?></td>
-            </tr>
-            <tr>
-              <td>Email:</td>
               <td><?php echo $row_usuario['email']?></td>
-            </tr>
-            <tr>
-              <td>Senha:</td>
               <td><?php echo $row_usuario['senha']?></td>
             </tr>
           </table>

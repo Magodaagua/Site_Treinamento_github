@@ -31,7 +31,7 @@
         $categoria = $_GET['Nome_cat'];
 
         //Selecionar os cursos a serem apresentado na página
-        $result_cursos = "SELECT * FROM curso WHERE Categoria = '$categoria' limit $inicio, $quantidade_pg";
+        $result_cursos = "SELECT ID_curso, Nome, Categoria, Subcategoria, Descricao, Datadecriacao, imagem FROM curso WHERE Categoria = '$categoria' limit $inicio, $quantidade_pg";
         $resultado_cursos = mysqli_query($conn, $result_cursos);
         $total_cursos = mysqli_num_rows($resultado_cursos);
 	?>
@@ -147,7 +147,7 @@
                             <?php while($rows_cursos = mysqli_fetch_assoc($resultado_cursos)) { ?>
                             <div class="col-md-4">
                                 <div class="card mb-4 shadow-sm">
-                                    <img src="logo/<?php echo $rows_cursos['ID_curso']; ?>.png" width="100%" height="225">
+                                    <img src="admin/imagem/<?php echo $rows_cursos['ID_curso'];?>/<?php echo $rows_cursos['imagem'];?>" width="100%" height="225">
                                     <div class="card-body">
                                         <p class="card-text"><?php echo $rows_cursos['Nome']; ?></p>
                                         <div class="d-flex justify-content-between align-items-center">
@@ -155,7 +155,7 @@
                                                 <a href="detalhes.php?ID_curso=<?php echo $rows_cursos['ID_curso']; ?>"><button type="button" class="btn btn-sm btn-outline-secondary">Começar</button> </a>
                                                 <!--<button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>-->
                                             </div>
-                                            <small class="text-muted">Data de criação <br><?php echo $rows_cursos['Datadecriacao']; ?></small>
+                                            <small class="text-muted">Data de criação <br><?php echo date('d/m/Y', strtotime($rows_cursos['Datadecriacao'])); ?></small>
                                         </div>
                                     </div>
                                 </div>

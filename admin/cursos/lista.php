@@ -22,6 +22,7 @@
                                 <th>Subcategoria</th>
                                 <th>Descricao</th>
                                 <th>Datadecriacao</th>
+                                <th>Imagem</th>
                                 <th>Ações</th>
                             </tr>
                         </thead>
@@ -29,13 +30,25 @@
 
         while($row_curso = $result_curso->fetch(PDO::FETCH_ASSOC)){
             extract($row_curso);
+            $data = date('d/m/Y', strtotime($Datadecriacao));
+            if ((!empty($imagem))) {
+                $img = "<img src='../imagem/$ID_curso/$imagem' width='150'> <br>";
+                $img2 = "<center><button class='btn btn-outline-primary btn-sm'><a href='../imagem/$ID_curso/$imagem' download>Download</a></button></center><br>";
+            } else {
+                $img = "";
+                $img2 = "";
+            }
+            
             $dados .= "<tr>
                             <td>$ID_curso</td>
                             <td>$Nome</td>
                             <td>$Categoria</td>
                             <td>$Subcategoria</td>
                             <td>$Descricao</td>
-                            <td>$Datadecriacao</td>
+                            <td>$data</td>
+                            <td>
+                                $img <br> $img2
+                            </td>
                             <td>
                                 <button id='$ID_curso' class='btn btn-outline-primary btn-sm' onclick='visInterno($ID_curso)'>Visualizar</button>
                                 <button id='$ID_curso' class='btn btn-outline-warning btn-sm' onclick='editInternoDados($ID_curso)'>Editar</button>

@@ -28,12 +28,21 @@
 
         while($row_parceiros = $result_parceiros->fetch(PDO::FETCH_ASSOC)){
             extract($row_parceiros);
+            if ((!empty($imagem))) {
+                $img = "<img src='../externo/$ID_parceiro/$imagem' width='150'> <br>";
+                $img2 = "<center><button class='btn btn-outline-primary btn-sm'><a href='../externo/$ID_parceiro/$imagem' download>Download</a></button></center><br>";
+            } else {
+                $img = "";
+                $img2 = "";
+            }
             $dados .= "<tr>
                             <td>$ID_parceiro</td>
                             <td>$Nome</td>
                             <td>$Descricao</td>
                             <td>$link</td>
-                            <td>$imagem</td>
+                            <td>
+                                $img <br> $img2
+                            </td>
                             <td>
                                 <button id='$ID_parceiro' class='btn btn-outline-primary btn-sm' onclick='visParceiro($ID_parceiro)'>Visualizar</button>
                                 <button id='$ID_parceiro' class='btn btn-outline-warning btn-sm' onclick='editParceiroDados($ID_parceiro)'>Editar</button>

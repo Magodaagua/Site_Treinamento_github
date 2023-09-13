@@ -180,7 +180,7 @@
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div> 
                         <div class="modal-body">
-                            <form id="cad-interno-form">
+                            <form id="cad-interno-form" method="POST" action="" enctype="multipart/form-data">
                                 <span id="msgAlertaErroCad"></span>
                                 <div class="mb-3">
                                     <label for="Nome" class="col-form-label">Nome:</label>
@@ -202,10 +202,10 @@
                                     <label for="Datadecriacao" class="col-form-label">Data de Criação:</label>
                                     <input type="date" name="Datadecriacao" class="form-control" id="Datadecriacao">
                                 </div>
-                                <!--<div class="mb-3">
+                                <div class="mb-3">
                                     <label for="imagem" class="col-form-label">Imagem:</label>
                                     <input type="file" name="imagem" class="form-control" id="imagem">
-                                </div>-->
+                                </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
                                     <Input type="submit" class="btn btn-primary" id="cad-interno-btn" value="Cadastrar" />
@@ -241,10 +241,10 @@
                                 <dd class="col-sm-9"><span id="visDescricao"></span></dd>
 
                                 <dt class="col-sm-3">Data de Criação</dt>
-                                <dd class="col-sm-9"><span id="visdata"></span></dd>
+                                <dd class="col-sm-9"><span id="visdata"></span></dd><br>
 
-                                <!--<dt class="col-sm-3">Imagem</dt>
-                                <dd class="col-sm-9"><span id="visimagem"></span></dd>-->
+                                <dt class="col-sm-3">Nome da Imagem</dt>
+                                <dd class="col-sm-9"><span id="visimagem"></span></dd>
 
                             </dl>
                         </div>
@@ -259,7 +259,7 @@
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div> 
                         <div class="modal-body">
-                            <form id="edit-interno-form">
+                            <form id="edit-interno-form" method="POST" action="" enctype="multipart/form-data">
                                 <span id="msgAlertaErroEdit"></span>
                                 <input type="hidden" name="ID_curso" id="editId">
                                 <div class="mb-3">
@@ -282,10 +282,10 @@
                                     <label for="Datadecriacao" class="col-form-label">Data de criação:</label>
                                     <input type="text" name="Datadecriacao" class="form-control" id="editDatadecriacao" placeholder="Digite o Data de Criação">
                                 </div>
-                                <!--<div class="mb-3">
+                                <div class="mb-3">
                                     <label for="imagem" class="col-form-label">Imagem:</label>
                                     <input type="file" name="imagem" class="form-control" id="editimagem">
-                                </div>-->
+                                </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
                                     <Input type="submit" class="btn btn-warning" id="edit-externo-btn" value="Salvar" />

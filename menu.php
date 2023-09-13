@@ -27,6 +27,11 @@
       $result_parceiro = "SELECT * FROM parceiro ORDER BY ID_parceiro DESC limit $incio, $quantidade_pg";
       $resultado_parceiro = mysqli_query($conn, $result_parceiro);
       $total_parceiros = mysqli_num_rows($resultado_parceiro);
+
+      $result_menu = "SELECT * FROM menu"; 
+	    $resultado_menu = mysqli_query($conn, $result_menu);
+	    $row_menu = mysqli_fetch_assoc($resultado_menu);
+
 	?>
   <head>
     <meta charset="utf-8">
@@ -187,8 +192,8 @@
 
         <div class="row featurette">
           <div class="col-md-7">
-            <h2 class="featurette-heading">First featurette heading. <span class="text-muted">It’ll blow your mind.</span></h2>
-            <p class="lead">Some great placeholder content for the first featurette here. Imagine some exciting prose here.</p>
+            <h2 class="featurette-heading"><?php echo $row_menu['titulo1']?></h2>
+            <p class="lead"><?php echo $row_menu['texto1']?></p>
           </div>
           <div class="col-md-5">
             <img src="img/carrosel.png" class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice" focusable="false">
@@ -199,8 +204,8 @@
 
         <div class="row featurette">
           <div class="col-md-7 order-md-2">
-            <h2 class="featurette-heading">Oh yeah, it’s that good. <span class="text-muted">See for yourself.</span></h2>
-            <p class="lead">Another featurette? Of course. More placeholder content here to give you an idea of how this layout would work with some actual real-world content in place.</p>
+            <h2 class="featurette-heading"><?php echo $row_menu['titulo2']?></h2>
+            <p class="lead"><?php echo $row_menu['texto2']?></p>
           </div>
           <div class="col-md-5 order-md-1">
             <img src="img/carrosel2.jpeg" class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice" focusable="false">
@@ -212,8 +217,8 @@
 
         <div class="row featurette">
           <div class="col-md-7">
-            <h2 class="featurette-heading">And lastly, this one. <span class="text-muted">Checkmate.</span></h2>
-            <p class="lead">And yes, this is the last block of representative placeholder content. Again, not really intended to be actually read, simply here to give you a better view of what this would look like with some actual content. Your content.</p>
+            <h2 class="featurette-heading"><?php echo $row_menu['titulo3']?></h2>
+            <p class="lead"><?php echo $row_menu['texto3']?></p>
           </div>
           <div class="col-md-5">
             <img src="img/carrosel3.jpg" class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice" focusable="false">

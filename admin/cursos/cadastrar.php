@@ -1,9 +1,9 @@
 <?php
     session_start();
-    ob_start();
     include_once "conexao.php";
 
     $dados = filter_input_array(INPUT_POST, FILTER_DEFAULT);
+    $arquivo = $_FILES['imagem'];
 
     if (empty($dados['Nome'])) {
         $retorna = ['erro' => true, 'msg' => "<div class='alert alert-danger' role='alert'>Erro: Necessário preencher o campo nome!</div>"];
@@ -18,32 +18,34 @@
     /*} elseif (empty($dados['imagem'])) {
         $retorna = ['erro' => true, 'msg' => "<div class='alert alert-danger' role='alert'>Erro: Necessário preencher o campo imagem!</div>"];
     */}else{
-        $query_curso = "INSERT INTO curso (Nome, Categoria, Subcategoria, Descricao, Datadecriacao) VALUES (:Nome, :Categoria, :Subcategoria, :Descricao, :Datadecriacao)";
+        $query_curso = "INSERT INTO curso (Nome, Categoria, Subcategoria, Descricao, Datadecriacao, imagem) VALUES (:Nome, :Categoria, :Subcategoria, :Descricao, :Datadecriacao, :imagem)";
+        $arquivo = $_FILES['imagem'];
+
         $cad_curso = $conn->prepare($query_curso);
         $cad_curso ->bindParam(':Nome', $dados['Nome']);
         $cad_curso ->bindParam(':Categoria', $dados['Categoria']);
         $cad_curso ->bindParam(':Subcategoria', $dados['Subcategoria']);
         $cad_curso ->bindParam(':Descricao', $dados['Descricao']);
         $cad_curso ->bindParam(':Datadecriacao', $dados['Datadecriacao']);
-        //$cad_parceiro ->bindParam(':imagem', $arquivo['name'], PDO::PARAM_STR);
+        $cad_curso ->bindParam(':imagem', $arquivo['name'], PDO::PARAM_STR);
         $cad_curso ->execute();
 
         if($cad_curso->rowCount()){
-            /*if((isset($arquivo['name'])) and (!empty($arquivo['name']))){
+            if((isset($arquivo['name'])) and (!empty($arquivo['name']))){
                 $ultimo_id = $conn->lastInsertId();
 
-                $diretorio = "imagens/$ultimo_id/";
+                $diretorio = "../imagem/$ultimo_id/";
 
                 mkdir($diretorio, 0755);
 
                 $nome_arquivo = $arquivo['name'];
 
-                move_uploaded_file($arquivo['tmp_name'], $diretorio . $arquivo['name']);
+                move_uploaded_file($arquivo['tmp_name'], $diretorio . $nome_arquivo);
 
                 $retorna = ['erro' => false, 'msg' => "<div class='alert alert-success' role='alert'>Imagem cadastrada com sucesso</div>"];
             }else{
                 $retorna = ['erro' => false, 'msg' => "<div class='alert alert-success' role='alert'>Empresa parceira cadastrada com sucesso!</div>"];
-            }*/
+            }
             $retorna = ['erro' => false, 'msg' => "<div class='alert alert-success' role='alert'>Curso cadastrado com sucesso!</div>"];
         } else {
             $retorna = ['erro' => true, 'msg' => "<div class='alert alert-danger' role='alert'>Erro: Curso não cadastrado com sucesso!</div>"];

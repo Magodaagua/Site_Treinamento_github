@@ -21,7 +21,7 @@
         $total_parceiro = mysqli_num_rows($resultado_parceiro);
 
         //Seta a quantidade de cursos por pagina
-        $quantidade_pg = 6;
+        $quantidade_pg = 9;
 
         //calcular o número de pagina necessárias para apresentar os cursos
         $num_pagina = ceil($total_parceiro/$quantidade_pg);
@@ -147,7 +147,7 @@
                                 <li class="page-item">
                                     <?php
                                     if($pagina_anterior != 0){ ?>
-                                        <a class="page-link" href="curso.php?Nome_cat=<?php echo $categoria?>&pagina=<?php echo $pagina_anterior; ?>" aria-label="Previous">
+                                        <a class="page-link" href="provas_externas.php?pagina=<?php echo $pagina_anterior; ?>" aria-label="Previous">
                                             <!--<span aria-hidden="true">&laquo;</span>--> Previous
                                         </a>
                                     <?php }else{ ?>
@@ -162,18 +162,18 @@
                                 //Apresentar a paginacao
                                 for($i = 1; $i < $num_pagina + 1; $i++){ ?>
                                     <li class="page-item">
-                                        <a class="page-link" href="curso.php?Nome_cat=<?php echo $categoria?>&pagina=<?php echo $i; ?>"><?php echo $i; ?></a>
+                                        <a class="page-link" href="provas_externas.php?pagina=<?php echo $i; ?>"><?php echo $i; ?></a>
                                     </li>
                                 <?php } ?>
                                 <li class="page-item">
                                     <?php
                                     if($pagina_posterior <= $num_pagina){ ?>
-                                        <a class="page-link" href="curso.php?Nome_cat=<?php echo $categoria?>&pagina=<?php echo $pagina_posterior; ?>" aria-label="Next">
+                                        <a class="page-link" href="provas_externas.php?pagina=<?php echo $pagina_posterior; ?>" aria-label="Next">
                                             <!--<span aria-hidden="true">&raquo;</span>--> Next
                                         </a>
                                     <?php }else{ ?>
                                         <li class="page-item disabled">
-                                            <a class="page-link" href="curso.php?Nome_cat=<?php echo $categoria?>&pagina=<?php echo $pagina_posterior; ?>" aria-label="Next">
+                                            <a class="page-link" href="provas_externas.php?pagina=<?php echo $pagina_posterior; ?>" aria-label="Next">
                                                 <!--<span aria-hidden="true">&raquo;</span>--> Next
                                             </a>
                                         </li>
