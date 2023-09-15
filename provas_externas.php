@@ -130,7 +130,7 @@
                 <div class="row">
                     <?php while($rows_parceiro = mysqli_fetch_assoc($resultado_parceiro)){?>
                     <div class="col-lg-4">
-                        <img src="img/<?php echo $rows_parceiro['ID_parceiro'];?>.png" class="bd-placeholder-img rounded-square" width="140" height="140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 140x140" preserveAspectRatio="xMidYMid slice" focusable="false">
+                        <img src="admin/externo/<?php echo $rows_parceiro['ID_parceiro'];?>/<?php echo $rows_parceiro['imagem'];?>" class="bd-placeholder-img rounded-square" width="140" height="140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 140x140" preserveAspectRatio="xMidYMid slice" focusable="false">
                         <h2><?php echo $rows_parceiro['Nome'];?></h2>
                         <p><?php echo $rows_parceiro['Descricao'];?></p>
                         <p><a class="btn btn-secondary" href="<?php echo $rows_parceiro['link'];?>">Clique para ver o site &raquo;</a></p>

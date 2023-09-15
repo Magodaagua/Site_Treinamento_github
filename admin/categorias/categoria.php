@@ -11,7 +11,7 @@
         <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
         <meta name="generator" content="Hugo 0.101.0">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-        <title>Treinamento Externo</title>
+        <title>Categorias</title>
 
         <link rel="canonical" href="https://getbootstrap.com/docs/4.6/examples/dashboard/">
         <!-- Bootstrap core CSS -->
@@ -41,7 +41,7 @@
     </head>
     <body> 
         <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
-        <a class="navbar-brand col-md-3 col-lg-2 mr-0 px-3" href="#">Portal do Administrador</a>
+        <a class="navbar-brand col-md-3 col-lg-2 mr-0 px-3" href="../menu.php">Portal do Administrador</a>
         <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-toggle="collapse" data-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -83,8 +83,8 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" href="treinamentoexterno.php">
-                            <span data-feather="file">(current)</span>
+                            <a class="nav-link" href="../parceiros/treinamentoexterno.php">
+                            <span data-feather="file"></span>
                             Treinamento Externo
                             </a>
                         </li>
@@ -101,9 +101,9 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="../categorias/categoria.php">
-                                <span data-feather="bar-chart-2"></span>
-                                Categorias
+                            <a class="nav-link active" href="categorias/categoria.php">
+                            <span data-feather="bar-chart-2"> (current) </span>
+                            Categorias
                             </a>
                         </li>
                         <li class="nav-item">
@@ -155,10 +155,10 @@
                 <div class="row mt-4">
                     <div class="col-lg-12 d-flex justify-content-between align-items-center">
                         <div>
-                            <h4>Listar Empresas parceiras</h4>
+                            <h4>Listar Categorias</h4>
                         </div>
                         <div>
-                            <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#cadExternoModal">
+                            <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#cadCategoriaModal">
                                 Cadastrar
                             </button>
                         </div>
@@ -168,31 +168,23 @@
                 <span id="msgAlerta"></span>
                 <div class="row">
                     <div class="col-lg-12">
-                        <span class="listar-parceiros"></span>
+                        <span class="listar-categorias"></span>
                     </div>
                 </div>
             </div>
-            <div class="modal fade" id="cadExternoModal" tabindex="-1" aria-labelledby="cadExternoModalLabel" aria-hidden="true">
+            <div class="modal fade" id="cadCategoriaModal" tabindex="-1" aria-labelledby="cadCategoriaModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
-                             <h5 class="modal-title" id="cadExternoModalLabel">Cadastrar Empresa Parceira</h5>
+                             <h5 class="modal-title" id="cadCategoriaModalLabel">Cadastrar Empresa Parceira</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div> 
                         <div class="modal-body">
-                            <form id="cad-externo-form">
+                            <form id="cad-categoria-form">
                                 <span id="msgAlertaErroCad"></span>
                                 <div class="mb-3">
                                     <label for="Nome" class="col-form-label">Nome:</label>
                                     <input type="text" name="Nome" class="form-control" id="Nome" placeholder="Digite o nome completo">
-                                </div>
-                                <div class="mb-3">
-                                    <label for="Descricao" class="col-form-label">Descrição:</label>
-                                    <input type="text" name="Descricao" class="form-control" id="Descricao" placeholder="Digite a Descrição">
-                                </div>
-                                <div class="mb-3">
-                                    <label for="link" class="col-form-label">Link:</label>
-                                    <input type="text" name="link" class="form-control" id="link" placeholder="Digite o link">
                                 </div>
                                 <div class="mb-3">
                                     <label for="imagem" class="col-form-label">Imagem:</label>
@@ -200,34 +192,26 @@
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
-                                    <Input type="submit" class="btn btn-primary" id="cad-externo-btn" value="Cadastrar" />
+                                    <Input type="submit" class="btn btn-primary" id="cad-categoria-btn" value="Cadastrar" />
                                 </div>
                             </form>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="modal fade" id="visParceiroModal" tabindex="-1" aria-labelledby="visParceiroModalLabel" aria-hidden="true">
+            <div class="modal fade" id="visCategoriaModal" tabindex="-1" aria-labelledby="visCategoriaModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="visParceiroModalLabel">Detalhes da Empresa Parceira</h5>
+                            <h5 class="modal-title" id="visCategoriaModalLabel">Detalhes da Empresa Parceira</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
                             <span id="msgAlertaErroVis"></span>
                             <dl class="row">
-                                <dt class="col-sm-3">ID</dt>
-                                <dd class="col-sm-9"><span id="visID_parceiro"></span></dd>
 
                                 <dt class="col-sm-3">Nome</dt>
                                 <dd class="col-sm-9"><span id="visNome"></span></dd>
-
-                                <dt class="col-sm-3">Descrição</dt>
-                                <dd class="col-sm-9"><span id="visDescricao"></span></dd>
-
-                                <dt class="col-sm-3">Link</dt>
-                                <dd class="col-sm-9"><span id="vislink"></span></dd>
 
                                 <dt class="col-sm-3">Imagem</dt>
                                 <dd class="col-sm-9"><span id="visimagem"></span></dd>
@@ -237,28 +221,19 @@
                     </div>
                 </div>
             </div>
-            <div class="modal fade" id="editExternoModal" tabindex="-1" aria-labelledby="editExternoModalLabel" aria-hidden="true">
+            <div class="modal fade" id="editCategoriaModal" tabindex="-1" aria-labelledby="editCategoriaModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
-                             <h5 class="modal-title" id="editExternoModalLabel">Editar Empresa Parceira</h5>
+                             <h5 class="modal-title" id="editCategoriaModalLabel">Editar Empresa Parceira</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div> 
                         <div class="modal-body">
-                            <form id="edit-externo-form" method="POST" action="" enctype="multipart/form-data">
+                            <form id="edit-categoria-form" method="POST" action="" enctype="multipart/form-data">
                                 <span id="msgAlertaErroEdit"></span>
-                                <input type="hidden" name="ID_parceiro" id="editId">
                                 <div class="mb-3">
                                     <label for="Nome" class="col-form-label">Nome:</label>
                                     <input type="text" name="Nome" class="form-control" id="editNome" placeholder="Digite o nome completo">
-                                </div>
-                                <div class="mb-3">
-                                    <label for="Descricao" class="col-form-label">Descrição:</label>
-                                    <input type="text" name="Descricao" class="form-control" id="editDescricao" placeholder="Digite a Descrição">
-                                </div>
-                                <div class="mb-3">
-                                    <label for="link" class="col-form-label">Link:</label>
-                                    <input type="text" name="link" class="form-control" id="editlink" placeholder="Digite o link">
                                 </div>
                                 <div class="mb-3">
                                     <label for="imagem" class="col-form-label">Imagem:</label>
@@ -266,7 +241,7 @@
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
-                                    <Input type="submit" class="btn btn-warning" id="edit-externo-btn" value="Salvar" />
+                                    <Input type="submit" class="btn btn-warning" id="edit-categoria-btn" value="Salvar" />
                                 </div>
                             </form>
                         </div>

@@ -182,7 +182,7 @@
         </svg>
         <div class="container my-5">
             <div class="p-5 text-center bg-body-tertiary rounded-3">
-                <img src="logo/<?php echo $id_curso; ?>.png" class="bi mt-4 mb-3" style="color: var(--bs-indigo);" width="200px" height="200px"></img>
+                <img src="admin/imagem/<?php echo $row_cursos['ID_curso'];?>/<?php echo $row_cursos['imagem'];?>" class="bi mt-4 mb-3" style="color: var(--bs-indigo);" width="200px" height="200px"></img>
                 <h1 class="text-body-emphasis"><?php echo $row_cursos['Nome']; ?></h1>
                 <p class="col-lg-8 mx-auto fs-5 text-muted">
                     <?php echo $row_cursos['Descricao']; ?>

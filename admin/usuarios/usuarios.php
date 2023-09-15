@@ -101,9 +101,9 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">
-                            <span data-feather="bar-chart-2"></span>
-                            Reports
+                            <a class="nav-link" href="../categorias/categoria.php">
+                                <span data-feather="bar-chart-2"></span>
+                                Categorias
                             </a>
                         </li>
                         <li class="nav-item">

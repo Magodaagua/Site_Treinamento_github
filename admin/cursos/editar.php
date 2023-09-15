@@ -34,8 +34,8 @@
 
         if($edit_curso->rowCount()){
 
-            $diretorio = $conn->lastInsertId();
-            //$diretorio = "../imagem/$ID_curso/";
+            $id = $dados['ID_curso'];
+            $diretorio = "../imagem/$id/";
 
             if((!file_exists($diretorio))){
                 mkdir($diretorio, 0755);
