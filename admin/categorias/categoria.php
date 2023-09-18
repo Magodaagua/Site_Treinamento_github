@@ -48,28 +48,26 @@
         <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">
         <ul class="navbar-nav px-3">
             <li class="nav-item text-nowrap">
-            <a class="nav-link" href="logout.php">Sair</a>
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#sairModal">Sair</button>
             </li>
         </ul>
-            <!-- Modal para sair 
-            <div class="modal fade" id="sairModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog" role="document">
+        </nav>
+        <!-- Modal para sair--> 
+        <div class="modal fade" id="sairModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Deseja mesmo sair de sua conta?</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                        </button>
+                        <h5 class="modal-title fs-5" id="exampleModalLabel">Deseja mesmo sair de sua conta?</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div> 
                     <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Continuar na conta</button>
-                    <a class="btn btn-primary" href="logout.php"> Sair da conta </a>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Continuar na conta</button>
+                        <a href="../logout.php"><button type="button"class="btn btn-primary">Sair da conta</button></a>
                     </div>
                 </div>
-                </div>
-            </div> 
-            fim modal para sair-->
-        </nav>
+            </div>
+        </div> 
+        <!--fim modal para sair-->
 
         <div class="container-fluid">
             <div class="row">
@@ -101,15 +99,15 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" href="categorias/categoria.php">
+                            <a class="nav-link active" href="categoria.php">
                             <span data-feather="bar-chart-2"> (current) </span>
                             Categorias
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">
+                            <a class="nav-link" href="../administrador/administrador.php">
                             <span data-feather="layers"></span>
-                            Integrations
+                            Administrador
                             </a>
                         </li>
                         </ul>
@@ -176,15 +174,15 @@
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
-                             <h5 class="modal-title" id="cadCategoriaModalLabel">Cadastrar Empresa Parceira</h5>
+                             <h5 class="modal-title" id="cadCategoriaModalLabel">Cadastrar Categoria </h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div> 
                         <div class="modal-body">
-                            <form id="cad-categoria-form">
+                            <form id="cad-categoria-form" method="POST" action="" enctype="multipart/form-data">
                                 <span id="msgAlertaErroCad"></span>
                                 <div class="mb-3">
-                                    <label for="Nome" class="col-form-label">Nome:</label>
-                                    <input type="text" name="Nome" class="form-control" id="Nome" placeholder="Digite o nome completo">
+                                    <label for="Nome_cat" class="col-form-label">Nome:</label>
+                                    <input type="text" name="Nome_cat" class="form-control" id="Nome_cat" placeholder="Digite o nome completo">
                                 </div>
                                 <div class="mb-3">
                                     <label for="imagem" class="col-form-label">Imagem:</label>
@@ -203,12 +201,15 @@
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="visCategoriaModalLabel">Detalhes da Empresa Parceira</h5>
+                            <h5 class="modal-title" id="visCategoriaModalLabel">Detalhes da Categoria</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
                             <span id="msgAlertaErroVis"></span>
                             <dl class="row">
+
+                                <dt class="col-sm-3">ID</dt>
+                                <dd class="col-sm-9"><span id="visID"></span></dd>
 
                                 <dt class="col-sm-3">Nome</dt>
                                 <dd class="col-sm-9"><span id="visNome"></span></dd>
@@ -225,15 +226,16 @@
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
-                             <h5 class="modal-title" id="editCategoriaModalLabel">Editar Empresa Parceira</h5>
+                             <h5 class="modal-title" id="editCategoriaModalLabel">Editar Categoria</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div> 
                         <div class="modal-body">
                             <form id="edit-categoria-form" method="POST" action="" enctype="multipart/form-data">
                                 <span id="msgAlertaErroEdit"></span>
+                                <input type="hidden" name="id" id="editId">
                                 <div class="mb-3">
-                                    <label for="Nome" class="col-form-label">Nome:</label>
-                                    <input type="text" name="Nome" class="form-control" id="editNome" placeholder="Digite o nome completo">
+                                    <label for="Nome_cat" class="col-form-label">Nome:</label>
+                                    <input type="text" name="Nome_cat" class="form-control" id="editNome" placeholder="Digite o nome completo">
                                 </div>
                                 <div class="mb-3">
                                     <label for="imagem" class="col-form-label">Imagem:</label>

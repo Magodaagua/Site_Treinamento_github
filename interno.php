@@ -130,7 +130,7 @@
                 <div class="row">
                     <?php while($rows_categoria = mysqli_fetch_assoc($resultado_categoria)){?>
                     <div class="col-lg-4">
-                    <img src="img/<?php echo $rows_categoria['Nome_cat'];?>.png" class="bd-placeholder-img rounded-square" width="140" height="140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 140x140" preserveAspectRatio="xMidYMid slice" focusable="false">
+                    <img src="admin/logo/<?php echo $rows_categoria['id'];?>/<?php echo $rows_categoria['imagem'];?>" class="bd-placeholder-img rounded-square" width="140" height="140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 140x140" preserveAspectRatio="xMidYMid slice" focusable="false">
                         <h2><?php echo $rows_categoria['Nome_cat'];?></h2>
                         <p><a class="btn btn-secondary" href="curso.php?Nome_cat=<?php echo $rows_categoria['Nome_cat'];?>">Clique para ver o site &raquo;</a></p>
                     </div><!-- /.col-lg-4 -->

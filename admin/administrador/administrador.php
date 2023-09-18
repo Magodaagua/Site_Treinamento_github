@@ -11,7 +11,7 @@
         <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
         <meta name="generator" content="Hugo 0.101.0">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-        <title>Treinamento Interno</title>
+        <title>Administrador</title>
 
         <link rel="canonical" href="https://getbootstrap.com/docs/4.6/examples/dashboard/">
         <!-- Bootstrap core CSS -->
@@ -41,16 +41,16 @@
     </head>
     <body> 
         <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
-            <a class="navbar-brand col-md-3 col-lg-2 mr-0 px-3" href="../menu.php">Portal do Administrador</a>
-            <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-toggle="collapse" data-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">
-            <ul class="navbar-nav px-3">
-                <li class="nav-item text-nowrap">
-                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#sairModal">Sair</button>
-                </li>
-            </ul>
+        <a class="navbar-brand col-md-3 col-lg-2 mr-0 px-3" href="../menu.php">Portal do Administrador</a>
+        <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-toggle="collapse" data-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">
+        <ul class="navbar-nav px-3">
+            <li class="nav-item text-nowrap">
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#sairModal">Sair</button>
+            </li>
+        </ul>
         </nav>
         <!-- Modal para sair--> 
         <div class="modal fade" id="sairModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -67,7 +67,7 @@
                 </div>
             </div>
         </div> 
-            <!--fim modal para sair-->
+        <!--fim modal para sair-->
 
         <div class="container-fluid">
             <div class="row">
@@ -87,26 +87,26 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" href="treinamentointerno.php">
-                            <span data-feather="file"> (current) </span>
+                            <a class="nav-link" href="../cursos/treinamentointerno.php">
+                            <span data-feather="file"></span>
                             Treinamento Interno
                             </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="../usuarios/usuarios.php">
-                                <span data-feather="users"></span>
-                                Usuários Cadastrados
+                            <span data-feather="users"></span>
+                            Usuários Cadastrados
                             </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="../categorias/categoria.php">
-                                <span data-feather="bar-chart-2"></span>
-                                Categorias
+                            <span data-feather="bar-chart-2"></span>
+                            Categorias
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="../administrador/administrador.php">
-                            <span data-feather="layers"></span>
+                            <a class="nav-link active" href="administrador.php">
+                            <span data-feather="layers"> (current) </span>
                             Administrador
                             </a>
                         </li>
@@ -153,10 +153,10 @@
                 <div class="row mt-4">
                     <div class="col-lg-12 d-flex justify-content-between align-items-center">
                         <div>
-                            <h4>Listar Cursos Internos</h4>
+                            <h4>Listar Administrador</h4>
                         </div>
                         <div>
-                            <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#cadInternoModal">
+                            <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#cadAdministradorModal">
                                 Cadastrar
                             </button>
                         </div>
@@ -166,82 +166,55 @@
                 <span id="msgAlerta"></span>
                 <div class="row">
                     <div class="col-lg-12">
-                        <span class="listar-curso"></span>
+                        <span class="listar-administrador"></span>
                     </div>
                 </div>
             </div>
-            <div class="modal fade" id="cadInternoModal" tabindex="-1" aria-labelledby="cadInternoModalLabel" aria-hidden="true">
+            <div class="modal fade" id="cadAdministradorModal" tabindex="-1" aria-labelledby="cadAdministradorModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
-                             <h5 class="modal-title" id="cadInternoModalLabel">Cadastrar Curso Interno</h5>
+                             <h5 class="modal-title" id="cadAdministradorModalLabel">Cadastrar Administrador </h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div> 
                         <div class="modal-body">
-                            <form id="cad-interno-form" method="POST" action="" enctype="multipart/form-data">
+                            <form id="cad-administrador-form" method="POST" action="" enctype="multipart/form-data">
                                 <span id="msgAlertaErroCad"></span>
                                 <div class="mb-3">
-                                    <label for="Nome" class="col-form-label">Nome:</label>
-                                    <input type="text" name="Nome" class="form-control" id="Nome" placeholder="Digite o nome completo">
+                                    <label for="email" class="col-form-label">Nome:</label>
+                                    <input type="text" name="email" class="form-control" id="email" placeholder="Digite o nome completo">
                                 </div>
                                 <div class="mb-3">
-                                    <label for="Categoria" class="col-form-label">Categoria:</label>
-                                    <input type="text" name="Categoria" class="form-control" id="Categoria" placeholder="Digite a Descrição">
-                                </div>
-                                <div class="mb-3">
-                                    <label for="Subcategoria" class="col-form-label">Subcategoria:</label>
-                                    <input type="text" name="Subcategoria" class="form-control" id="Subcategoria" placeholder="Digite a Subcategoria">
-                                </div>
-                                <div class="mb-3">
-                                    <label for="Descricao" class="col-form-label">Descricao:</label>
-                                    <input type="text" name="Descricao" class="form-control" id="Descricao">
-                                </div>
-                                <div class="mb-3">
-                                    <label for="Datadecriacao" class="col-form-label">Data de Criação:</label>
-                                    <input type="date" name="Datadecriacao" class="form-control" id="Datadecriacao">
-                                </div>
-                                <div class="mb-3">
-                                    <label for="imagem" class="col-form-label">Imagem:</label>
-                                    <input type="file" name="imagem" class="form-control" id="imagem">
+                                    <label for="senha" class="col-form-label">Senha:</label>
+                                    <input type="text" name="senha" class="form-control" id="senha">
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
-                                    <Input type="submit" class="btn btn-primary" id="cad-interno-btn" value="Cadastrar" />
+                                    <Input type="submit" class="btn btn-primary" id="cad-administrador-btn" value="Cadastrar" />
                                 </div>
                             </form>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="modal fade" id="visInternoModal" tabindex="-1" aria-labelledby="visInternoModalLabel" aria-hidden="true">
+            <div class="modal fade" id="visAdministradorModal" tabindex="-1" aria-labelledby="visAdministradorModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="visInternoModalLabel">Detalhes do Curso Interno</h5>
+                            <h5 class="modal-title" id="visAdministradorModalLabel">Detalhes da Categoria</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
                             <span id="msgAlertaErroVis"></span>
                             <dl class="row">
+
                                 <dt class="col-sm-3">ID</dt>
-                                <dd class="col-sm-9"><span id="visID_curso"></span></dd>
+                                <dd class="col-sm-9"><span id="visID"></span></dd>
 
                                 <dt class="col-sm-3">Nome</dt>
                                 <dd class="col-sm-9"><span id="visNome"></span></dd>
 
-                                <dt class="col-sm-3">Categoria</dt>
-                                <dd class="col-sm-9"><span id="visCategoria"></span></dd>
-
-                                <dt class="col-sm-3">Subcategoria</dt>
-                                <dd class="col-sm-9"><span id="visSubcategoria"></span></dd>
-
-                                <dt class="col-sm-3">Descrição</dt>
-                                <dd class="col-sm-9"><span id="visDescricao"></span></dd>
-
-                                <dt class="col-sm-3">Data de Criação</dt>
-                                <dd class="col-sm-9"><span id="visdata"></span></dd><br>
-
-                                <dt class="col-sm-3">Nome da Imagem</dt>
+                                <dt class="col-sm-3">Imagem</dt>
                                 <dd class="col-sm-9"><span id="visimagem"></span></dd>
 
                             </dl>
@@ -249,36 +222,20 @@
                     </div>
                 </div>
             </div>
-            <div class="modal fade" id="editInternoModal" tabindex="-1" aria-labelledby="editInternoModalLabel" aria-hidden="true">
+            <div class="modal fade" id="editAdministradorModal" tabindex="-1" aria-labelledby="editAdministradorModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
-                             <h5 class="modal-title" id="editInternoModalLabel">Editar Empresa Parceira</h5>
+                             <h5 class="modal-title" id="editAdministradorModalLabel">Editar Categoria</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div> 
                         <div class="modal-body">
-                            <form id="edit-interno-form" method="POST" action="" enctype="multipart/form-data">
+                            <form id="edit-administrador-form" method="POST" action="" enctype="multipart/form-data">
                                 <span id="msgAlertaErroEdit"></span>
-                                <input type="hidden" name="ID_curso" id="editId">
+                                <input type="hidden" name="id" id="editId">
                                 <div class="mb-3">
-                                    <label for="Nome" class="col-form-label">Nome:</label>
-                                    <input type="text" name="Nome" class="form-control" id="editNome" placeholder="Digite o nome completo">
-                                </div>
-                                <div class="mb-3">
-                                    <label for="Categoria" class="col-form-label">Categoria:</label>
-                                    <input type="select" name="Categoria" class="form-control" id="editCategoria" placeholder="Digite a Categoria">
-                                </div>
-                                <div class="mb-3">
-                                    <label for="Subcategoria" class="col-form-label">Subcategoria:</label>
-                                    <input type="text" name="Subcategoria" class="form-control" id="editSubcategoria" placeholder="Digite a Subcategoria">
-                                </div>
-                                <div class="mb-3">
-                                    <label for="Descricao" class="col-form-label">Descrição:</label>
-                                    <input type="text" name="Descricao" class="form-control" id="editDescricao" placeholder="Digite a Descrição">
-                                </div>
-                                <div class="mb-3">
-                                    <label for="Datadecriacao" class="col-form-label">Data de criação:</label>
-                                    <input type="text" name="Datadecriacao" class="form-control" id="editDatadecriacao" placeholder="Digite o Data de Criação">
+                                    <label for="Nome_cat" class="col-form-label">Nome:</label>
+                                    <input type="text" name="Nome_cat" class="form-control" id="editNome" placeholder="Digite o nome completo">
                                 </div>
                                 <div class="mb-3">
                                     <label for="imagem" class="col-form-label">Imagem:</label>
@@ -286,7 +243,7 @@
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
-                                    <Input type="submit" class="btn btn-warning" id="edit-externo-btn" value="Salvar" />
+                                    <Input type="submit" class="btn btn-warning" id="edit-administrador-btn" value="Salvar" />
                                 </div>
                             </form>
                         </div>

@@ -41,35 +41,33 @@
     </head>
     <body> 
         <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
-        <a class="navbar-brand col-md-3 col-lg-2 mr-0 px-3" href="#">Portal do Administrador</a>
+        <a class="navbar-brand col-md-3 col-lg-2 mr-0 px-3" href="../menu.php">Portal do Administrador</a>
         <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-toggle="collapse" data-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">
         <ul class="navbar-nav px-3">
-            <li class="nav-item text-nowrap">
-            <a class="nav-link" href="logout.php">Sair</a>
-            </li>
-        </ul>
-            <!-- Modal para sair 
-            <div class="modal fade" id="sairModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog" role="document">
+        <li class="nav-item text-nowrap">
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#sairModal">Sair</button>
+                </li>
+            </ul>
+        </nav>
+        <!-- Modal para sair--> 
+        <div class="modal fade" id="sairModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Deseja mesmo sair de sua conta?</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                        </button>
+                        <h5 class="modal-title fs-5" id="exampleModalLabel">Deseja mesmo sair de sua conta?</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div> 
                     <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Continuar na conta</button>
-                    <a class="btn btn-primary" href="logout.php"> Sair da conta </a>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Continuar na conta</button>
+                        <a href="../logout.php"><button type="button"class="btn btn-primary">Sair da conta</button></a>
                     </div>
                 </div>
-                </div>
-            </div> 
-            fim modal para sair-->
-        </nav>
+            </div>
+        </div> 
+        <!--fim modal para sair-->
 
         <div class="container-fluid">
             <div class="row">
@@ -107,9 +105,9 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">
+                            <a class="nav-link" href="../administrador/administrador.php">
                             <span data-feather="layers"></span>
-                            Integrations
+                            Administrador
                             </a>
                         </li>
                         </ul>

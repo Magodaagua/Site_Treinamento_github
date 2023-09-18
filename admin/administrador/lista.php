@@ -8,37 +8,34 @@
         $qnt_result_pg = 10;
         $inicio = ($pagina * $qnt_result_pg) - $qnt_result_pg;
 
-        $query_categoria = "SELECT id, Nome_cat, imagem FROM categoria ORDER BY id DESC LIMIT $inicio, $qnt_result_pg ";
-        $result_categoria = $conn->prepare($query_categoria);
-        $result_categoria->execute();
+        $query_admin = "SELECT ID_admin, email, senha FROM administrador ORDER BY ID_admin DESC LIMIT $inicio, $qnt_result_pg ";
+        $result_admin = $conn->prepare($query_admin);
+        $result_admin->execute();
 
         $dados = "<div class='table-responsive'>
                     <table class='table table-striped table-bordered'>
                         <thead>
                             <tr>
                                 <th>ID</th>
-                                <th>Nome</th>
-                                <th>Imagem</th>
+                                <th>email</th>
+                                <th>senha</th>
                                 <th>Ação</th>
                             </tr>
                         </thead>
                         <tbody>";
 
-        while($row_categoria = $result_categoria->fetch(PDO::FETCH_ASSOC)){
-            extract($row_categoria);
-            if ((!empty($imagem))) {
+        while($row_admin = $result_admin->fetch(PDO::FETCH_ASSOC)){
+            extract($row_admin);
+            /*if ((!empty($imagem))) {
                 $img = "<center><img src='../logo/$id/$imagem' width='100'></center> <br>";
                 $img2 = "<center><button class='btn btn-outline-primary btn-sm'><a href='../logo/$id/$imagem' download>Download</a></button></center><br>";
             } else {
                 $img = "";
                 $img2 = "";
-            }
+            }*/
             $dados .= "<tr>
                             <td>$id</td>
                             <td>$Nome_cat</td>
-                            <td>
-                                $img <br> $img2
-                            </td>
                             <td>
                                 <button id='$id' class='btn btn-outline-primary btn-sm' onclick='visCategoria($id)'>Visualizar</button>
                                 <button id='$id' class='btn btn-outline-warning btn-sm' onclick='editCategoriaDados($id)'>Editar</button>
@@ -52,7 +49,7 @@
                     </div>";
 
         //Paginação - Somar a quantidade de usuários
-        $query_pg = "SELECT COUNT(id) AS num_result FROM categoria";
+        $query_pg = "SELECT COUNT(ID_admin) AS num_result FROM administrador";
         $result_pg = $conn->prepare($query_pg);
         $result_pg->execute();
         $row_pg = $result_pg->fetch(PDO::FETCH_ASSOC);

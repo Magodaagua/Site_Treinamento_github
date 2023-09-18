@@ -1,18 +1,18 @@
-const tbody = document.querySelector(".listar-categorias");
-const cadForm = document.getElementById("cad-categoria-form");
-const editForm = document.getElementById("edit-categoria-form");
+const tbody = document.querySelector(".listar-administrador");
+const cadForm = document.getElementById("cad-administrador-form");
+const editForm = document.getElementById("edit-administrador-form");
 const msgAlertaErroCad = document.getElementById("msgAlertaErroCad");
 const msgAlertaErroEdit = document.getElementById("msgAlertaErroEdit");
 const msgAlerta = document.getElementById("msgAlerta");
-const cadModal = new bootstrap.Modal(document.getElementById("cadCategoriaModal"));
+const cadModal = new bootstrap.Modal(document.getElementById("cadAdministradorModal"));
 
-const listarCategoria = async (pagina) => {
+const listarAdministrador = async (pagina) => {
     const dados = await fetch("./lista.php?pagina=" + pagina);
     const resposta = await dados.text();
     tbody.innerHTML = resposta;
 }
 
-listarCategoria(1);
+listarAdministrador(1);
 
 cadForm.addEventListener("submit", async (e) => {
     e.preventDefault();
@@ -20,7 +20,7 @@ cadForm.addEventListener("submit", async (e) => {
     const dadosForm = new FormData(cadForm);
     dadosForm.append("add", 1);
 
-    document.getElementById("cad-categoria-btn").value = "Salvando...";
+    document.getElementById("cad-administrador-btn").value = "Salvando...";
     
     const dados = await fetch("cadastrar.php", {
         method: "POST",
@@ -35,9 +35,9 @@ cadForm.addEventListener("submit", async (e) => {
         msgAlerta.innerHTML = resposta['msg'];
         cadForm.reset();
         cadModal.hide();
-        listarCategoria(1);
+        listarAdministrador(1);
     }
-    document.getElementById("cad-categoria-btn").value = "Cadastrar";
+    document.getElementById("cad-administrador-btn").value = "Cadastrar";
 });
 
 
