@@ -17,8 +17,8 @@
                         <thead>
                             <tr>
                                 <th>ID</th>
-                                <th>email</th>
-                                <th>senha</th>
+                                <th>E-mail</th>
+                                <th>Senha</th>
                                 <th>Ação</th>
                             </tr>
                         </thead>
@@ -26,20 +26,14 @@
 
         while($row_admin = $result_admin->fetch(PDO::FETCH_ASSOC)){
             extract($row_admin);
-            /*if ((!empty($imagem))) {
-                $img = "<center><img src='../logo/$id/$imagem' width='100'></center> <br>";
-                $img2 = "<center><button class='btn btn-outline-primary btn-sm'><a href='../logo/$id/$imagem' download>Download</a></button></center><br>";
-            } else {
-                $img = "";
-                $img2 = "";
-            }*/
             $dados .= "<tr>
-                            <td>$id</td>
-                            <td>$Nome_cat</td>
+                            <td>$ID_admin</td>
+                            <td>$email</td>
+                            <td>$senha</td>
                             <td>
-                                <button id='$id' class='btn btn-outline-primary btn-sm' onclick='visCategoria($id)'>Visualizar</button>
-                                <button id='$id' class='btn btn-outline-warning btn-sm' onclick='editCategoriaDados($id)'>Editar</button>
-                                <button id='$id' class='btn btn-outline-danger btn-sm' onclick='apagarCategoriaDados($id)'>Apagar</button>
+                                <button id='$ID_admin' class='btn btn-outline-primary btn-sm' onclick='visAdministrador($ID_admin)'>Visualizar</button>
+                                <button id='$ID_admin' class='btn btn-outline-warning btn-sm' onclick='editAdministradorDados($ID_admin)'>Editar</button>
+                                <button id='$ID_admin' class='btn btn-outline-danger btn-sm' onclick='apagarAdministradorDados($ID_admin)'>Apagar</button>
                             </td>
                         </tr>";
         }
@@ -60,11 +54,11 @@
         $max_links = 2;
 
         $dados .="<nav aria-label='Page navigation example'> <ul class='pagination pagination-sm justify-content-center'>";
-        $dados .="<li class='page-item'><a class='page-link'onClick='listarCategoria(1)' href='#'>Previous</a></li>";
+        $dados .="<li class='page-item'><a class='page-link'onClick='listarAdministrador(1)' href='#'>Previous</a></li>";
         
         for($pag_ant = $pagina -$max_links; $pag_ant <= $pagina - 1; $pag_ant++){
             if($pag_ant >= 1){
-                $dados .= "<li class='page-item'><a class='page-link' onclick='listarCategoria($pag_ant)' href='#'>$pag_ant</a></li>";
+                $dados .= "<li class='page-item'><a class='page-link' onclick='listarAdministrador($pag_ant)' href='#'>$pag_ant</a></li>";
             }
         }
 
@@ -72,17 +66,17 @@
 
         for($pag_dep = $pagina + 1; $pag_dep <= $pagina + $max_links; $pag_dep++){
             if($pag_dep <= $quantidade_pg){
-                $dados .="<li class='page-item'><a class='page-link' href='#' onclick='listarCategoria($pag_dep)'>$pag_dep</a></li>";
+                $dados .="<li class='page-item'><a class='page-link' href='#' onclick='listarAdministrador($pag_dep)'>$pag_dep</a></li>";
             }
         }
         
         
-        $dados .="<li class='page-item'><a class='page-link' href='#' onClick='listarCategoria($quantidade_pg)'>Última</a></li>";
+        $dados .="<li class='page-item'><a class='page-link' href='#' onClick='listarAdministrador($quantidade_pg)'>Última</a></li>";
         $dados .='</ul></nav>'; 
 
         echo $dados;
     } else {
-        echo "<div class='alert alert-danger' role='alert'>Nenhuma empresa parceira encontrada!</div>";
+        echo "<div class='alert alert-danger' role='alert'>Nenhuma conta administradora encontrada!</div>";
     }
 
 ?>

@@ -60,6 +60,8 @@ async function visInterno(ID_curso) {
         document.getElementById("visDescricao").innerHTML = resposta['dados'].Descricao;
         document.getElementById("visdata").innerHTML = resposta['dados'].Datadecriacao;
         document.getElementById("visimagem").innerHTML = resposta['dados'].imagem;
+        document.getElementById("vispdf").innerHTML = resposta['dados'].pdf;
+        document.getElementById("visvideo").innerHTML = resposta['dados'].video;
     }
 
 }

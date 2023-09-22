@@ -194,7 +194,7 @@
             <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
                 <div class="col-10 col-sm-8 col-lg-6">
                     <video class="d-block mx-lg-auto img-fluid" width="700" height="500" controls="controls">
-                        <source src="video/<?php echo $row_cursos['ID_curso'];?>.mp4" type="video/mp4">
+                        <source src="admin/video/<?php echo $row_cursos['ID_curso'];?>/<?php echo $row_cursos['video'];?>" type="video/mp4">
                         <object data="" width="320" height="240">
                             <embed width="320" height="240" src="video/2.mp4">
                         </object>
@@ -219,7 +219,7 @@
                 <p class="col-lg-6 mx-auto mb-4">
                 This faded back jumbotron is useful for placeholder content. It's also a great way to add a bit of context to a page or section when no content is available and to encourage visitors to take a specific action.
                 </p>
-                <a href="pdf/<?php echo $row_cursos['Nome'];?>.pdf" download="<?php echo $row_cursos['Nome'];?>">
+                <a href="admin/pdf/<?php echo $row_cursos['ID_curso'];?>/<?php echo $row_cursos['pdf'];?>" download="<?php echo $row_cursos['ID_curso'];?>/<?php echo $row_cursos['pdf'];?>">
                     <button class="btn btn-primary px-5 mb-5" type="button">
                         Call to action
                     </button>

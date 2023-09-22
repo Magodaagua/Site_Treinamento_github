@@ -41,49 +41,47 @@ cadForm.addEventListener("submit", async (e) => {
 });
 
 
-async function visCategoria(id) {
+async function visAdministrador($ID_admin) {
     //console.log("Acessou: " + id);
-    const dados = await fetch('visualizar.php?id=' + id);
+    const dados = await fetch('visualizar.php?ID_admin=' + $ID_admin);
     const resposta = await dados.json();
     console.log(resposta);
 
     if (resposta['erro']) {
         msgAlerta.innerHTML = resposta['msg'];
     } else {
-        const visModal = new bootstrap.Modal(document.getElementById("visCategoriaModal"));
+        const visModal = new bootstrap.Modal(document.getElementById("visAdministradorModal"));
         visModal.show();
 
-        document.getElementById("visID").innerHTML = resposta['dados'].id;
-        document.getElementById("visNome").innerHTML = resposta['dados'].Nome_cat;
-        document.getElementById("visimagem").innerHTML = resposta['dados'].imagem;
+        document.getElementById("visID").innerHTML = resposta['dados'].ID_admin;
+        document.getElementById("visEmail").innerHTML = resposta['dados'].email;
+        document.getElementById("visSenha").innerHTML = resposta['dados'].senha;
     }
 
 }
 
-async function editCategoriaDados(id){
+async function editAdministradorDados(ID_admin){
     msgAlertaErroEdit.innerHTML = "";
 
-    const dados = await fetch('visualizar.php?id=' + id);
+    const dados = await fetch('visualizar.php?ID_admin=' + ID_admin);
     const resposta = await dados.json();
     console.log(resposta);
 
     if(resposta['erro']){
         msgAlerta.innerHTML = resposta['msg'];
     } else {
-        const editModal = new bootstrap.Modal(document.getElementById("editCategoriaModal"));
+        const editModal = new bootstrap.Modal(document.getElementById("editAdministradorModal"));
         editModal.show();
-        document.getElementById("editId").value  = resposta['dados'].id;
-        document.getElementById("editNome").value  = resposta['dados'].Nome_cat;
-        //document.getElementById("editDescricao").value  = resposta['dados'].Descricao;
-        //document.getElementById("editlink").value  = resposta['dados'].link;
-        //document.getElementById("editimagem").value  = resposta['dados'].imagem;
+        document.getElementById("editId").value  = resposta['dados'].ID_admin;
+        document.getElementById("editEmail").value  = resposta['dados'].email;
+        document.getElementById("editSenha").value  = resposta['dados'].senha;
     }
 }
 
 editForm.addEventListener("submit", async (e) => {
     e.preventDefault();
 
-    document.getElementById("edit-categoria-btn").value = "Salvando...";
+    document.getElementById("edit-administrador-btn").value = "Salvando...";
 
     const dadosForm = new FormData(editForm);
     //console.log(dadosForm);
@@ -96,33 +94,33 @@ editForm.addEventListener("submit", async (e) => {
         body:dadosForm
     });
 
-    console.log(dados);
+    //console.log(dados);
     const resposta = await dados.json();
-    console.log(resposta);
+    //console.log(resposta);
 
     if(resposta['erro']){
         msgAlertaErroEdit.innerHTML = resposta['msg'];
     }else{
         msgAlertaErroEdit.innerHTML = resposta['msg'];
-        listarCategoria(1);
+        listarAdministrador(1);
     }
 
-    document.getElementById("edit-categoria-btn").value = "Salvar";
+    document.getElementById("edit-administrador-btn").value = "Salvar";
 });
 
-async function apagarCategoriaDados(id){
+async function apagarAdministradorDados($ID_admin){
     //console.log("Acessou a função: " + ID_parceiro);
     var confirmar = confirm("Tem certeza que deseja excluir o registro selecionado?");
 
     if(confirmar == true){    
-        const dados = await fetch('apagar.php?id= ' + id);
+        const dados = await fetch('apagar.php?ID_admin= ' + $ID_admin);
 
         const resposta = await dados.json();
         if(resposta['erro']){
             msgAlerta.innerHTML = resposta['msg'];
         }else{
             msgAlerta.innerHTML = resposta['msg'];
-            listarCategoria(1);
+            listarAdministrador(1);
         }
     }
 }

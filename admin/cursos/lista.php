@@ -8,7 +8,7 @@
         $qnt_result_pg = 10;
         $inicio = ($pagina * $qnt_result_pg) - $qnt_result_pg;
 
-        $query_curso = "SELECT ID_curso, Nome, Categoria, Subcategoria, Descricao, Datadecriacao, imagem FROM curso ORDER BY ID_curso DESC LIMIT $inicio, $qnt_result_pg ";
+        $query_curso = "SELECT ID_curso, Nome, Categoria, Subcategoria, Descricao, Datadecriacao, imagem, pdf, video FROM curso ORDER BY ID_curso DESC LIMIT $inicio, $qnt_result_pg ";
         $result_curso = $conn->prepare($query_curso);
         $result_curso->execute();
 
@@ -23,6 +23,8 @@
                                 <th>Descricao</th>
                                 <th>Datadecriacao</th>
                                 <th>Imagem</th>
+                                <th>Video</th>
+                                <th>PDF</th>
                                 <th>Ações</th>
                             </tr>
                         </thead>
@@ -31,12 +33,32 @@
         while($row_curso = $result_curso->fetch(PDO::FETCH_ASSOC)){
             extract($row_curso);
             $data = date('d/m/Y', strtotime($Datadecriacao));
+
+            //colocar imagem na tela do admin
             if ((!empty($imagem))) {
                 $img = "<img src='../imagem/$ID_curso/$imagem' width='150'> <br>";
                 $img2 = "<center><button class='btn btn-outline-primary btn-sm'><a href='../imagem/$ID_curso/$imagem' download>Download</a></button></center><br>";
             } else {
                 $img = "";
                 $img2 = "";
+            }
+
+            //colocar pdf na tela do admin
+            if ((!empty($pdf))) {
+                $pdf1 = "<img src='../pdf/arquivo.png' width='150'> <br>";
+                $pdf2 = "<center><button class='btn btn-outline-primary btn-sm'><a href='../pdf/$ID_curso/$pdf' download>Download</a></button></center><br>";
+            } else {
+                $pdf1 = "";
+                $pdf2 = "";
+            }
+
+            //colocar video na tela do admin
+            if ((!empty($video))) {
+                $vid = "<img src='../video/play.png' width='150'> <br>";
+                $vid2 = "<center><button class='btn btn-outline-primary btn-sm'><a href='../video/$ID_curso/$video' download>Download</a></button></center><br>";
+            } else {
+                $vid = "";
+                $vid2 = "";
             }
             
             $dados .= "<tr>
@@ -48,6 +70,12 @@
                             <td>$data</td>
                             <td>
                                 $img <br> $img2
+                            </td>
+                            <td>
+                                $vid <br> $vid2  
+                            </td>
+                            <td>
+                                $pdf1 <br> $pdf2
                             </td>
                             <td>
                                 <button id='$ID_curso' class='btn btn-outline-primary btn-sm' onclick='visInterno($ID_curso)'>Visualizar</button>

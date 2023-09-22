@@ -181,12 +181,12 @@
                             <form id="cad-administrador-form" method="POST" action="" enctype="multipart/form-data">
                                 <span id="msgAlertaErroCad"></span>
                                 <div class="mb-3">
-                                    <label for="email" class="col-form-label">Nome:</label>
-                                    <input type="text" name="email" class="form-control" id="email" placeholder="Digite o nome completo">
+                                    <label for="email" class="col-form-label">E-mail:</label>
+                                    <input type="email" name="email" class="form-control" id="email" placeholder="Digite o email">
                                 </div>
                                 <div class="mb-3">
                                     <label for="senha" class="col-form-label">Senha:</label>
-                                    <input type="text" name="senha" class="form-control" id="senha">
+                                    <input type="text" name="senha" class="form-control" id="senha" placeholder="Digite a senha">
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
@@ -201,7 +201,7 @@
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="visAdministradorModalLabel">Detalhes da Categoria</h5>
+                            <h5 class="modal-title" id="visAdministradorModalLabel">Detalhes da Conta Administradora</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
@@ -211,11 +211,11 @@
                                 <dt class="col-sm-3">ID</dt>
                                 <dd class="col-sm-9"><span id="visID"></span></dd>
 
-                                <dt class="col-sm-3">Nome</dt>
-                                <dd class="col-sm-9"><span id="visNome"></span></dd>
+                                <dt class="col-sm-3">E-mail</dt>
+                                <dd class="col-sm-9"><span id="visEmail"></span></dd>
 
-                                <dt class="col-sm-3">Imagem</dt>
-                                <dd class="col-sm-9"><span id="visimagem"></span></dd>
+                                <dt class="col-sm-3">Senha</dt>
+                                <dd class="col-sm-9"><span id="visSenha"></span></dd>
 
                             </dl>
                         </div>
@@ -226,20 +226,20 @@
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
-                             <h5 class="modal-title" id="editAdministradorModalLabel">Editar Categoria</h5>
+                             <h5 class="modal-title" id="editAdministradorModalLabel">Editar Conta Administradora</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div> 
                         <div class="modal-body">
                             <form id="edit-administrador-form" method="POST" action="" enctype="multipart/form-data">
                                 <span id="msgAlertaErroEdit"></span>
-                                <input type="hidden" name="id" id="editId">
+                                <input type="hidden" name="ID_admin" id="editId">
                                 <div class="mb-3">
-                                    <label for="Nome_cat" class="col-form-label">Nome:</label>
-                                    <input type="text" name="Nome_cat" class="form-control" id="editNome" placeholder="Digite o nome completo">
+                                    <label for="email" class="col-form-label">Nome:</label>
+                                    <input type="email" name="email" class="form-control" id="editEmail" placeholder="Digite o email">
                                 </div>
                                 <div class="mb-3">
-                                    <label for="imagem" class="col-form-label">Imagem:</label>
-                                    <input type="file" name="imagem" class="form-control" id="editimagem">
+                                    <label for="senha" class="col-form-label">Senha:</label>
+                                    <input type="senha" name="senha" class="form-control" id="editSenha" placeholder="Digite a senha">
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>

@@ -204,6 +204,14 @@
                                     <label for="imagem" class="col-form-label">Imagem:</label>
                                     <input type="file" name="imagem" class="form-control" id="imagem">
                                 </div>
+                                <div class="mb-3">
+                                    <label for="pdf" class="col-form-label">PDF:</label>
+                                    <input type="file" name="pdf" class="form-control" id="pdf">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="video" class="col-form-label">Video:</label>
+                                    <input type="file" name="video" class="form-control" id="video">
+                                </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
                                     <Input type="submit" class="btn btn-primary" id="cad-interno-btn" value="Cadastrar" />
@@ -244,6 +252,12 @@
                                 <dt class="col-sm-3">Nome da Imagem</dt>
                                 <dd class="col-sm-9"><span id="visimagem"></span></dd>
 
+                                <dt class="col-sm-3">Nome do PDF</dt>
+                                <dd class="col-sm-9"><span id="vispdf"></span></dd>
+
+                                <dt class="col-sm-3">Nome do Video</dt>
+                                <dd class="col-sm-9"><span id="visvideo"></span></dd>
+
                             </dl>
                         </div>
                     </div>
@@ -283,6 +297,14 @@
                                 <div class="mb-3">
                                     <label for="imagem" class="col-form-label">Imagem:</label>
                                     <input type="file" name="imagem" class="form-control" id="editimagem">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="pdf" class="col-form-label">PDF:</label>
+                                    <input type="file" name="pdf" class="form-control" id="editpdf">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="video" class="col-form-label">Video:</label>
+                                    <input type="file" name="video" class="form-control" id="editvideo">
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
