@@ -2,14 +2,14 @@
     include_once "conexao.php";
 
     $dados = filter_input_array(INPUT_POST, FILTER_DEFAULT);
-    $arquivo = $_FILES['imagem'];
-    $arquivo2 = $_FILES['pdf'];
-    $arquivo3 = $_FILES['video'];
+    $arquivo = $_FILES['imagem1'];
+    $arquivo2 = $_FILES['imagem2'];
+    $arquivo3 = $_FILES['imagem3'];
 
    
-    if (empty($dados['ID_curso'])) {
+    if (empty($dados['ID_menu'])) {
         $retorna = ['erro' => true, 'msg' => "<div class='alert alert-danger' role='alert'>Erro: Erro tente mais tarde!</div>"];
-    } elseif (empty($dados['Nome'])) {
+    } elseif (empty($dados['texto1'])) {
         $retorna = ['erro' => true, 'msg' => "<div class='alert alert-danger' role='alert'>Erro: Necessário preencher o campo nome!</div>"];
     } elseif (empty($dados['Categoria'])) {
         $retorna = ['erro' => true, 'msg' => "<div class='alert alert-danger' role='alert'>Erro: Necessário preencher o campo categoria!</div>"];

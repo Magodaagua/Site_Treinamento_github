@@ -120,15 +120,15 @@
                         </h6>
                         <ul class="nav flex-column mb-2">
                         <li class="nav-item">
-                            <a class="nav-link" href="#">
+                            <a class="nav-link" href="../inicial/inicial.php">
                             <span data-feather="file-text"></span>
-                            Current month
+                            Inicial
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">
+                            <a class="nav-link" href="../rodape/rodape.php">
                             <span data-feather="file-text"></span>
-                            Last quarter
+                            Rodapé
                             </a>
                         </li>
                         <li class="nav-item">

@@ -236,28 +236,10 @@
         require("Botaodevoltaraotopo.php");
       ?>
       <!--Fim Botão de voltar ao topo-->
-      <div class="container theme-showcase" role="main">
-        <footer class="container">
-          <p>&copy; 2017-2022 Company, Inc. &middot; <a href="#">Privacy</a> &middot; <a data-toggle="modal" data-target="#myModal">Termos de uso</a> &middot; <a href="#">Donate</a></p>
-        </footer>
-        <!-- Modal-->
-        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" arial-labelledby="myModalLabel">
-            <div class="modal-dialog" role="document">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dimiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title text-center" id="myModalLabel">Termo de uso</h4>
-                </div>
-                <div class="modal-body">
-                ...
-                </div>
-            </div>
-        </div>
-      </div>
+      <?php
+        require("footer.php"); 
+	    ?>
     </main>  
-    <!-- FOOTER 
-    <?php
-      //require("footer.php"); 
-	  ?>-->
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>

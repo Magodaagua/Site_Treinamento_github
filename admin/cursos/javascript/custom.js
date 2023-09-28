@@ -62,6 +62,7 @@ async function visInterno(ID_curso) {
         document.getElementById("visimagem").innerHTML = resposta['dados'].imagem;
         document.getElementById("vispdf").innerHTML = resposta['dados'].pdf;
         document.getElementById("visvideo").innerHTML = resposta['dados'].video;
+        document.getElementById("visprova").innerHTML = resposta['dados'].prova;
     }
 
 }
@@ -85,6 +86,7 @@ async function editInternoDados(ID_curso){
         document.getElementById("editDescricao").value  = resposta['dados'].Descricao;
         document.getElementById("editDatadecriacao").value  = resposta['dados'].Datadecriacao;
         //document.getElementById("editimagem").value  = resposta['dados'].imagem;
+        document.getElementById("editprova").value  = resposta['dados'].prova;
     }
 }
 

@@ -120,15 +120,15 @@
                         </h6>
                         <ul class="nav flex-column mb-2">
                         <li class="nav-item">
-                            <a class="nav-link" href="#">
+                            <a class="nav-link" href="../inicial/inicial.php">
                             <span data-feather="file-text"></span>
-                            Current month
+                            Inicial
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">
+                            <a class="nav-link" href="../rodape/rodape.php">
                             <span data-feather="file-text"></span>
-                            Last quarter
+                            Rodapé
                             </a>
                         </li>
                         <li class="nav-item">
@@ -212,6 +212,10 @@
                                     <label for="video" class="col-form-label">Video:</label>
                                     <input type="file" name="video" class="form-control" id="video">
                                 </div>
+                                <div class="mb-3">
+                                    <label for="prova" class="col-form-label">Prova:</label>
+                                    <input type="file" name="prova" class="form-control" id="prova">
+                                </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
                                     <Input type="submit" class="btn btn-primary" id="cad-interno-btn" value="Cadastrar" />
@@ -257,6 +261,9 @@
 
                                 <dt class="col-sm-3">Nome do Video</dt>
                                 <dd class="col-sm-9"><span id="visvideo"></span></dd>
+
+                                <dt class="col-sm-3">Nome da prova</dt>
+                                <dd class="col-sm-9"><span id="visprova"></span></dd>
 
                             </dl>
                         </div>
@@ -305,6 +312,10 @@
                                 <div class="mb-3">
                                     <label for="video" class="col-form-label">Video:</label>
                                     <input type="file" name="video" class="form-control" id="editvideo">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="prova" class="col-form-label">Prova:</label>
+                                    <input type="file" name="prova" class="form-control" id="editprova">
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>

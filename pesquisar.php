@@ -194,7 +194,7 @@
                                 <?php 
                                 //Apresentar a paginacao
                                 for($i = 1; $i < $num_pagina + 1; $i++){ ?>
-                                    <li class="page-item">
+                                    <li class="page-item active">
                                         <a class="page-link" href="curso.php?Nome_cat=<?php echo $categoria?>&pagina=<?php echo $i; ?>"><?php echo $i; ?></a>
                                     </li>
                                 <?php } ?>

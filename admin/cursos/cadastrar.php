@@ -20,7 +20,7 @@
     /*} elseif (empty($dados['imagem'])) {
         $retorna = ['erro' => true, 'msg' => "<div class='alert alert-danger' role='alert'>Erro: Necessário preencher o campo imagem!</div>"];
     */}else{
-        $query_curso = "INSERT INTO curso (Nome, Categoria, Subcategoria, Descricao, Datadecriacao, imagem, pdf, video) VALUES (:Nome, :Categoria, :Subcategoria, :Descricao, :Datadecriacao, :imagem, :pdf, :video)";
+        $query_curso = "INSERT INTO curso (Nome, Categoria, Subcategoria, Descricao, Datadecriacao, imagem, pdf, video, prova) VALUES (:Nome, :Categoria, :Subcategoria, :Descricao, :Datadecriacao, :imagem, :pdf, :video, :prova)";
         $arquivo = $_FILES['imagem'];
 
         $cad_curso = $conn->prepare($query_curso);
@@ -32,6 +32,7 @@
         $cad_curso ->bindParam(':imagem', $arquivo['name'], PDO::PARAM_STR);
         $cad_curso ->bindParam(':pdf', $arquivo2['name'], PDO::PARAM_STR);
         $cad_curso ->bindParam(':video', $arquivo3['name'], PDO::PARAM_STR);
+        $cad_curso ->bindParam(':prova', $dados['prova']);
         $cad_curso ->execute();
 
         if($cad_curso->rowCount()){
