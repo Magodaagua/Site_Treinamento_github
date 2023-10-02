@@ -8,7 +8,7 @@
         $qnt_result_pg = 10;
         $inicio = ($pagina * $qnt_result_pg) - $qnt_result_pg;
 
-        $query_menu = "SELECT ID_menu, texto1, texto2, texto3, titulo1, titulo2, titulo3 FROM menu ORDER BY ID_menu DESC LIMIT $inicio, $qnt_result_pg ";
+        $query_menu = "SELECT ID_menu, texto1, texto2, texto3, titulo1, titulo2, titulo3, imagem1, imagem2, imagem3, carrosel1, carrosel2, carrosel3 FROM menu ORDER BY ID_menu DESC LIMIT $inicio, $qnt_result_pg ";
         $result_menu = $conn->prepare($query_menu);
         $result_menu->execute();
 
@@ -26,6 +26,9 @@
                                 <th>Imagem 1</th>
                                 <th>Imagem 2</th>
                                 <th>Imagem 3</th>
+                                <th>carrosel 1</th>
+                                <th>carrosel 2</th>
+                                <th>carrosel 3</th>
                                 <th>Ações</th>
                             </tr>
                         </thead>
@@ -36,30 +39,57 @@
             //$data = date('d/m/Y', strtotime($Datadecriacao));
 
             //colocar imagem na tela do admin
-            if ((!empty($imagem))) {
-                $img = "<img src='../imagem/$ID_curso/$imagem' width='150'> <br>";
-                $img2 = "<center><button class='btn btn-outline-primary btn-sm'><a href='../imagem/$ID_curso/$imagem' download>Download</a></button></center><br>";
+            if ((!empty($imagem1))) {
+                $img = "<img src='../logo/menu/$imagem1' width='150'> <br>";
+                $img2 = "<center><button class='btn btn-outline-primary btn-sm'><a href='../logo/menu/$imagem1' download>Download</a></button></center><br>";
             } else {
                 $img = "";
                 $img2 = "";
             }
 
             //colocar pdf na tela do admin
-            if ((!empty($pdf))) {
-                $pdf1 = "<img src='../pdf/arquivo.png' width='150'> <br>";
-                $pdf2 = "<center><button class='btn btn-outline-primary btn-sm'><a href='../pdf/$ID_curso/$pdf' download>Download</a></button></center><br>";
+            if ((!empty($imagem2))) {
+                $img3 = "<img src='../logo/menu/$imagem2' width='150'> <br>";
+                $img4 = "<center><button class='btn btn-outline-primary btn-sm'><a href='../logo/menu/$imagem2' download>Download</a></button></center><br>";
             } else {
-                $pdf1 = "";
-                $pdf2 = "";
+                $img3 = "";
+                $img4 = "";
             }
 
             //colocar video na tela do admin
-            if ((!empty($video))) {
-                $vid = "<img src='../video/play.png' width='150'> <br>";
-                $vid2 = "<center><button class='btn btn-outline-primary btn-sm'><a href='../video/$ID_curso/$video' download>Download</a></button></center><br>";
+            if ((!empty($imagem3))) {
+                $img5 = "<img src='../logo/menu/$imagem3' width='150'> <br>";
+                $img6 = "<center><button class='btn btn-outline-primary btn-sm'><a href='../logo/menu/$imagem3' download>Download</a></button></center><br>";
             } else {
-                $vid = "";
-                $vid2 = "";
+                $img5 = "";
+                $img6 = "";
+            }
+
+             //colocar imagem na tela do admin
+             if ((!empty($carrosel1))) {
+                $car1= "<img src='../logo/menu/$carrosel1' width='150'> <br>";
+                $car2 = "<center><button class='btn btn-outline-primary btn-sm'><a href='../logo/menu/$carrosel1' download>Download</a></button></center><br>";
+            } else {
+                $car1 = "";
+                $car2 = "";
+            }
+
+            //colocar pdf na tela do admin
+            if ((!empty($carrosel2))) {
+                $car3 = "<img src='../logo/menu/$carrosel2' width='150'> <br>";
+                $car4 = "<center><button class='btn btn-outline-primary btn-sm'><a href='../logo/menu/$carrosel2' download>Download</a></button></center><br>";
+            } else {
+                $car3 = "";
+                $car4 = "";
+            }
+
+            //colocar video na tela do admin
+            if ((!empty($carrosel3))) {
+                $car5 = "<img src='../logo/menu/$carrosel3' width='150'> <br>";
+                $car6 = "<center><button class='btn btn-outline-primary btn-sm'><a href='../logo/menu/$carrosel3' download>Download</a></button></center><br>";
+            } else {
+                $car5 = "";
+                $car6 = "";
             }
             
             $dados .= "<tr>
@@ -74,10 +104,19 @@
                                 $img <br> $img2
                             </td>
                             <td>
-                                $vid <br> $vid2  
+                                $img3 <br> $img4   
                             </td>
                             <td>
-                                $pdf1 <br> $pdf2
+                                $img5 <br> $img6
+                            </td>
+                            <td>
+                                $car1 <br> $car2
+                            </td>
+                            <td>
+                                $car3 <br> $car4   
+                            </td>
+                            <td>
+                                $car5 <br> $car6
                             </td>
                             <td>
                                 <button id='$ID_menu' class='btn btn-outline-primary btn-sm' onclick='visMenu($ID_menu)'>Visualizar</button>

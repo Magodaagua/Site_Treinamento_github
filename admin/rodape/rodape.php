@@ -159,7 +159,7 @@
                 <span id="msgAlerta"></span>
                 <div class="row">
                     <div class="col-lg-12">
-                        <span class="listar-curso"></span>
+                        <span class="listar-rodape"></span>
                     </div>
                 </div>
             </div>
@@ -174,90 +174,41 @@
                             <span id="msgAlertaErroVis"></span>
                             <dl class="row">
                                 <dt class="col-sm-3">ID :</dt>
-                                <dd class="col-sm-9"><span id="visID_menu"></span></dd>
+                                <dd class="col-sm-9"><span id="visID_rodape"></span></dd>
 
-                                <dt class="col-sm-3">Texto 1:</dt>
-                                <dd class="col-sm-9"><span id="vistexto1"></span></dd>
+                                <dt class="col-sm-3">Política:</dt>
+                                <dd class="col-sm-9"><span id="vispolitica"></span></dd>
 
-                                <dt class="col-sm-3">Texto 2:</dt>
-                                <dd class="col-sm-9"><span id="vistexto2"></span></dd>
-
-                                <dt class="col-sm-3">Texto 3:</dt>
-                                <dd class="col-sm-9"><span id="vistexto3"></span></dd>
-
-                                <dt class="col-sm-3">Titulo 1:</dt>
-                                <dd class="col-sm-9"><span id="vistitulo1"></span></dd>
-
-                                <dt class="col-sm-3">Titulo 2:</dt>
-                                <dd class="col-sm-9"><span id="vistitulo2"></span></dd><br>
-
-                                <dt class="col-sm-3">Titulo 3:</dt>
-                                <dd class="col-sm-9"><span id="vistitulo3"></span></dd>
-
-                                <dt class="col-sm-3">Imagem 1:</dt>
-                                <dd class="col-sm-9"><span id="visimagem1"></span></dd>
-
-                                <dt class="col-sm-3">Imagem 2:</dt>
-                                <dd class="col-sm-9"><span id="visimagem2"></span></dd>
-
-                                <dt class="col-sm-3">Imagem 3:</dt>
-                                <dd class="col-sm-9"><span id="visimagem3"></span></dd>
+                                <dt class="col-sm-3">termos:</dt>
+                                <dd class="col-sm-9"><span id="vistermos"></span></dd>
 
                             </dl>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="modal fade" id="editInternoModal" tabindex="-1" aria-labelledby="editInternoModalLabel" aria-hidden="true">
+            <div class="modal fade" id="editRodapeModal" tabindex="-1" aria-labelledby="editRodapeModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
-                             <h5 class="modal-title" id="editInternoModalLabel">Editar Empresa Parceira</h5>
+                             <h5 class="modal-title" id="editRodapeModalLabel">Editar Empresa Parceira</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div> 
                         <div class="modal-body">
-                            <form id="edit-interno-form" method="POST" action="" enctype="multipart/form-data">
+                            <form id="edit-rodape-form" method="POST" action="" enctype="multipart/form-data">
                                 <span id="msgAlertaErroEdit"></span>
-                                <input type="hidden" name="ID_curso" id="editId">
+                                <input type="hidden" name="ID_rodape" id="editRodape">
                                 <div class="mb-3">
-                                    <label for="Nome" class="col-form-label">Nome:</label>
-                                    <input type="text" name="Nome" class="form-control" id="editNome" placeholder="Digite o nome completo">
+                                    <label for="politica" class="col-form-label">Política:</label>
+                                    <input type="text" name="politica" class="form-control" id="editPolitica" placeholder="Digite a Política">
                                 </div>
                                 <div class="mb-3">
-                                    <label for="Categoria" class="col-form-label">Categoria:</label>
-                                    <input type="select" name="Categoria" class="form-control" id="editCategoria" placeholder="Digite a Categoria">
-                                </div>
-                                <div class="mb-3">
-                                    <label for="Subcategoria" class="col-form-label">Subcategoria:</label>
-                                    <input type="text" name="Subcategoria" class="form-control" id="editSubcategoria" placeholder="Digite a Subcategoria">
-                                </div>
-                                <div class="mb-3">
-                                    <label for="Descricao" class="col-form-label">Descrição:</label>
-                                    <input type="text" name="Descricao" class="form-control" id="editDescricao" placeholder="Digite a Descrição">
-                                </div>
-                                <div class="mb-3">
-                                    <label for="Datadecriacao" class="col-form-label">Data de criação:</label>
-                                    <input type="text" name="Datadecriacao" class="form-control" id="editDatadecriacao" placeholder="Digite o Data de Criação">
-                                </div>
-                                <div class="mb-3">
-                                    <label for="imagem" class="col-form-label">Imagem:</label>
-                                    <input type="file" name="imagem" class="form-control" id="editimagem">
-                                </div>
-                                <div class="mb-3">
-                                    <label for="pdf" class="col-form-label">PDF:</label>
-                                    <input type="file" name="pdf" class="form-control" id="editpdf">
-                                </div>
-                                <div class="mb-3">
-                                    <label for="video" class="col-form-label">Video:</label>
-                                    <input type="file" name="video" class="form-control" id="editvideo">
-                                </div>
-                                <div class="mb-3">
-                                    <label for="prova" class="col-form-label">Prova:</label>
-                                    <input type="file" name="prova" class="form-control" id="editprova">
+                                    <label for="termos" class="col-form-label">Termos de Uso:</label>
+                                    <input type="text" name="termos" class="form-control" id="editTermo" placeholder="Digite o Termo de uso">
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
-                                    <Input type="submit" class="btn btn-warning" id="edit-externo-btn" value="Salvar" />
+                                    <Input type="submit" class="btn btn-warning" id="edit-rodape-btn" value="Salvar" />
                                 </div>
                             </form>
                         </div>
@@ -275,5 +226,6 @@
         <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
         <script src="../javascript/dashboard.js"></script>
+        <script src="javascript/custom.js"></script>
   </body>
 </html>

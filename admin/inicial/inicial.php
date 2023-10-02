@@ -204,6 +204,15 @@
                                 <dt class="col-sm-3">Imagem 3:</dt>
                                 <dd class="col-sm-9"><span id="visimagem3"></span></dd>
 
+                                <dt class="col-sm-3">Carrosel 1:</dt>
+                                <dd class="col-sm-9"><span id="viscarrosel1"></span></dd>
+
+                                <dt class="col-sm-3">Carrosel 2:</dt>
+                                <dd class="col-sm-9"><span id="viscarrosel2"></span></dd>
+
+                                <dt class="col-sm-3">Carrosel 3:</dt>
+                                <dd class="col-sm-9"><span id="viscarrosel3"></span></dd>
+
                             </dl>
                         </div>
                     </div>
@@ -226,7 +235,7 @@
                                 </div>
                                 <div class="mb-3">
                                     <label for="texto2" class="col-form-label">Texto 2:</label>
-                                    <input type="select" name="texto2" class="form-control" id="editTexto2" placeholder="Digite o Texto 2">
+                                    <input type="text" name="texto2" class="form-control" id="editTexto2" placeholder="Digite o Texto 2">
                                 </div>
                                 <div class="mb-3">
                                     <label for="texto3" class="col-form-label">Texto 3:</label>
@@ -256,6 +265,18 @@
                                     <label for="imagem3" class="col-form-label">Imagem 3:</label>
                                     <input type="file" name="imagem3" class="form-control" id="editImagem3">
                                 </div>
+                                <div class="mb-3">
+                                    <label for="carrosel1" class="col-form-label">Carrosel 1:</label>
+                                    <input type="file" name="carrosel1" class="form-control" id="editCarrosel1">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="carrosel2" class="col-form-label">Carrosel 2:</label>
+                                    <input type="file" name="carrosel2" class="form-control" id="editCarrosel2">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="carrosel3" class="col-form-label">Carrosel 3:</label>
+                                    <input type="file" name="carrosel3" class="form-control" id="editCarrosel3">
+                                </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
                                     <Input type="submit" class="btn btn-warning" id="edit-menu-btn" value="Salvar" />
@@ -268,7 +289,7 @@
         </main>
       <!--inicio Botão de voltar ao topo-->
       <?php 
-        require("../Botaodevoltaraotopo.php");
+        //require("../Botaodevoltaraotopo.php");
       ?>
       <!--Fim Botão de voltar ao topo-->  
 

@@ -28,6 +28,7 @@
       $resultado_parceiro = mysqli_query($conn, $result_parceiro);
       $total_parceiros = mysqli_num_rows($resultado_parceiro);
 
+      //Selecionar as informacoes de menu
       $result_menu = "SELECT * FROM menu"; 
 	    $resultado_menu = mysqli_query($conn, $result_menu);
 	    $row_menu = mysqli_fetch_assoc($resultado_menu);
@@ -127,7 +128,7 @@
         </ol>
         <div class="carousel-inner">
           <div class="carousel-item active">
-            <img src="img/carrosel.png" class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" role="img" aria-label=" :  " preserveAspectRatio="xMidYMid slice" focusable="false"><title> </title><rect width="100%" height="100%" fill="#777"/><text x="50%" y="50%" fill="#777" dy=".3em"> </text></img>
+            <img src="admin/logo/menu/<?php echo $row_menu['carrosel1'];?>" class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" role="img" aria-label=" :  " preserveAspectRatio="xMidYMid slice" focusable="false"><title> </title><rect width="100%" height="100%" fill="#777"/><text x="50%" y="50%" fill="#777" dy=".3em"> </text></img>
 
             <!--<div class="container">
               <div class="carousel-caption text-left">
@@ -138,7 +139,7 @@
             </div>-->
           </div>
           <div class="carousel-item">
-            <img src="img/carrosel2.jpeg" class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" role="img" aria-label=" :  " preserveAspectRatio="xMidYMid slice" focusable="false"><title> </title><rect width="100%" height="100%" fill="#777"/><text x="50%" y="50%" fill="#777" dy=".3em"> </text></svg>
+            <img src="admin/logo/menu/<?php echo $row_menu['carrosel2'];?>" class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" role="img" aria-label=" :  " preserveAspectRatio="xMidYMid slice" focusable="false"><title> </title><rect width="100%" height="100%" fill="#777"/><text x="50%" y="50%" fill="#777" dy=".3em"> </text></svg>
 
             <!--<div class="container">
               <div class="carousel-caption">
@@ -149,7 +150,7 @@
             </div>-->
           </div>
           <div class="carousel-item">
-            <img src="img/carrosel3.jpg" class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" role="img" aria-label=" :  " preserveAspectRatio="xMidYMid slice" focusable="false"><title> </title><rect width="100%" height="100%" fill="#777"/><text x="50%" y="50%" fill="#777" dy=".3em"> </text></svg>
+            <img src="admin/logo/menu/<?php echo $row_menu['carrosel3'];?>" class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" role="img" aria-label=" :  " preserveAspectRatio="xMidYMid slice" focusable="false"><title> </title><rect width="100%" height="100%" fill="#777"/><text x="50%" y="50%" fill="#777" dy=".3em"> </text></svg>
 
             <!--<div class="container">
               <div class="carousel-caption text-right">
@@ -196,7 +197,7 @@
             <p class="lead"><?php echo $row_menu['texto1']?></p>
           </div>
           <div class="col-md-5">
-            <img src="img/carrosel.png" class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice" focusable="false">
+            <img src="admin/logo/menu/<?php echo $row_menu['imagem1'];?>" class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice" focusable="false">
           </div>
         </div>
 
@@ -208,7 +209,7 @@
             <p class="lead"><?php echo $row_menu['texto2']?></p>
           </div>
           <div class="col-md-5 order-md-1">
-            <img src="img/carrosel2.jpeg" class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice" focusable="false">
+            <img src="admin/logo/menu/<?php echo $row_menu['imagem2'];?>" class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice" focusable="false">
 
           </div>
         </div>
@@ -221,7 +222,7 @@
             <p class="lead"><?php echo $row_menu['texto3']?></p>
           </div>
           <div class="col-md-5">
-            <img src="img/carrosel3.jpg" class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice" focusable="false">
+            <img src="admin/logo/menu/<?php echo $row_menu['imagem3'];?>" class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice" focusable="false">
 
           </div>
         </div>

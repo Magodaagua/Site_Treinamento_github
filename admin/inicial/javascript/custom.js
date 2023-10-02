@@ -25,7 +25,7 @@ async function visMenu(ID_menu) {
         const visModal = new bootstrap.Modal(document.getElementById("visMenuModal"));
         visModal.show();
 
-        document.getElementById("visID_Menu").innerHTML = resposta['dados'].ID_menu;
+        document.getElementById("visID_menu").innerHTML = resposta['dados'].ID_menu;
         document.getElementById("vistexto1").innerHTML = resposta['dados'].texto1;
         document.getElementById("vistexto2").innerHTML = resposta['dados'].texto2;
         document.getElementById("vistexto3").innerHTML = resposta['dados'].texto3;
@@ -35,6 +35,9 @@ async function visMenu(ID_menu) {
         document.getElementById("visimagem1").innerHTML = resposta['dados'].imagem1;
         document.getElementById("visimagem2").innerHTML = resposta['dados'].imagem2;
         document.getElementById("visimagem3").innerHTML = resposta['dados'].imagem3;
+        document.getElementById("viscarrosel1").innerHTML = resposta['dados'].carrosel1;
+        document.getElementById("viscarrosel2").innerHTML = resposta['dados'].carrosel2;
+        document.getElementById("viscarrosel3").innerHTML = resposta['dados'].carrosel3;
     }
 
 }

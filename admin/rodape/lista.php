@@ -8,83 +8,32 @@
         $qnt_result_pg = 10;
         $inicio = ($pagina * $qnt_result_pg) - $qnt_result_pg;
 
-        $query_curso = "SELECT ID_curso, Nome, Categoria, Subcategoria, Descricao, Datadecriacao, imagem, pdf, video, prova FROM curso ORDER BY ID_curso DESC LIMIT $inicio, $qnt_result_pg ";
-        $result_curso = $conn->prepare($query_curso);
-        $result_curso->execute();
+        $query_rodape = "SELECT ID_rodape, politica, termos FROM rodape ORDER BY ID_rodape DESC LIMIT $inicio, $qnt_result_pg ";
+        $result_rodape = $conn->prepare($query_rodape);
+        $result_rodape->execute();
 
         $dados = "<div class='table-responsive'>
                     <table class='table table-striped table-bordered'>
                         <thead>
                             <tr>
-                                <th>ID do Curso</th>
-                                <th>Nome</th>
-                                <th>Categoria</th>
-                                <th>Subcategoria</th>
-                                <th>Descricao</th>
-                                <th>Datadecriacao</th>
-                                <th>Imagem</th>
-                                <th>Video</th>
-                                <th>PDF</th>
-                                <th>Prova</th>
+                                <th>ID do Rodape</th>
+                                <th>Política</th>
+                                <th>Termos de uso</th>
                                 <th>Ações</th>
                             </tr>
                         </thead>
                         <tbody>";
 
-        while($row_curso = $result_curso->fetch(PDO::FETCH_ASSOC)){
-            extract($row_curso);
-            $data = date('d/m/Y', strtotime($Datadecriacao));
+        while($row_rodape = $result_rodape->fetch(PDO::FETCH_ASSOC)){
+            extract($row_rodape);
 
-            //colocar imagem na tela do admin
-            if ((!empty($imagem))) {
-                $img = "<img src='../imagem/$ID_curso/$imagem' width='150'> <br>";
-                $img2 = "<center><button class='btn btn-outline-primary btn-sm'><a href='../imagem/$ID_curso/$imagem' download>Download</a></button></center><br>";
-            } else {
-                $img = "";
-                $img2 = "";
-            }
-
-            //colocar pdf na tela do admin
-            if ((!empty($pdf))) {
-                $pdf1 = "<img src='../pdf/arquivo.png' width='150'> <br>";
-                $pdf2 = "<center><button class='btn btn-outline-primary btn-sm'><a href='../pdf/$ID_curso/$pdf' download>Download</a></button></center><br>";
-            } else {
-                $pdf1 = "";
-                $pdf2 = "";
-            }
-
-            //colocar video na tela do admin
-            if ((!empty($video))) {
-                $vid = "<img src='../video/play.png' width='150'> <br>";
-                $vid2 = "<center><button class='btn btn-outline-primary btn-sm'><a href='../video/$ID_curso/$video' download>Download</a></button></center><br>";
-            } else {
-                $vid = "";
-                $vid2 = "";
-            }
-            
             $dados .= "<tr>
-                            <td>$ID_curso</td>
-                            <td>$Nome</td>
-                            <td>$Categoria</td>
-                            <td>$Subcategoria</td>
-                            <td>$Descricao</td>
-                            <td>$data</td>
+                            <td>$ID_rodape</td>
+                            <td>$politica</td>
+                            <td>$termos</td>
                             <td>
-                                $img <br> $img2
-                            </td>
-                            <td>
-                                $vid <br> $vid2  
-                            </td>
-                            <td>
-                                $pdf1 <br> $pdf2
-                            </td>
-                            <td>
-                                $prova
-                            </td>
-                            <td>
-                                <button id='$ID_curso' class='btn btn-outline-primary btn-sm' onclick='visInterno($ID_curso)'>Visualizar</button>
-                                <button id='$ID_curso' class='btn btn-outline-warning btn-sm' onclick='editInternoDados($ID_curso)'>Editar</button>
-                                <button id='$ID_curso' class='btn btn-outline-danger btn-sm' onclick='apagarInternoDados($ID_curso)'>Apagar</button>
+                                <button id='$ID_rodape' class='btn btn-outline-primary btn-sm' onclick='visRodape($ID_rodape)'>Visualizar</button>
+                                <button id='$ID_rodape' class='btn btn-outline-warning btn-sm' onclick='editRodapeDados($ID_rodape)'>Editar</button>
                             </td>
                         </tr>";
         }
@@ -94,7 +43,7 @@
                     </div>";
 
         //Paginação - Somar a quantidade de usuários
-        $query_pg = "SELECT COUNT(ID_curso) AS num_result FROM curso";
+        $query_pg = "SELECT COUNT(ID_rodape) AS num_result FROM rodape";
         $result_pg = $conn->prepare($query_pg);
         $result_pg->execute();
         $row_pg = $result_pg->fetch(PDO::FETCH_ASSOC);
@@ -105,11 +54,11 @@
         $max_links = 2;
 
         $dados .="<nav aria-label='Page navigation example'> <ul class='pagination pagination-sm justify-content-center'>";
-        $dados .="<li class='page-item'><a class='page-link'onClick='listarInterno(1)' href='#'>Previous</a></li>";
+        $dados .="<li class='page-item'><a class='page-link'onClick='listarRodape(1)' href='#'>Previous</a></li>";
         
         for($pag_ant = $pagina -$max_links; $pag_ant <= $pagina - 1; $pag_ant++){
             if($pag_ant >= 1){
-                $dados .= "<li class='page-item'><a class='page-link' onclick='listarInterno($pag_ant)' href='#'>$pag_ant</a></li>";
+                $dados .= "<li class='page-item'><a class='page-link' onclick='listarRodape($pag_ant)' href='#'>$pag_ant</a></li>";
             }
         }
 
@@ -117,12 +66,12 @@
 
         for($pag_dep = $pagina + 1; $pag_dep <= $pagina + $max_links; $pag_dep++){
             if($pag_dep <= $quantidade_pg){
-                $dados .="<li class='page-item'><a class='page-link' href='#' onclick='listarInterno($pag_dep)'>$pag_dep</a></li>";
+                $dados .="<li class='page-item'><a class='page-link' href='#' onclick='listarRodape($pag_dep)'>$pag_dep</a></li>";
             }
         }
         
         
-        $dados .="<li class='page-item'><a class='page-link' href='#' onClick='listarInterno($quantidade_pg)'>Última</a></li>";
+        $dados .="<li class='page-item'><a class='page-link' href='#' onClick='listarRodape($quantidade_pg)'>Última</a></li>";
         $dados .='</ul></nav>'; 
 
         echo $dados;
