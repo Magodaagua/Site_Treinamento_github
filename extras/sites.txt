@@ -22,5 +22,12 @@ Como pesquisar com dois campos select categoria e subcategoria
 Como criar site scroll com menu flutuante
 - https://www.youtube.com/watch?v=Hm96kmOz2Zo&list=PLmY5AEiqDWwDmROlv6-IO5OfnHQIQ6czr&ab_channel=Celke
 
+Como usar o FullCalendar e listar eventos do Banco de Dados
+-https://youtu.be/JfAgl6CGg2Q?si=cFBvP0-bYIj0Orka
+
+Carregar conteúdo fora do carousel conforme o slide do carousel apresentado
+-https://youtu.be/lxVhRbZnpNw?si=y5_5GB28IVaVG0hs
+
+
                                             *Ideias*
 - Controlar as contas que podem acessar cada curso.

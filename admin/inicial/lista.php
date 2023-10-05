@@ -42,6 +42,7 @@
             if ((!empty($imagem1))) {
                 $img = "<img src='../logo/menu/$imagem1' width='150'> <br>";
                 $img2 = "<center><button class='btn btn-outline-primary btn-sm'><a href='../logo/menu/$imagem1' download>Download</a></button></center><br>";
+                //$img7 = "<center><button class='btn btn-outline-warning btn-sm'><a href='editar.php?ID_menu=ID_menu'>Editar</a></button></center><br>";
             } else {
                 $img = "";
                 $img2 = "";

@@ -47,23 +47,26 @@ async function editMenuDados(ID_menu){
 
     const dados = await fetch('visualizar.php?ID_menu=' + ID_menu);
     const resposta = await dados.json();
-    console.log(resposta);
+    //console.log(resposta);
 
     if(resposta['erro']){
         msgAlerta.innerHTML = resposta['msg'];
     } else {
         const editModal = new bootstrap.Modal(document.getElementById("editMenuModal"));
         editModal.show();
-        document.getElementById("editId").value  = resposta['dados'].ID_menu;
-        document.getElementById("editTexto1").value  = resposta['dados'].texto1;
-        document.getElementById("editTexto2").value  = resposta['dados'].texto2;
-        document.getElementById("editTexto3").value  = resposta['dados'].texto3;
-        document.getElementById("editTitulo1").value  = resposta['dados'].titulo1;
-        document.getElementById("editTitulo2").value  = resposta['dados'].titulo2;
-        document.getElementById("editTitulo3").value  = resposta['dados'].titulo3;
-        //document.getElementById("editImagem1").value  = resposta['dados'].titulo1;
-        //document.getElementById("editDatadecriacao").value  = resposta['dados'].Datadecriacao;
-        //document.getElementById("editimagem").value  = resposta['dados'].imagem;
+        document.getElementById("editId").value = resposta['dados'].ID_menu;
+        document.getElementById("editTexto1").value = resposta['dados'].texto1;
+        document.getElementById("editTexto2").value = resposta['dados'].texto2;
+        document.getElementById("editTexto3").value = resposta['dados'].texto3;
+        document.getElementById("editTitulo1").value = resposta['dados'].titulo1;
+        document.getElementById("editTitulo2").value = resposta['dados'].titulo2;
+        document.getElementById("editTitulo3").value = resposta['dados'].titulo3;
+        //document.getElementById("editImagem1").value = resposta['dados'].imagem1;
+        //document.getElementById("editImagem2").value = resposta['dados'].imagem2;
+        //document.getElementById("editImagem3").value = resposta['dados'].imagem3;
+        //document.getElementById("editImagem1").value = resposta['dados'].carrosel1;
+        //document.getElementById("editImagem2").value = resposta['dados'].carrosel2;
+        //document.getElementById("editImagem3").value = resposta['dados'].carrosel3;
         //document.getElementById("editprova").value  = resposta['dados'].prova;
     }
 }
@@ -84,9 +87,9 @@ editForm.addEventListener("submit", async (e) => {
         body:dadosForm
     });
 
-    console.log(dados);
+    //console.log(dados);
     const resposta = await dados.json();
-    console.log(resposta);
+    //console.log(resposta);
 
     if(resposta['erro']){
         msgAlertaErroEdit.innerHTML = resposta['msg'];

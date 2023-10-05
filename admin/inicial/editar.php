@@ -11,7 +11,7 @@
    
     if (empty($dados['ID_menu'])) {
         $retorna = ['erro' => true, 'msg' => "<div class='alert alert-danger' role='alert'>Erro: Erro tente mais tarde!</div>"];
-    } elseif (empty($dados['texto1'])) {
+    /*} elseif (empty($dados['texto1'])) {
         $retorna = ['erro' => true, 'msg' => "<div class='alert alert-danger' role='alert'>Erro: Necessário preencher o campo nome!</div>"];
     } elseif (empty($dados['texto2'])) {
         $retorna = ['erro' => true, 'msg' => "<div class='alert alert-danger' role='alert'>Erro: Necessário preencher o campo categoria!</div>"];
@@ -23,8 +23,8 @@
         $retorna = ['erro' => true, 'msg' => "<div class='alert alert-danger' role='alert'>Erro: Necessário preencher o campo data de criação!</div>"];
     } elseif (empty($dados['titulo3'])) {
         $retorna = ['erro' => true, 'msg' => "<div class='alert alert-danger' role='alert'>Erro: Necessário preencher o campo data de criação!</div>"];
-    }else{
-        $query_menu = "UPDATE menu SET ID_menu=:ID_menu, texto1=:texto1, texto2=:texto2, texto3=:texto3, titulo1=:titulo1, titulo2=:titulo2, titulo3=:titulo3, imagem1=:imagem1, imagem2=:imagem2, imagem3=:imagem3, carosel1=:carosel1, carosel2=:carosel2, carosel3=:carosel3 WHERE ID_menu=:ID_menu";
+    */}else{
+        $query_menu = "UPDATE menu SET ID_menu=:ID_menu, texto1=:texto1, texto2=:texto2, texto3=:texto3, titulo1=:titulo1, titulo2=:titulo2, titulo3=:titulo3, imagem1=:imagem1, imagem2=:imagem2, imagem3=:imagem3, carrosel1=:carrosel1, carrosel2=:carrosel2, carrosel3=:carrosel3 WHERE ID_menu=:ID_menu";
 
         $edit_menu = $conn->prepare($query_menu);
         $edit_menu ->bindParam(':ID_menu', $dados['ID_menu']);
@@ -44,7 +44,14 @@
 
         if($edit_menu->rowCount()){
 
-            $diretorio = "../logo/menu";
+            // QUERY para recuperar os dados do registro
+            $query_usuario = "SELECT ID_menu, imagem1, imagem2, imagem3, carrosel1, carrosel2, carrosel3 FROM menu WHERE ID_menu=:ID_menu";
+            $result_usuario = $conn->prepare($query_usuario);
+            $result_usuario->bindParam(':ID_menu', $ID_menu, PDO::PARAM_INT);
+            $result_usuario->execute();
+
+            $row_edit = $result_usuario->fetch(PDO::FETCH_ASSOC);
+            $diretorio = "../logo/menu/";
 
             if((!file_exists($diretorio))){
                 mkdir($diretorio, 0755);
@@ -60,13 +67,14 @@
             //atualiza a imagem
             if(move_uploaded_file($arquivo['tmp_name'], $diretorio . $nome_arquivo)){
 
-                /*if(((!empty($edit_curso['imagem'])))){
-                    $endereco_imagem = "../imagem/$ID_curso/". $row_usuario['']
+                //$caminho1 = "../logo/menu/"
+
+                if(((!empty($row_edit['imagem1'])) or ($row_edit['imagem1'] != null)) and ($row_edit['imagem1'] != $nome_arquivo)){
+                    $endereco_imagem = "../logo/menu/". $row_edit['imagem1'];
                 }
-                $endereco_imagem = "../imagem/$id/". $nome_arquivo;
                 if(file_exists($endereco_imagem)){
                     unlink($endereco_imagem);
-                }*/
+                }
 
                 $retorna = ['erro' => false, 'msg' => "<div class='alert alert-success' role='alert'>Foto editada com sucesso!</div>"];
             } else {

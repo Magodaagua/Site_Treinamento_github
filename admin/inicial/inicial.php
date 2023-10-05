@@ -255,27 +255,27 @@
                                 </div>
                                 <div class="mb-3">
                                     <label for="imagem1" class="col-form-label">Imagem 1:</label>
-                                    <input type="file" name="imagem1" class="form-control" id="editImagem1">
+                                    <input type="file" name="imagem1" class="form-control" id="editImagem1" placeholder="Escolha uma imagem">
                                 </div>
                                 <div class="mb-3">
                                     <label for="imagem2" class="col-form-label">Imagem 2:</label>
-                                    <input type="file" name="imagem2" class="form-control" id="editImagem2">
+                                    <input type="file" name="imagem2" class="form-control" id="editImagem2" placeholder="Escolha uma imagem">
                                 </div>
                                 <div class="mb-3">
                                     <label for="imagem3" class="col-form-label">Imagem 3:</label>
-                                    <input type="file" name="imagem3" class="form-control" id="editImagem3">
+                                    <input type="file" name="imagem3" class="form-control" id="editImagem3" placeholder="Escolha uma imagem">
                                 </div>
                                 <div class="mb-3">
                                     <label for="carrosel1" class="col-form-label">Carrosel 1:</label>
-                                    <input type="file" name="carrosel1" class="form-control" id="editCarrosel1">
+                                    <input type="file" name="carrosel1" class="form-control" id="editCarrosel1" placeholder="Escolha uma imagem">
                                 </div>
                                 <div class="mb-3">
                                     <label for="carrosel2" class="col-form-label">Carrosel 2:</label>
-                                    <input type="file" name="carrosel2" class="form-control" id="editCarrosel2">
+                                    <input type="file" name="carrosel2" class="form-control" id="editCarrosel2" placeholder="Escolha uma imagem">
                                 </div>
                                 <div class="mb-3">
                                     <label for="carrosel3" class="col-form-label">Carrosel 3:</label>
-                                    <input type="file" name="carrosel3" class="form-control" id="editCarrosel3">
+                                    <input type="file" name="carrosel3" class="form-control" id="editCarrosel3" placeholder="Escolha uma imagem">
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>

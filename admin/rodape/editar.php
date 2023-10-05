@@ -12,7 +12,7 @@
     }else{
         $query_rodape = "UPDATE rodape SET ID_rodape=:ID_rodape, politica=:politica, termos=:termos WHERE ID_rodape=:ID_rodape";
 
-        $edit_rodape = $conn->prepare($query_curso);
+        $edit_rodape = $conn->prepare($query_rodape);
         $edit_rodape ->bindParam(':ID_rodape', $dados['ID_rodape']);
         $edit_rodape ->bindParam(':politica', $dados['politica']);
         $edit_rodape ->bindParam(':termos', $dados['termos']);
