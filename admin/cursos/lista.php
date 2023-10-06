@@ -8,7 +8,7 @@
         $qnt_result_pg = 10;
         $inicio = ($pagina * $qnt_result_pg) - $qnt_result_pg;
 
-        $query_curso = "SELECT ID_curso, Nome, Categoria, Subcategoria, Descricao, Datadecriacao, imagem, pdf, video, prova FROM curso ORDER BY ID_curso DESC LIMIT $inicio, $qnt_result_pg ";
+        $query_curso = "SELECT ID_curso, Nome, Categoria, Subcategoria, Descricao, Datadecriacao, imagem, pdf, video FROM curso ORDER BY ID_curso DESC LIMIT $inicio, $qnt_result_pg ";
         $result_curso = $conn->prepare($query_curso);
         $result_curso->execute();
 
@@ -25,7 +25,6 @@
                                 <th>Imagem</th>
                                 <th>Video</th>
                                 <th>PDF</th>
-                                <th>Prova</th>
                                 <th>Ações</th>
                             </tr>
                         </thead>
@@ -77,9 +76,6 @@
                             </td>
                             <td>
                                 $pdf1 <br> $pdf2
-                            </td>
-                            <td>
-                                $prova
                             </td>
                             <td>
                                 <button id='$ID_curso' class='btn btn-outline-primary btn-sm' onclick='visInterno($ID_curso)'>Visualizar</button>

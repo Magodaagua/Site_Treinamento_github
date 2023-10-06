@@ -1,7 +1,18 @@
 <?php
     include_once "conexao.php";
-
     $dados = filter_input_array(INPUT_POST, FILTER_DEFAULT);
+    $result_usuario = "SELECT ID_menu, imagem1, imagem2, imagem3, carrosel1, carrosel2, carrosel3 FROM menu";
+    $resultado_usuario = mysqli_query($con, $result_usuario);
+    $row_edit =  mysqli_fetch_assoc($resultado_usuario);
+    $int1 = $row_edit['imagem1'];
+    $int2 = $row_edit['imagem2'];
+    $int3 = $row_edit['imagem3'];
+    $int4 = $row_edit['carrosel1'];
+    $int5 = $row_edit['carrosel2'];
+    $int6 = $row_edit['carrosel3'];
+
+    
+    //$dados = filter_input_array(INPUT_POST, FILTER_DEFAULT);
     $arquivo = $_FILES['imagem1'];
     $arquivo2 = $_FILES['imagem2'];
     $arquivo3 = $_FILES['imagem3'];
@@ -24,6 +35,7 @@
     } elseif (empty($dados['titulo3'])) {
         $retorna = ['erro' => true, 'msg' => "<div class='alert alert-danger' role='alert'>Erro: Necessário preencher o campo data de criação!</div>"];
     */}else{
+
         $query_menu = "UPDATE menu SET ID_menu=:ID_menu, texto1=:texto1, texto2=:texto2, texto3=:texto3, titulo1=:titulo1, titulo2=:titulo2, titulo3=:titulo3, imagem1=:imagem1, imagem2=:imagem2, imagem3=:imagem3, carrosel1=:carrosel1, carrosel2=:carrosel2, carrosel3=:carrosel3 WHERE ID_menu=:ID_menu";
 
         $edit_menu = $conn->prepare($query_menu);
@@ -44,13 +56,7 @@
 
         if($edit_menu->rowCount()){
 
-            // QUERY para recuperar os dados do registro
-            $query_usuario = "SELECT ID_menu, imagem1, imagem2, imagem3, carrosel1, carrosel2, carrosel3 FROM menu WHERE ID_menu=:ID_menu";
-            $result_usuario = $conn->prepare($query_usuario);
-            $result_usuario->bindParam(':ID_menu', $ID_menu, PDO::PARAM_INT);
-            $result_usuario->execute();
 
-            $row_edit = $result_usuario->fetch(PDO::FETCH_ASSOC);
             $diretorio = "../logo/menu/";
 
             if((!file_exists($diretorio))){
@@ -69,8 +75,8 @@
 
                 //$caminho1 = "../logo/menu/"
 
-                if(((!empty($row_edit['imagem1'])) or ($row_edit['imagem1'] != null)) and ($row_edit['imagem1'] != $nome_arquivo)){
-                    $endereco_imagem = "../logo/menu/". $row_edit['imagem1'];
+                if(((!empty($int1)) or ($int1 != null)) and ($int1 != $nome_arquivo)){
+                    $endereco_imagem = "../logo/menu/". $int1;
                 }
                 if(file_exists($endereco_imagem)){
                     unlink($endereco_imagem);
@@ -84,13 +90,12 @@
             //atualiza a imagem
             if(move_uploaded_file($arquivo2['tmp_name'], $diretorio . $nome_arquivo2)){
 
-                /*if(((!empty($edit_curso['imagem'])))){
-                    $endereco_imagem = "../imagem/$ID_curso/". $row_usuario['']
+                if(((!empty($int2)) or ($int2 != null)) and ($int2 != $nome_arquivo)){
+                    $endereco_imagem = "../logo/menu/". $int2;
                 }
-                $endereco_imagem = "../imagem/$id/". $nome_arquivo;
                 if(file_exists($endereco_imagem)){
                     unlink($endereco_imagem);
-                }*/
+                }
 
                 $retorna = ['erro' => false, 'msg' => "<div class='alert alert-success' role='alert'>Foto editada com sucesso!</div>"];
             } else {
@@ -100,13 +105,12 @@
             //atualiza a imagem
             if(move_uploaded_file($arquivo3['tmp_name'], $diretorio . $nome_arquivo3)){
 
-                /*if(((!empty($edit_curso['imagem'])))){
-                    $endereco_imagem = "../imagem/$ID_curso/". $row_usuario['']
+                if(((!empty($int3)) or ($int3 != null)) and ($int3 != $nome_arquivo)){
+                    $endereco_imagem = "../logo/menu/". $int3;
                 }
-                $endereco_imagem = "../imagem/$id/". $nome_arquivo;
                 if(file_exists($endereco_imagem)){
                     unlink($endereco_imagem);
-                }*/
+                }
 
                 $retorna = ['erro' => false, 'msg' => "<div class='alert alert-success' role='alert'>Foto editada com sucesso!</div>"];
             } else {
@@ -116,13 +120,12 @@
             //atualiza a imagem
             if(move_uploaded_file($arquivo4['tmp_name'], $diretorio . $nome_arquivo4)){
 
-                /*if(((!empty($edit_curso['imagem'])))){
-                    $endereco_imagem = "../imagem/$ID_curso/". $row_usuario['']
+                if(((!empty($int4)) or ($int4 != null)) and ($int4 != $nome_arquivo)){
+                    $endereco_imagem = "../logo/menu/". $int4;
                 }
-                $endereco_imagem = "../imagem/$id/". $nome_arquivo;
                 if(file_exists($endereco_imagem)){
                     unlink($endereco_imagem);
-                }*/
+                }
 
                 $retorna = ['erro' => false, 'msg' => "<div class='alert alert-success' role='alert'>Foto editada com sucesso!</div>"];
             } else {
@@ -132,13 +135,12 @@
             //atualiza a imagem
             if(move_uploaded_file($arquivo5['tmp_name'], $diretorio . $nome_arquivo5)){
 
-                /*if(((!empty($edit_curso['imagem'])))){
-                    $endereco_imagem = "../imagem/$ID_curso/". $row_usuario['']
+                if(((!empty($int5)) or ($int5 != null)) and ($int5 != $nome_arquivo)){
+                    $endereco_imagem = "../logo/menu/". $int5;
                 }
-                $endereco_imagem = "../imagem/$id/". $nome_arquivo;
                 if(file_exists($endereco_imagem)){
                     unlink($endereco_imagem);
-                }*/
+                }
 
                 $retorna = ['erro' => false, 'msg' => "<div class='alert alert-success' role='alert'>Foto editada com sucesso!</div>"];
             } else {
@@ -148,13 +150,12 @@
             //atualiza a imagem
             if(move_uploaded_file($arquivo6['tmp_name'], $diretorio . $nome_arquivo6)){
 
-                /*if(((!empty($edit_curso['imagem'])))){
-                    $endereco_imagem = "../imagem/$ID_curso/". $row_usuario['']
+                if(((!empty($int6)) or ($int6 != null)) and ($int6 != $nome_arquivo)){
+                    $endereco_imagem = "../logo/menu/". $int6;
                 }
-                $endereco_imagem = "../imagem/$id/". $nome_arquivo;
                 if(file_exists($endereco_imagem)){
                     unlink($endereco_imagem);
-                }*/
+                }
 
                 $retorna = ['erro' => false, 'msg' => "<div class='alert alert-success' role='alert'>Foto editada com sucesso!</div>"];
             } else {

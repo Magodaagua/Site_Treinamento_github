@@ -6,6 +6,8 @@
     $port = 3306;
 
     try{
+        //Criar a conexão
+		$con = mysqli_connect($host, $user, $pass, $dbname);
         $conn = new PDO("mysql:host=$host;dbname=". $dbname, $user, $pass);
 
 

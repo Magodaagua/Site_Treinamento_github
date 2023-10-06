@@ -3,7 +3,13 @@
 
     $dados = filter_input_array(INPUT_POST, FILTER_DEFAULT);
     $arquivo = $_FILES['imagem'];
-    //$id = $_GET['editId'];
+    
+    $id = $dados['ID_parceiro'];
+
+    $result_usuario = "SELECT ID_parceiro, imagem FROM parceiro WHERE ID_parceiro = '$id'";
+    $resultado_usuario = mysqli_query($con, $result_usuario);
+    $row_edit =  mysqli_fetch_assoc($resultado_usuario);
+    $int1 = $row_edit['imagem'];
 
     if (empty($dados['ID_parceiro'])) {
         $retorna = ['erro' => true, 'msg' => "<div class='alert alert-danger' role='alert'>Erro: Erro tente mais tarde!</div>"];
@@ -41,23 +47,14 @@
             $nome_arquivo = $arquivo['name'];
 
             if(move_uploaded_file($arquivo['tmp_name'], $diretorio . $nome_arquivo)){
-                /*
-                if((is_dir($diretorio))){
-                    $endereco_imagem = "../externo/$id/";
 
-                    $teste = dir($endereco_imagem);
-
-                    while($lixeira = $teste ->read()){
-                        if(($lixeira != '.') && ($lixeira != '..')){
-                            unlink($endereco_imagem);
-                        }
-                    }
-                    $teste->close();
-                }*/
-                /*$endereco_imagem = "../externo/$id/";
+                if(((!empty($int1)) or ($int1 != null)) and ($int1 != $nome_arquivo)){
+                    $endereco_imagem = "../externo/$id/". $int1;
+                }
                 if(file_exists($endereco_imagem)){
                     unlink($endereco_imagem);
-                }*/
+                }
+
                 $retorna = ['erro' => false, 'msg' => "<div class='alert alert-success' role='alert'>Foto editada com sucesso!</div>"];
             } else {
                 $retorna = ['erro' => true, 'msg' => "<div class='alert alert-danger' role='alert'>Erro: Foto não editada com sucesso!</div>"];
