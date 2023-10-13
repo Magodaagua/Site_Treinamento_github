@@ -7,12 +7,6 @@ Como usar github
 Como listar as aulas do módulo com PHP
 - https://www.youtube.com/watch?v=ZeLJy1Cmr2k&list=PLmY5AEiqDWwCK58zFD05282nf-xgTA1iI&ab_channel=Celke
 
-Como apagar foto com PHP no servidor
-- https://www.youtube.com/watch?v=cbO9YIN71KU&list=PLmY5AEiqDWwAhkmWs4XBT-oGcXfEaHLJW&ab_channel=Celke
-
-Como criar formulário upload de foto, como imprimir a imagem e como liberar para download o arquivo
-- https://www.youtube.com/watch?v=-dYqcEITsJI&list=PLmY5AEiqDWwA8c-iI10Co7RiwiJ4n40Od&ab_channel=Celke
-
 Como criar o formulário com campo checkbox com PHP
 - https://www.youtube.com/watch?v=hys6_jTG2FY&list=PLmY5AEiqDWwBnPfz82IcaYcxSFtUJpPJ_&ab_channel=Celke
 
@@ -27,6 +21,9 @@ Como usar o FullCalendar e listar eventos do Banco de Dados
 
 Carregar conteúdo fora do carousel conforme o slide do carousel apresentado
 -https://youtu.be/lxVhRbZnpNw?si=y5_5GB28IVaVG0hs
+
+Como Enviar email com PHP Puro e Configurando o XAMPP
+-https://youtu.be/UnDLCa66ljg?si=KXuFrcBQ2643uW4d
 
 
                                             *Ideias*

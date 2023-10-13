@@ -54,7 +54,8 @@
   </head>
   <body>
     <header>
-      <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+      <!--<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">-->
+      <nav class="navbar navbar-expand-md navbar-dark fixed-top" style="background-color: #483D8B">
         <img class="navbar-brand" src="img/logo_copi.png" width="50px" height="60px"></img>
         <a class="navbar-brand" href="menu.php">COPIMAQ</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
@@ -135,8 +136,16 @@
           </table>
           <br>
           <div class="container theme-showcase" role="main">
+            <form method="POST" action="alteracao.php">
+              <label for="InputPassword3">Password:&nbsp;&nbsp;</label>
+              <input type="password" name="password" id="inputPassword3" placeholder="Password">&nbsp;&nbsp;
+              <input type="hidden" name="id" value="<?php echo $row_usuario['ID_usuario']; ?>">
+              <button type="submit" class="btn btn-danger">Alterar</button>  
+            </form>
+
+<!--
             <h1>Alterar senha</h1>
-            <form class="form-horizontal" method="POST" action="alteracao.php">
+            <form  method="POST" action="alteracao.php" display="inline-block">
               <div class="form-group">
                 <label for="InputPassword3" class="col-sm-2 control-label">Password</label>
                 <div class="col-sm-10">
@@ -150,6 +159,7 @@
                 </div>  
               </div>
             </form>
+    -->
           </div>
         </center>
       </div>
@@ -164,11 +174,11 @@
         require("footer.php"); 
 	    ?>
     </main>
-    <script src="https://ajax,googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <!--<script src="https://ajax,googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>-->
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script>window.jQuery || document.write('<script src="javascript/jquery.slim.min.js"><\/script>')</script><script src="javascript/bootstrap.bundle.min.js"></script>  
     <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="javascript/bootstrap.min.js"></script>
+    <!--<script src="javascript/bootstrap.min.js"></script>-->
     <script src="javascript/bootstrap.bundle.min.js"></script>
   </body>
 </html>

@@ -120,8 +120,9 @@
                                 $car5 <br> $car6
                             </td>
                             <td>
-                                <button id='$ID_menu' class='btn btn-outline-primary btn-sm' onclick='visMenu($ID_menu)'>Visualizar</button>
-                                <button id='$ID_menu' class='btn btn-outline-warning btn-sm' onclick='editMenuDados($ID_menu)'>Editar</button>
+                                <center>
+                                    <button id='$ID_menu' class='btn btn-outline-primary btn-sm' onclick='visMenu($ID_menu)'>Visualizar</button><br><br>
+                                    <button id='$ID_menu' class='btn btn-outline-warning btn-sm' onclick='editMenuDados($ID_menu)'>Editar</button><br><br>
                             </td>
                         </tr>";
         }
@@ -141,7 +142,7 @@
 
         $max_links = 2;
 
-        $dados .="<nav aria-label='Page navigation example'> <ul class='pagination pagination-sm justify-content-center'>";
+        /*$dados .="<nav aria-label='Page navigation example'> <ul class='pagination pagination-sm justify-content-center'>";
         $dados .="<li class='page-item'><a class='page-link'onClick='listarMenu(1)' href='#'>Previous</a></li>";
         
         for($pag_ant = $pagina -$max_links; $pag_ant <= $pagina - 1; $pag_ant++){
@@ -161,7 +162,7 @@
         
         $dados .="<li class='page-item'><a class='page-link' href='#' onClick='listarMenu($quantidade_pg)'>Última</a></li>";
         $dados .='</ul></nav>'; 
-
+*/
         echo $dados;
     } else {
         echo "<div class='alert alert-danger' role='alert'>Nenhuma empresa parceira encontrada!</div>";

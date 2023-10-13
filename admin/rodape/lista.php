@@ -12,32 +12,34 @@
         $result_rodape = $conn->prepare($query_rodape);
         $result_rodape->execute();
 
-        $dados = "<div class='table-responsive'>
-                    <table class='table table-striped table-bordered'>
-                        <thead>
-                            <tr>
-                                <th>ID do Rodape</th>
-                                <th>Política</th>
-                                <th>Termos de uso</th>
-                                <th>Ações</th>
-                            </tr>
-                        </thead>
-                        <tbody>";
 
         while($row_rodape = $result_rodape->fetch(PDO::FETCH_ASSOC)){
             extract($row_rodape);
 
-            $dados .= "<tr>
-                            <td>$ID_rodape</td>
-                            <td>$politica</td>
-                            <td>$termos</td>
-                            <td>
-                                <button id='$ID_rodape' class='btn btn-outline-primary btn-sm' onclick='visRodape($ID_rodape)'>Visualizar</button>
-                                <button id='$ID_rodape' class='btn btn-outline-warning btn-sm' onclick='editRodapeDados($ID_rodape)'>Editar</button>
-                            </td>
-                        </tr>";
+        $dados = "<div class='table-responsive'>
+                    <table class='table table-striped table-bordered'>
+                        <thead>
+                            <tr>
+                                <th>Política</th>
+                                <td>$politica</td>
+                                
+                            </tr>
+                            <tr>
+                                <th>Termos de uso</th>
+                                <td>$termos</td>
+                            </tr>
+                            <tr>
+                                <th>Ações</th>
+                                <td>
+                                    <center>
+                                        <button id='$ID_rodape' class='btn btn-outline-primary btn-sm' onclick='visRodape($ID_rodape)'>Visualizar</button>&nbsp;&nbsp;&nbsp;&nbsp;
+                                        <button id='$ID_rodape' class='btn btn-outline-warning btn-sm' onclick='editRodapeDados($ID_rodape)'>Editar</button>&nbsp;&nbsp;&nbsp;&nbsp;
+                                    </center>
+                                </td>
+                            </tr>
+                        </thead>
+                        <tbody>";
         }
-
         $dados .= "         </tbody>
                         </table>
                     </div>";
@@ -53,7 +55,7 @@
 
         $max_links = 2;
 
-        $dados .="<nav aria-label='Page navigation example'> <ul class='pagination pagination-sm justify-content-center'>";
+        /*$dados .="<nav aria-label='Page navigation example'> <ul class='pagination pagination-sm justify-content-center'>";
         $dados .="<li class='page-item'><a class='page-link'onClick='listarRodape(1)' href='#'>Previous</a></li>";
         
         for($pag_ant = $pagina -$max_links; $pag_ant <= $pagina - 1; $pag_ant++){
@@ -72,7 +74,7 @@
         
         
         $dados .="<li class='page-item'><a class='page-link' href='#' onClick='listarRodape($quantidade_pg)'>Última</a></li>";
-        $dados .='</ul></nav>'; 
+        $dados .='</ul></nav>'; */
 
         echo $dados;
     } else {

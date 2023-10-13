@@ -12,15 +12,17 @@
         //Verificar se está sendo passado na URL a página atual, senao é atribuido a pagina 
         $pagina = (isset($_GET['pagina']))? $_GET['pagina'] : 1;
 
+        $categoria = $_GET['Nome_cat'];
+
         //Selecionar todos os cursos da tabela
-        $result_curso = "SELECT * FROM curso";
+        $result_curso = "SELECT * FROM curso WHERE Categoria = '$categoria'";
         $resultado_curso = mysqli_query($conn, $result_curso);
 
         //Contar o total de cursos
         $total_cursos = mysqli_num_rows($resultado_curso);
 
         //Seta a quantidade de cursos por pagina
-        $quantidade_pg = 6;
+        $quantidade_pg = 9;
 
         //calcular o número de pagina necessárias para apresentar os cursos
         $num_pagina = ceil($total_cursos/$quantidade_pg);
@@ -28,12 +30,13 @@
         //Calcular o inicio da visualizacao
         $inicio = ($quantidade_pg*$pagina)-$quantidade_pg;
 
-        $categoria = $_GET['Nome_cat'];
+        //$categoria = $_GET['Nome_cat'];
 
         //Selecionar os cursos a serem apresentado na página
         $result_cursos = "SELECT ID_curso, Nome, Categoria, Subcategoria, Descricao, Datadecriacao, imagem FROM curso WHERE Categoria = '$categoria' limit $inicio, $quantidade_pg";
         $resultado_cursos = mysqli_query($conn, $result_cursos);
         $total_cursos = mysqli_num_rows($resultado_cursos);
+
 	?>
     <head>
         <meta charset="utf-8">
@@ -70,7 +73,7 @@
     </head>
     <body>
         <header>
-            <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+            <nav class="navbar navbar-expand-md navbar-dark fixed-top" style="background-color: #483D8B">
                 <img class="navbar-brand" src="img/logo_copi.png" width="50px" height="60px"></img>
                 <a class="navbar-brand" href="menu.php">COPIMAQ</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
@@ -133,11 +136,21 @@
                         <div class="col-sm-6 col-md-6">
                             <form class="form-inline" method="GET" action="pesquisar.php">
                                 <div class="form-group">
-                                    <label for="exampleInputName2">Pesquisar:   </label>
+                                    <label for="exampleInputName2">Pesquisar:&nbsp;&nbsp;&nbsp;&nbsp;</label>
                                     <input type="text" name="pesquisar" class="form-control" id="exampleInputName2" placeholder="Digitar...">
+                                    <input type="hidden" name="categoria" id="categoria">
                                 </div>
-                                <button type="submit" class="btn btn-primary">Pesquisar</button>
+                                &nbsp;&nbsp;&nbsp;&nbsp;<button type="submit" class="btn btn-primary" onclick="preencherCategoria()">Pesquisar</button>
                             </form>
+                            <script>
+                                function preencherCategoria() {
+                                    // Obtemos o valor da categoria (exemplo: "algum_valor")
+                                    const categoria = "<?php echo $categoria ?>";  // Substitua pelo valor desejado ou crie a lógica para obtê-lo
+
+                                    // Preenchemos o campo categoria com o valor obtido
+                                    document.getElementById('categoria').value = categoria;
+                                }
+                            </script>
                         </div>
                     </div>
                 </div>
@@ -152,7 +165,7 @@
                                         <p class="card-text"><?php echo $rows_cursos['Nome']; ?></p>
                                         <div class="d-flex justify-content-between align-items-center">
                                             <div class="btn-group">
-                                                <a href="detalhes.php?ID_curso=<?php echo $rows_cursos['ID_curso']; ?>"><button type="button" class="btn btn-sm btn-outline-secondary">Começar</button> </a>
+                                                <a href="detalhes.php?ID_curso=<?php echo $rows_cursos['ID_curso']; ?>"><button type="button" class="btn btn-sm btn-outline-primary">Começar</button> </a>
                                                 <!--<button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>-->
                                             </div>
                                             <small class="text-muted">Data de criação <br><?php echo date('d/m/Y', strtotime($rows_cursos['Datadecriacao'])); ?></small>
@@ -185,8 +198,8 @@
                                 </li>
                                 <?php 
                                 //Apresentar a paginacao
-                                for($i = 1; $i < $num_pagina + 1; $i++){ ?>
-                                    <li class="page-item">
+                                for($i = 1; $i < $num_pagina+1; $i++){ ?>
+                                    <li class="page-item active">
                                         <a class="page-link" href="curso.php?Nome_cat=<?php echo $categoria?>&pagina=<?php echo $i; ?>"><?php echo $i; ?></a>
                                     </li>
                                 <?php } ?>
@@ -224,6 +237,7 @@
         <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 		<!-- Include all compiled plugins (below), or include individual files as needed -->
-		<script src="javascript/bootstrap.min.js"></script>                                
+		<!--<script src="javascript/bootstrap.min.js"></script>-->
+        <script src="javascript/bootstrap.bundle.min.js"></script>                                
     </body>
 </html>

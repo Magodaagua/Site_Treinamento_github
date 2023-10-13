@@ -21,12 +21,24 @@
         $retorna = ['erro' => true, 'msg' => "<div class='alert alert-danger' role='alert'>Erro: Necessário preencher o campo Imagem!</div>"];
     */}else{
         $query_categoria= "UPDATE categoria SET id=:id, Nome_cat=:Nome_cat, imagem=:imagem WHERE id=:id";
-        
-        $edit_categoria = $conn->prepare($query_categoria);
-        $edit_categoria ->bindParam(':id', $dados['id']);
-        $edit_categoria ->bindParam(':Nome_cat', $dados['Nome_cat']);
-        $edit_categoria ->bindParam(':imagem', $arquivo['name'], PDO::PARAM_STR);
-        $edit_categoria ->execute();
+        $imagem = $row_edit['imagem'];
+
+        if($arquivo['name'] == ''){
+            $arquivo['name'] = "$imagem";
+
+            $edit_categoria = $conn->prepare($query_categoria);
+            $edit_categoria ->bindParam(':id', $dados['id']);
+            $edit_categoria ->bindParam(':Nome_cat', $dados['Nome_cat']);
+            $edit_categoria ->bindParam(':imagem', $imagem);
+            $edit_categoria ->execute();
+
+        }else{
+            $edit_categoria = $conn->prepare($query_categoria);
+            $edit_categoria ->bindParam(':id', $dados['id']);
+            $edit_categoria ->bindParam(':Nome_cat', $dados['Nome_cat']);
+            $edit_categoria ->bindParam(':imagem', $arquivo['name'], PDO::PARAM_STR);
+            $edit_categoria ->execute();
+        }
     
         if($edit_categoria ->rowCount()){
 

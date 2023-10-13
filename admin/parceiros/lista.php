@@ -44,9 +44,11 @@
                                 $img <br> $img2
                             </td>
                             <td>
-                                <button id='$ID_parceiro' class='btn btn-outline-primary btn-sm' onclick='visParceiro($ID_parceiro)'>Visualizar</button>
-                                <button id='$ID_parceiro' class='btn btn-outline-warning btn-sm' onclick='editParceiroDados($ID_parceiro)'>Editar</button>
-                                <button id='$ID_parceiro' class='btn btn-outline-danger btn-sm' onclick='apagarParceiroDados($ID_parceiro)'>Apagar</button>
+                                <center>
+                                    <button id='$ID_parceiro' class='btn btn-outline-primary btn-sm' onclick='visParceiro($ID_parceiro)'>Visualizar</button><br><br>
+                                    <button id='$ID_parceiro' class='btn btn-outline-warning btn-sm' onclick='editParceiroDados($ID_parceiro)'>Editar</button><br><br>
+                                    <button id='$ID_parceiro' class='btn btn-outline-danger btn-sm' onclick='apagarParceiroDados($ID_parceiro)'>Apagar</button><br><br>
+                                </center>
                             </td>
                         </tr>";
         }

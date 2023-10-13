@@ -39,9 +39,11 @@
                             <td>$email</td>
                             <td>$senha</td>
                             <td>
-                                <button id='$ID_usuario' class='btn btn-outline-primary btn-sm' onclick='visUsuario($ID_usuario)'>Visualizar</button>
-                                <button id='$ID_usuario' class='btn btn-outline-warning btn-sm' onclick='editUsuarioDados($ID_usuario)'>Editar</button>
-                                <button id='$ID_usuario' class='btn btn-outline-danger btn-sm' onclick='apagarUsuarioDados($ID_usuario)'>Apagar</button>
+                                <center>
+                                    <button id='$ID_usuario' class='btn btn-outline-primary btn-sm' onclick='visUsuario($ID_usuario)'>Visualizar</button>&nbsp;&nbsp;&nbsp;&nbsp;
+                                    <button id='$ID_usuario' class='btn btn-outline-warning btn-sm' onclick='editUsuarioDados($ID_usuario)'>Editar</button>&nbsp;&nbsp;&nbsp;&nbsp;
+                                    <button id='$ID_usuario' class='btn btn-outline-danger btn-sm' onclick='apagarUsuarioDados($ID_usuario)'>Apagar</button>&nbsp;&nbsp;&nbsp;&nbsp;
+                                </center>
                             </td>
                         </tr>";
         }

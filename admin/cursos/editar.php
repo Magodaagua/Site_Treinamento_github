@@ -32,19 +32,44 @@
         $retorna = ['erro' => true, 'msg' => "<div class='alert alert-danger' role='alert'>Erro: Necessário preencher o campo Imagem!</div>"];
     */}else{
         $query_curso = "UPDATE curso SET ID_curso=:ID_curso, Nome=:Nome, Categoria=:Categoria, Subcategoria=:Subcategoria, Descricao=:Descricao, Datadecriacao=:Datadecriacao, imagem=:imagem, pdf=:pdf, video=:video WHERE ID_curso=:ID_curso";
+        $imagem = $row_edit['imagem'];
+        $pdf = $row_edit['pdf'];
+        $video = $row_edit['video'];
 
-        $edit_curso = $conn->prepare($query_curso);
-        $edit_curso ->bindParam(':ID_curso', $dados['ID_curso']);
-        $edit_curso ->bindParam(':Nome', $dados['Nome']);
-        $edit_curso ->bindParam(':Categoria', $dados['Categoria']);
-        $edit_curso ->bindParam(':Subcategoria', $dados['Subcategoria']);
-        $edit_curso ->bindParam(':Descricao', $dados['Descricao']);
-        $edit_curso ->bindParam(':Datadecriacao', $dados['Datadecriacao']);
-        $edit_curso ->bindParam(':imagem', $arquivo['name'], PDO::PARAM_STR);
-        $edit_curso ->bindParam(':pdf', $arquivo2['name'], PDO::PARAM_STR);
-        $edit_curso ->bindParam(':video', $arquivo3['name'], PDO::PARAM_STR);
-        //$edit_curso ->bindParam(':prova', $dados['prova']);
-        $edit_curso ->execute();
+        if($arquivo['name'] == ''){
+           $arquivo['name'] = "$imagem";
+           $arquivo2['name'] = "$pdf";
+           $arquivo3['name'] = "$video";
+
+           $edit_curso = $conn->prepare($query_curso);
+           $edit_curso ->bindParam(':ID_curso', $dados['ID_curso']);
+           $edit_curso ->bindParam(':Nome', $dados['Nome']);
+           $edit_curso ->bindParam(':Categoria', $dados['Categoria']);
+           $edit_curso ->bindParam(':Subcategoria', $dados['Subcategoria']);
+           $edit_curso ->bindParam(':Descricao', $dados['Descricao']);
+           $edit_curso ->bindParam(':Datadecriacao', $dados['Datadecriacao']);
+           $edit_curso ->bindParam(':imagem', $imagem);
+           $edit_curso ->bindParam(':pdf', $pdf);
+           $edit_curso ->bindParam(':video', $video);
+           //$edit_curso ->bindParam(':prova', $dados['prova']);
+           $edit_curso ->execute();
+
+        }else{
+
+            $edit_curso = $conn->prepare($query_curso);
+            $edit_curso ->bindParam(':ID_curso', $dados['ID_curso']);
+            $edit_curso ->bindParam(':Nome', $dados['Nome']);
+            $edit_curso ->bindParam(':Categoria', $dados['Categoria']);
+            $edit_curso ->bindParam(':Subcategoria', $dados['Subcategoria']);
+            $edit_curso ->bindParam(':Descricao', $dados['Descricao']);
+            $edit_curso ->bindParam(':Datadecriacao', $dados['Datadecriacao']);
+            $edit_curso ->bindParam(':imagem', $arquivo['name'], PDO::PARAM_STR);
+            $edit_curso ->bindParam(':pdf', $arquivo2['name'], PDO::PARAM_STR);
+            $edit_curso ->bindParam(':video', $arquivo3['name'], PDO::PARAM_STR);
+            //$edit_curso ->bindParam(':prova', $dados['prova']);
+            $edit_curso ->execute();
+
+        }
 
         if($edit_curso->rowCount()){
 

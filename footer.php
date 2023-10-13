@@ -1,5 +1,5 @@
 <footer class="container">
-    <p>&copy; 2017-2022 Company, Inc. &middot; <a href="#" data-toggle="modal" data-target="#privacyModal">Privacy</a> &middot; <a href="#" data-toggle="modal" data-target="#myModal">Termos de uso</a> &middot; <a href="#">Donate</a></p>
+    <p>&copy; 2017-2022 Company, Inc. &middot; <a href="#" data-toggle="modal" data-target="#privacyModal">Privacy</a> &middot; <a href="#" data-toggle="modal" data-target="#myModal">Termos de uso</a> &middot; <a href="donate/index.php">Donate</a></p>
 </footer>
 
 

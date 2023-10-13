@@ -23,14 +23,30 @@
         $retorna = ['erro' => true, 'msg' => "<div class='alert alert-danger' role='alert'>Erro: Necessário preencher o campo Imagem!</div>"];
     */}else{
         $query_parceiro= "UPDATE parceiro SET ID_parceiro=:ID_parceiro, Nome=:Nome, Descricao=:Descricao, link=:link, imagem=:imagem WHERE ID_parceiro=:ID_parceiro";
-        
-        $edit_parceiro = $conn->prepare($query_parceiro);
-        $edit_parceiro ->bindParam(':ID_parceiro', $dados['ID_parceiro']);
-        $edit_parceiro ->bindParam(':Nome', $dados['Nome']);
-        $edit_parceiro ->bindParam(':Descricao', $dados['Descricao']);
-        $edit_parceiro ->bindParam(':link', $dados['link']);
-        $edit_parceiro ->bindParam(':imagem', $arquivo['name'], PDO::PARAM_STR);
-        $edit_parceiro ->execute();
+        $imagem = $row_edit['imagem'];
+
+        if($arquivo['name'] == ''){
+           $arquivo['name'] = "$imagem";
+
+           $edit_parceiro = $conn->prepare($query_parceiro);
+           $edit_parceiro ->bindParam(':ID_parceiro', $dados['ID_parceiro']);
+           $edit_parceiro ->bindParam(':Nome', $dados['Nome']);
+           $edit_parceiro ->bindParam(':Descricao', $dados['Descricao']);
+           $edit_parceiro ->bindParam(':link', $dados['link']);
+           $edit_parceiro ->bindParam(':imagem', $imagem);
+           $edit_parceiro ->execute();
+           
+        }else{
+
+            $edit_parceiro = $conn->prepare($query_parceiro);
+            $edit_parceiro ->bindParam(':ID_parceiro', $dados['ID_parceiro']);
+            $edit_parceiro ->bindParam(':Nome', $dados['Nome']);
+            $edit_parceiro ->bindParam(':Descricao', $dados['Descricao']);
+            $edit_parceiro ->bindParam(':link', $dados['link']);
+            $edit_parceiro ->bindParam(':imagem', $arquivo['name'], PDO::PARAM_STR);
+            $edit_parceiro ->execute();
+
+        }
     
         if($edit_parceiro ->rowCount()){
 

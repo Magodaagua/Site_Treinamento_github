@@ -118,7 +118,8 @@
     </head>
 	<body>
 		<header>
-            <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+            <!--<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">-->
+            <nav class="navbar navbar-expand-md navbar-dark fixed-top" style="background-color: #483D8B">
                 <img class="navbar-brand" src="img/logo_copi.png" width="50px" height="60px"></img>
                 <a class="navbar-brand" href="menu.php">COPIMAQ</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
@@ -257,7 +258,7 @@
         <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 		<!-- Include all compiled plugins (below), or include individual files as needed -->
-		<script src="javascript/bootstrap.min.js"></script>   
-        <script src="javascript/bootstrap/bootstrap.bundle.min.js"></script>
+		<!--<script src="javascript/bootstrap.min.js"></script>   -->
+        <script src="javascript/bootstrap5/bootstrap.bundle.min.js"></script>
 	</body>
 </html>

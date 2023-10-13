@@ -31,9 +31,11 @@
                             <td>$email</td>
                             <td>$senha</td>
                             <td>
-                                <button id='$ID_admin' class='btn btn-outline-primary btn-sm' onclick='visAdministrador($ID_admin)'>Visualizar</button>
-                                <button id='$ID_admin' class='btn btn-outline-warning btn-sm' onclick='editAdministradorDados($ID_admin)'>Editar</button>
-                                <button id='$ID_admin' class='btn btn-outline-danger btn-sm' onclick='apagarAdministradorDados($ID_admin)'>Apagar</button>
+                                <center>
+                                    <button id='$ID_admin' class='btn btn-outline-primary btn-sm' onclick='visAdministrador($ID_admin)'>Visualizar</button>&nbsp;&nbsp;&nbsp;&nbsp;
+                                    <button id='$ID_admin' class='btn btn-outline-warning btn-sm' onclick='editAdministradorDados($ID_admin)'>Editar</button>&nbsp;&nbsp;&nbsp;&nbsp;
+                                    <button id='$ID_admin' class='btn btn-outline-danger btn-sm' onclick='apagarAdministradorDados($ID_admin)'>Apagar</button>&nbsp;&nbsp;&nbsp;&nbsp;
+                                </center>
                             </td>
                         </tr>";
         }

@@ -45,7 +45,7 @@
             <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-toggle="collapse" data-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">
+            <input class="form-control form-control-dark w-100" type="text" name="pesquisa" id="pesquisa" placeholder="Search" aria-label="Search">
             <ul class="navbar-nav px-3">
                 <li class="nav-item text-nowrap">
                     <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#sairModal">Sair</button>
@@ -174,7 +174,17 @@
                                 </div>
                                 <div class="mb-3">
                                     <label for="Categoria" class="col-form-label">Categoria:</label>
-                                    <input type="text" name="Categoria" class="form-control" id="Categoria" placeholder="Digite a Descrição">
+                                    <select name="Categoria" id="Categoria">
+                                        <option value="">Escolha a Categoria</option>
+                                        <?php
+                                        	$result_cat_post = "SELECT * FROM categoria ORDER BY Nome_cat";
+                                            $resultado_cat_post = mysqli_query($con, $result_cat_post);
+                                            while($row_cat_post = mysqli_fetch_assoc($resultado_cat_post) ) {
+                                                echo '<option value="'.$row_cat_post['Nome_cat'].'">'.$row_cat_post['Nome_cat'].'</option>';
+                                            }
+                                        ?>
+                                    </select>
+                                    <!--<input type="text" name="Categoria" class="form-control" id="Categoria" placeholder="Digite a Descrição">-->
                                 </div>
                                 <div class="mb-3">
                                     <label for="Subcategoria" class="col-form-label">Subcategoria:</label>
@@ -275,7 +285,18 @@
                                 </div>
                                 <div class="mb-3">
                                     <label for="Categoria" class="col-form-label">Categoria:</label>
-                                    <input type="select" name="Categoria" class="form-control" id="editCategoria" placeholder="Digite a Categoria">
+                                    <select name="Categoria" id="editCategoria">
+                                        <option value="">Escolha a Categoria</option>
+                                        <?php
+                                        	$result_cat_post = "SELECT * FROM categoria ORDER BY Nome_cat";
+                                            $resultado_cat_post = mysqli_query($con, $result_cat_post);
+                                            while($row_cat_post = mysqli_fetch_assoc($resultado_cat_post) ) {
+                                                echo '<option value="'.$row_cat_post['Nome_cat'].'">'.$row_cat_post['Nome_cat'].'</option>';
+                                            }
+                                        ?>
+                                    </select>
+                                    <!--<label for="Categoria" class="col-form-label">Categoria:</label>
+                                    <input type="select" name="Categoria" class="form-control" id="editCategoria" placeholder="Digite a Categoria">-->
                                 </div>
                                 <div class="mb-3">
                                     <label for="Subcategoria" class="col-form-label">Subcategoria:</label>
@@ -324,7 +345,7 @@
         <script src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-        <script src="../javascript/dashboard.js"></script>
+        <script src="../javascript/dashboard2.js"></script>
         <script src="javascript/custom.js"></script>
     </body>
 </html>

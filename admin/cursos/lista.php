@@ -78,9 +78,11 @@
                                 $pdf1 <br> $pdf2
                             </td>
                             <td>
-                                <button id='$ID_curso' class='btn btn-outline-primary btn-sm' onclick='visInterno($ID_curso)'>Visualizar</button>
-                                <button id='$ID_curso' class='btn btn-outline-warning btn-sm' onclick='editInternoDados($ID_curso)'>Editar</button>
-                                <button id='$ID_curso' class='btn btn-outline-danger btn-sm' onclick='apagarInternoDados($ID_curso)'>Apagar</button>
+                                <center>
+                                    <button id='$ID_curso' class='btn btn-outline-primary btn-sm' onclick='visInterno($ID_curso)'>Visualizar</button><br><br>
+                                    <button id='$ID_curso' class='btn btn-outline-warning btn-sm' onclick='editInternoDados($ID_curso)'>Editar</button><br><br>
+                                    <button id='$ID_curso' class='btn btn-outline-danger btn-sm' onclick='apagarInternoDados($ID_curso)'>Apagar</button><br><br>
+                                </center>
                             </td>
                         </tr>";
         }

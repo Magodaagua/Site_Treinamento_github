@@ -72,7 +72,7 @@
     </head>
     <body>
         <header>
-            <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+            <nav class="navbar navbar-expand-md navbar-dark fixed-top" style="background-color: #483D8B">
                 <img class="navbar-brand" src="img/logo_copi.png" width="50px" height="60px"></img>
                 <a class="navbar-brand" href="menu.php">COPIMAQ</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
@@ -132,7 +132,7 @@
                     <div class="col-lg-4">
                     <img src="admin/logo/<?php echo $rows_categoria['id'];?>/<?php echo $rows_categoria['imagem'];?>" class="bd-placeholder-img rounded-square" width="140" height="140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 140x140" preserveAspectRatio="xMidYMid slice" focusable="false">
                         <h2><?php echo $rows_categoria['Nome_cat'];?></h2>
-                        <p><a class="btn btn-secondary" href="curso.php?Nome_cat=<?php echo $rows_categoria['Nome_cat'];?>">Clique para ver o site &raquo;</a></p>
+                        <p><a class="btn btn-primary" href="curso.php?Nome_cat=<?php echo $rows_categoria['Nome_cat'];?>">Clique para ver o site &raquo;</a></p>
                     </div><!-- /.col-lg-4 -->
                     <?php }?>    
                 </div><!-- /.row -->

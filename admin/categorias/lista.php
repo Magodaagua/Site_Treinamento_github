@@ -40,9 +40,11 @@
                                 $img <br> $img2
                             </td>
                             <td>
-                                <button id='$id' class='btn btn-outline-primary btn-sm' onclick='visCategoria($id)'>Visualizar</button>
-                                <button id='$id' class='btn btn-outline-warning btn-sm' onclick='editCategoriaDados($id)'>Editar</button>
-                                <button id='$id' class='btn btn-outline-danger btn-sm' onclick='apagarCategoriaDados($id)'>Apagar</button>
+                                <center>
+                                    <button id='$id' class='btn btn-outline-primary btn-sm' onclick='visCategoria($id)'>Visualizar</button>&nbsp;&nbsp;&nbsp;&nbsp;
+                                    <button id='$id' class='btn btn-outline-warning btn-sm' onclick='editCategoriaDados($id)'>Editar</button>&nbsp;&nbsp;&nbsp;&nbsp;
+                                    <button id='$id' class='btn btn-outline-danger btn-sm' onclick='apagarCategoriaDados($id)'>Apagar</button>&nbsp;&nbsp;&nbsp;&nbsp;
+                                </center>
                             </td>
                         </tr>";
         }

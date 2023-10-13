@@ -72,7 +72,7 @@
     </head>
     <body>
         <header>
-            <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+            <nav class="navbar navbar-expand-md navbar-dark fixed-top" style="background-color: #483D8B">
                 <img class="navbar-brand" src="img/logo_copi.png" width="50px" height="60px"></img>
                 <a class="navbar-brand" href="menu.php">COPIMAQ</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
@@ -133,7 +133,7 @@
                         <img src="admin/externo/<?php echo $rows_parceiro['ID_parceiro'];?>/<?php echo $rows_parceiro['imagem'];?>" class="bd-placeholder-img rounded-square" width="140" height="140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 140x140" preserveAspectRatio="xMidYMid slice" focusable="false">
                         <h2><?php echo $rows_parceiro['Nome'];?></h2>
                         <p><?php echo $rows_parceiro['Descricao'];?></p>
-                        <p><a class="btn btn-secondary" href="<?php echo $rows_parceiro['link'];?>">Clique para ver o site &raquo;</a></p>
+                        <p><a class="btn btn-primary" href="<?php echo $rows_parceiro['link'];?>">Clique para ver o site &raquo;</a></p>
                     </div><!-- /.col-lg-4 -->
                     <?php }?>    
                 </div><!-- /.row -->
@@ -160,7 +160,7 @@
                                 </li>
                                 <?php 
                                 //Apresentar a paginacao
-                                for($i = 1; $i < $num_pagina + 1; $i++){ ?>
+                                for($i = 1; $i < $num_pagina+1; $i++){ ?>
                                     <li class="page-item active">
                                         <a class="page-link" href="provas_externas.php?pagina=<?php echo $i; ?>"><?php echo $i; ?></a>
                                     </li>

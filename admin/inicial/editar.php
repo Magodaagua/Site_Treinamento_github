@@ -37,22 +37,54 @@
     */}else{
 
         $query_menu = "UPDATE menu SET ID_menu=:ID_menu, texto1=:texto1, texto2=:texto2, texto3=:texto3, titulo1=:titulo1, titulo2=:titulo2, titulo3=:titulo3, imagem1=:imagem1, imagem2=:imagem2, imagem3=:imagem3, carrosel1=:carrosel1, carrosel2=:carrosel2, carrosel3=:carrosel3 WHERE ID_menu=:ID_menu";
+        $imagem1 = $row_edit['imagem1'];
+        $imagem2 = $row_edit['imagem2'];
+        $imagem3 = $row_edit['imagem3'];
+        $carrosel1 = $row_edit['carrosel1'];
+        $carrosel2 = $row_edit['carrosel2'];
+        $carrosel3 = $row_edit['carrosel3'];
 
-        $edit_menu = $conn->prepare($query_menu);
-        $edit_menu ->bindParam(':ID_menu', $dados['ID_menu']);
-        $edit_menu ->bindParam(':texto1', $dados['texto1']);
-        $edit_menu ->bindParam(':texto2', $dados['texto2']);
-        $edit_menu ->bindParam(':texto3', $dados['texto3']);
-        $edit_menu ->bindParam(':titulo1', $dados['titulo1']);
-        $edit_menu ->bindParam(':titulo2', $dados['titulo2']);
-        $edit_menu ->bindParam(':titulo3', $dados['titulo3']);
-        $edit_menu ->bindParam(':imagem1', $arquivo['name'], PDO::PARAM_STR);
-        $edit_menu ->bindParam(':imagem2', $arquivo2['name'], PDO::PARAM_STR);
-        $edit_menu ->bindParam(':imagem3', $arquivo3['name'], PDO::PARAM_STR);
-        $edit_menu ->bindParam(':carrosel1', $arquivo4['name'], PDO::PARAM_STR);
-        $edit_menu ->bindParam(':carrosel2', $arquivo5['name'], PDO::PARAM_STR);
-        $edit_menu ->bindParam(':carrosel3', $arquivo6['name'], PDO::PARAM_STR);
-        $edit_menu ->execute();
+        if(($arquivo['name'] == '') or ($arquivo2['name'] == '') or ($arquivo3['name'] == '') or ($arquivo4['name'] == '') or ($arquivo5['name'] == '') or ($arquivo6['name'] == '')){
+           $arquivo['name'] = "$imagem1";
+           $arquivo2['name'] = "$imagem2";
+           $arquivo3['name'] = "$imagem3";
+           $arquivo4['name'] = "$carrosel1";
+           $arquivo5['name'] = "$carrosel2";
+           $arquivo6['name'] = "$carrosel3";
+
+           $edit_menu = $conn->prepare($query_menu);
+           $edit_menu ->bindParam(':ID_menu', $dados['ID_menu']);
+           $edit_menu ->bindParam(':texto1', $dados['texto1']);
+           $edit_menu ->bindParam(':texto2', $dados['texto2']);
+           $edit_menu ->bindParam(':texto3', $dados['texto3']);
+           $edit_menu ->bindParam(':titulo1', $dados['titulo1']);
+           $edit_menu ->bindParam(':titulo2', $dados['titulo2']);
+           $edit_menu ->bindParam(':titulo3', $dados['titulo3']);
+           $edit_menu ->bindParam(':imagem1', $imagem1);
+           $edit_menu ->bindParam(':imagem2', $imagem2);
+           $edit_menu ->bindParam(':imagem3', $imagem3);
+           $edit_menu ->bindParam(':carrosel1', $carrosel1);
+           $edit_menu ->bindParam(':carrosel2', $carrosel2);
+           $edit_menu ->bindParam(':carrosel3', $carrosel3);
+           $edit_menu ->execute();
+
+        }else{
+            $edit_menu = $conn->prepare($query_menu);
+            $edit_menu ->bindParam(':ID_menu', $dados['ID_menu']);
+            $edit_menu ->bindParam(':texto1', $dados['texto1']);
+            $edit_menu ->bindParam(':texto2', $dados['texto2']);
+            $edit_menu ->bindParam(':texto3', $dados['texto3']);
+            $edit_menu ->bindParam(':titulo1', $dados['titulo1']);
+            $edit_menu ->bindParam(':titulo2', $dados['titulo2']);
+            $edit_menu ->bindParam(':titulo3', $dados['titulo3']);
+            $edit_menu ->bindParam(':imagem1', $arquivo['name'], PDO::PARAM_STR);
+            $edit_menu ->bindParam(':imagem2', $arquivo2['name'], PDO::PARAM_STR);
+            $edit_menu ->bindParam(':imagem3', $arquivo3['name'], PDO::PARAM_STR);
+            $edit_menu ->bindParam(':carrosel1', $arquivo4['name'], PDO::PARAM_STR);
+            $edit_menu ->bindParam(':carrosel2', $arquivo5['name'], PDO::PARAM_STR);
+            $edit_menu ->bindParam(':carrosel3', $arquivo6['name'], PDO::PARAM_STR);
+            $edit_menu ->execute();
+        }
 
         if($edit_menu->rowCount()){
 
