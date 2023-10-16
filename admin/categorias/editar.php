@@ -1,11 +1,11 @@
 <?php
-    include_once "conexao.php";
+    include_once "../conexao.php";
 
     $dados = filter_input_array(INPUT_POST, FILTER_DEFAULT);
 
     $id = $dados['id'];
 
-    $result_usuario = "SELECT id, imagem FROM categoria WHERE id = '$id'";
+    $result_usuario = "SELECT id, imagem, tipo FROM categoria WHERE id = '$id'";
     $resultado_usuario = mysqli_query($con, $result_usuario);
     $row_edit =  mysqli_fetch_assoc($resultado_usuario);
     $int1 = $row_edit['imagem'];
@@ -17,10 +17,10 @@
         $retorna = ['erro' => true, 'msg' => "<div class='alert alert-danger' role='alert'>Erro: Erro tente mais tarde!</div>"];
     } elseif (empty($dados['Nome_cat'])) {
         $retorna = ['erro' => true, 'msg' => "<div class='alert alert-danger' role='alert'>Erro: Necessário preencher o campo nome!</div>"];
-    /*} elseif (empty($dados['imagem'])) {
+    } elseif (empty($dados['tipo'])) {
         $retorna = ['erro' => true, 'msg' => "<div class='alert alert-danger' role='alert'>Erro: Necessário preencher o campo Imagem!</div>"];
-    */}else{
-        $query_categoria= "UPDATE categoria SET id=:id, Nome_cat=:Nome_cat, imagem=:imagem WHERE id=:id";
+    }else{
+        $query_categoria= "UPDATE categoria SET id=:id, Nome_cat=:Nome_cat, imagem=:imagem, tipo=:tipo WHERE id=:id";
         $imagem = $row_edit['imagem'];
 
         if($arquivo['name'] == ''){
@@ -30,6 +30,7 @@
             $edit_categoria ->bindParam(':id', $dados['id']);
             $edit_categoria ->bindParam(':Nome_cat', $dados['Nome_cat']);
             $edit_categoria ->bindParam(':imagem', $imagem);
+            $edit_categoria ->bindParam(':tipo', $tipo);
             $edit_categoria ->execute();
 
         }else{
@@ -37,6 +38,7 @@
             $edit_categoria ->bindParam(':id', $dados['id']);
             $edit_categoria ->bindParam(':Nome_cat', $dados['Nome_cat']);
             $edit_categoria ->bindParam(':imagem', $arquivo['name'], PDO::PARAM_STR);
+            $edit_categoria ->bindParam(':tipo', $dados['tipo']);
             $edit_categoria ->execute();
         }
     

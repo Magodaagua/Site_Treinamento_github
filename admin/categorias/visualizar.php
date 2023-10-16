@@ -1,11 +1,11 @@
 <?php
-include_once "conexao.php";
+include_once "../conexao.php";
 
 $id = filter_input(INPUT_GET, "id", FILTER_SANITIZE_NUMBER_INT);
 
 if (!empty($id)) {
 
-    $query_categoria = "SELECT id, Nome_cat, imagem FROM categoria WHERE id=:id LIMIT 1";
+    $query_categoria = "SELECT id, Nome_cat, imagem, tipo FROM categoria WHERE id=:id LIMIT 1";
     $result_categoria = $conn->prepare($query_categoria);
     $result_categoria->bindParam(':id', $id);
     $result_categoria->execute();

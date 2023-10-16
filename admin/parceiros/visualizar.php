@@ -1,5 +1,5 @@
 <?php
-include_once "conexao.php";
+include_once "../conexao.php";
 
 $ID_parceiro = filter_input(INPUT_GET, "ID_parceiro", FILTER_SANITIZE_NUMBER_INT);
 

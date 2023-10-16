@@ -131,7 +131,7 @@
                             <a class="nav-link" href="menu.php">Menu</a>
                         </li>
                         <li class="nav-item active">
-                            <a class="nav-link" href="interno.php">Treinamentos Internos</a>
+                            <a class="nav-link" href="interno.php?Nome_cat=<?php echo $row_usuario['Cargo']?>">Treinamentos Internos</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="provas_externas.php">Treinamentos Externos</a>

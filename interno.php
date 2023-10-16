@@ -16,6 +16,8 @@
         //Verificar se está sendo passado na URL a página atual, senao é atribuido a pagina 
         $pagina = (isset($_GET['pagina']))? $_GET['pagina'] : 1;
 
+        $categoria = $_GET['Nome_cat'];
+
         //Contar o total de cursos
         $total_cursos = mysqli_num_rows($resultado_categoria);
 
@@ -29,7 +31,7 @@
         $inicio = ($quantidade_pg*$pagina)-$quantidade_pg;
 
         //Selecionar os cursos a serem apresentado na página
-        $result_categoria = "SELECT * FROM categoria limit $inicio, $quantidade_pg";
+        $result_categoria = "SELECT * FROM categoria WHERE Nome_cat = '$categoria' OR tipo = 'Pública' limit $inicio, $quantidade_pg";
         $resultado_categoria = mysqli_query($conn, $result_categoria);
         $total_cursos = mysqli_num_rows($resultado_categoria);
 
@@ -84,7 +86,7 @@
                         <a class="nav-link" href="menu.php">Menu</a>
                     </li>
                     <li class="nav-item active">
-                        <a class="nav-link" href="interno.php">Treinamentos Internos</a>
+                        <a class="nav-link" href="interno.php?Nome_cat=<?php echo $row_usuario['Cargo']?>">Treinamentos Internos</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="provas_externas.php">Treinamentos Externos</a>

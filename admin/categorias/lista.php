@@ -1,5 +1,5 @@
 <?php
-    include_once "conexao.php";
+    include_once "../conexao.php";
 
     $pagina = filter_input(INPUT_GET, "pagina", FILTER_SANITIZE_NUMBER_INT);
 
@@ -8,7 +8,7 @@
         $qnt_result_pg = 10;
         $inicio = ($pagina * $qnt_result_pg) - $qnt_result_pg;
 
-        $query_categoria = "SELECT id, Nome_cat, imagem FROM categoria ORDER BY id DESC LIMIT $inicio, $qnt_result_pg ";
+        $query_categoria = "SELECT id, Nome_cat, imagem, tipo FROM categoria ORDER BY id DESC LIMIT $inicio, $qnt_result_pg ";
         $result_categoria = $conn->prepare($query_categoria);
         $result_categoria->execute();
 
@@ -19,6 +19,7 @@
                                 <th>ID</th>
                                 <th>Nome</th>
                                 <th>Imagem</th>
+                                <th>Tipo</th>
                                 <th>Ação</th>
                             </tr>
                         </thead>
@@ -39,6 +40,7 @@
                             <td>
                                 $img <br> $img2
                             </td>
+                            <td>$tipo</td>
                             <td>
                                 <center>
                                     <button id='$id' class='btn btn-outline-primary btn-sm' onclick='visCategoria($id)'>Visualizar</button>&nbsp;&nbsp;&nbsp;&nbsp;

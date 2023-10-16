@@ -1,5 +1,5 @@
 <?php
-    include_once "conexao.php";
+    include_once "../conexao.php";
     $dados = filter_input_array(INPUT_POST, FILTER_DEFAULT);
     $result_usuario = "SELECT ID_menu, imagem1, imagem2, imagem3, carrosel1, carrosel2, carrosel3 FROM menu";
     $resultado_usuario = mysqli_query($con, $result_usuario);

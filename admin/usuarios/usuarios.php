@@ -3,7 +3,7 @@
     <head>
         <?php
             session_start();
-            include_once "conexao.php";
+            include_once "../conexao.php";
         ?>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -182,8 +182,22 @@
                                 </div>
                                 <div class="mb-3">
                                     <label for="Cargo" class="col-form-label">Cargo:</label>
-                                    <input type="text" name="Cargo" class="form-control" id="Cargo" placeholder="Digite o Cargo">
+                                    <select name="Cargo" id="Cargo">
+                                        <option value="">Escolha o Cargo</option>
+                                        <?php
+                                        	$result_cat_post = "SELECT * FROM categoria ORDER BY Nome_cat";
+                                            $resultado_cat_post = mysqli_query($con, $result_cat_post);
+                                            while($row_cat_post = mysqli_fetch_assoc($resultado_cat_post) ) {
+                                                echo '<option value="'.$row_cat_post['Nome_cat'].'">'.$row_cat_post['Nome_cat'].'</option>';
+                                            }
+                                        ?>
+                                    </select>
+                                    <!--<input type="text" name="Categoria" class="form-control" id="Categoria" placeholder="Digite a Descrição">-->
                                 </div>
+                                <!--<div class="mb-3">
+                                    <label for="Cargo" class="col-form-label">Cargo:</label>
+                                    <input type="text" name="Cargo" class="form-control" id="Cargo" placeholder="Digite o Cargo">
+                                </div>-->
                                 <div class="mb-3">
                                     <label for="email" class="col-form-label">E-mail:</label>
                                     <input type="text" name="email" class="form-control" id="email" placeholder="Digite o E-mail">
@@ -262,8 +276,23 @@
                                 </div>
                                 <div class="mb-3">
                                     <label for="Cargo" class="col-form-label">Cargo:</label>
-                                    <input type="text" name="Cargo" class="form-control" id="editcargo" placeholder="Digite o Cargo">
+                                    <select name="Cargo" id="editcargo">
+                                        <option value="">Escolha o Cargo</option>
+                                        <?php
+                                        	$result_cat_post = "SELECT * FROM categoria ORDER BY Nome_cat";
+                                            $resultado_cat_post = mysqli_query($con, $result_cat_post);
+                                            while($row_cat_post = mysqli_fetch_assoc($resultado_cat_post) ) {
+                                                echo '<option value="'.$row_cat_post['Nome_cat'].'">'.$row_cat_post['Nome_cat'].'</option>';
+                                            }
+                                        ?>
+                                    </select>
+                                    <!--<label for="Categoria" class="col-form-label">Categoria:</label>
+                                    <input type="select" name="Categoria" class="form-control" id="editCategoria" placeholder="Digite a Categoria">-->
                                 </div>
+                                <!--<div class="mb-3">
+                                    <label for="Cargo" class="col-form-label">Cargo:</label>
+                                    <input type="text" name="Cargo" class="form-control" id="editcargo" placeholder="Digite o Cargo">
+                                </div>-->
                                 <div class="mb-3">
                                     <label for="email" class="col-form-label">E-mail:</label>
                                     <input type="text" name="email" class="form-control" id="editemail" placeholder="Digite o Email">

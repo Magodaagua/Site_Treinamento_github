@@ -3,7 +3,7 @@
     <head>
         <?php
             session_start();
-            include_once "conexao.php";
+            include_once "../conexao.php";
         ?>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -171,6 +171,10 @@
                                 <div class="mb-3">
                                     <label for="Nome_cat" class="col-form-label">Nome:</label>
                                     <input type="text" name="Nome_cat" class="form-control" id="Nome_cat" placeholder="Digite o nome completo">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="tipo" class="col-form-label">Tipo:</label>
+                                    <input type="text" name="tipo" class="form-control" id="tipo">
                                 </div>
                                 <div class="mb-3">
                                     <label for="imagem" class="col-form-label">Imagem:</label>

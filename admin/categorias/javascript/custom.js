@@ -56,6 +56,7 @@ async function visCategoria(id) {
         document.getElementById("visID").innerHTML = resposta['dados'].id;
         document.getElementById("visNome").innerHTML = resposta['dados'].Nome_cat;
         document.getElementById("visimagem").innerHTML = resposta['dados'].imagem;
+        document.getElementById("vistipo").innerHTML = resposta['dados'].tipo;
     }
 
 }
@@ -74,7 +75,7 @@ async function editCategoriaDados(id){
         editModal.show();
         document.getElementById("editId").value  = resposta['dados'].id;
         document.getElementById("editNome").value  = resposta['dados'].Nome_cat;
-        //document.getElementById("editDescricao").value  = resposta['dados'].Descricao;
+        document.getElementById("editTipo").value  = resposta['dados'].tipo;
         //document.getElementById("editlink").value  = resposta['dados'].link;
         //document.getElementById("editimagem").value  = resposta['dados'].imagem;
     }
