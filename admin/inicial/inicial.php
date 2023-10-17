@@ -162,8 +162,9 @@
                         <div class="modal-body">
                             <span id="msgAlertaErroVis"></span>
                             <dl class="row">
-                            <dt class="col-sm-3">ID :</dt>
-                                <dd class="col-sm-9"><span id="visID_menu"></span></dd>
+                                <!--<dt class="col-sm-3">ID :</dt>
+                                <dd class="col-sm-9"><span id="visID_menu"></span></dd>-->
+                                <input type="hidden" name="visID_menu" id="visID_menu">
 
                                 <dt class="col-sm-3">Texto 1:</dt>
                                 <dd class="col-sm-9"><span id="vistexto1"></span></dd>

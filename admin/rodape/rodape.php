@@ -161,8 +161,9 @@
                         <div class="modal-body">
                             <span id="msgAlertaErroVis"></span>
                             <dl class="row">
-                                <dt class="col-sm-3">ID :</dt>
-                                <dd class="col-sm-9"><span id="visID_rodape"></span></dd>
+                                <!--<dt class="col-sm-3">ID :</dt>
+                                <dd class="col-sm-9"><span id="visID_rodape"></span></dd>-->
+                                <input type="hidden" name="visID_rodape" id="visID_rodape">
 
                                 <dt class="col-sm-3">Política:</dt>
                                 <dd class="col-sm-9"><span id="vispolitica"></span></dd>

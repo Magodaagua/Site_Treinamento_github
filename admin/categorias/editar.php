@@ -30,7 +30,7 @@
             $edit_categoria ->bindParam(':id', $dados['id']);
             $edit_categoria ->bindParam(':Nome_cat', $dados['Nome_cat']);
             $edit_categoria ->bindParam(':imagem', $imagem);
-            $edit_categoria ->bindParam(':tipo', $tipo);
+            $edit_categoria ->bindParam(':tipo', $dados['tipo']);
             $edit_categoria ->execute();
 
         }else{

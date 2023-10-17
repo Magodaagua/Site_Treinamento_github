@@ -172,9 +172,22 @@
                                     <label for="Nome_cat" class="col-form-label">Nome:</label>
                                     <input type="text" name="Nome_cat" class="form-control" id="Nome_cat" placeholder="Digite o nome completo">
                                 </div>
-                                <div class="mb-3">
+                                <!--<div class="mb-3">
                                     <label for="tipo" class="col-form-label">Tipo:</label>
                                     <input type="text" name="tipo" class="form-control" id="tipo">
+                                </div>-->
+                                <div class="mb-3">
+                                    <label for="tipo" class="col-form-label">Tipo:</label>
+                                    <select name="tipo" id="tipo">
+                                        <option value="">Escolha o Tipo</option>
+                                        <?php
+                                        	$result_cat_post = "SELECT * FROM escolha ORDER BY tipo";
+                                            $resultado_cat_post = mysqli_query($con, $result_cat_post);
+                                            while($row_cat_post = mysqli_fetch_assoc($resultado_cat_post) ) {
+                                                echo '<option value="'.$row_cat_post['tipo'].'">'.$row_cat_post['tipo'].'</option>';
+                                            }
+                                        ?>
+                                    </select>
                                 </div>
                                 <div class="mb-3">
                                     <label for="imagem" class="col-form-label">Imagem:</label>
@@ -206,6 +219,9 @@
                                 <dt class="col-sm-3">Nome</dt>
                                 <dd class="col-sm-9"><span id="visNome"></span></dd>
 
+                                <dt class="col-sm-3">Tipo</dt>
+                                <dd class="col-sm-9"><span id="vistipo"></span></dd>
+
                                 <dt class="col-sm-3">Imagem</dt>
                                 <dd class="col-sm-9"><span id="visimagem"></span></dd>
 
@@ -228,6 +244,23 @@
                                 <div class="mb-3">
                                     <label for="Nome_cat" class="col-form-label">Nome:</label>
                                     <input type="text" name="Nome_cat" class="form-control" id="editNome" placeholder="Digite o nome completo">
+                                </div>
+                                <!--<div class="mb-3">
+                                    <label for="tipo" class="col-form-label">Tipo:</label>
+                                    <input type="text" name="tipo" class="form-control" id="editTipo" placeholder="Digite o nome completo">
+                                </div>-->
+                                <div class="mb-3">
+                                    <label for="tipo" class="col-form-label">Tipo:</label>
+                                    <select name="tipo" id="editTipo">
+                                        <option value="">Escolha o Tipo</option>
+                                        <?php
+                                        	$result_cat_post = "SELECT * FROM escolha ORDER BY tipo";
+                                            $resultado_cat_post = mysqli_query($con, $result_cat_post);
+                                            while($row_cat_post = mysqli_fetch_assoc($resultado_cat_post) ) {
+                                                echo '<option value="'.$row_cat_post['tipo'].'">'.$row_cat_post['tipo'].'</option>';
+                                            }
+                                        ?>
+                                    </select>
                                 </div>
                                 <div class="mb-3">
                                     <label for="imagem" class="col-form-label">Imagem:</label>

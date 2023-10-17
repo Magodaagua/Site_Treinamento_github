@@ -7,14 +7,15 @@
 
     if (empty($dados['Nome_cat'])) {
         $retorna = ['erro' => true, 'msg' => "<div class='alert alert-danger' role='alert'>Erro: Necessário preencher o campo nome!</div>"];
-    /*} elseif (empty($dados['imagem'])) {
+    } elseif (empty($dados['tipo'])) {
         $retorna = ['erro' => true, 'msg' => "<div class='alert alert-danger' role='alert'>Erro: Necessário preencher o campo imagem!</div>"];
-    */}else{
-        $query_categoria = "INSERT INTO categoria (Nome_cat, imagem) VALUES (:Nome_cat, :imagem)";
+    }else{
+        $query_categoria = "INSERT INTO categoria (Nome_cat, imagem, tipo) VALUES (:Nome_cat, :imagem, :tipo)";
         $arquivo = $_FILES['imagem'];
         
         $cad_categoria = $conn->prepare($query_categoria);
         $cad_categoria ->bindParam(':Nome_cat', $dados['Nome_cat']);
+        $cad_categoria ->bindParam(':tipo', $dados['tipo']);
         $cad_categoria ->bindParam(':imagem', $arquivo['name'], PDO::PARAM_STR);
         $cad_categoria ->execute();
 

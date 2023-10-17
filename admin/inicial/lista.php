@@ -16,7 +16,7 @@
                     <table class='table table-striped table-bordered'>
                         <thead>
                             <tr>
-                                <th>ID_menu</th>
+                                <!--<th>ID_menu</th>-->
                                 <th>Texto 1</th>
                                 <th>Texto 2</th>
                                 <th>Texto 3</th>
@@ -94,7 +94,7 @@
             }
             
             $dados .= "<tr>
-                            <td>$ID_menu</td>
+                            <!--<td>$ID_menu</td>-->
                             <td>$texto1</td>
                             <td>$texto2</td>
                             <td>$texto3</td>
