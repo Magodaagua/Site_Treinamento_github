@@ -122,7 +122,10 @@
         <!--fim modal para sair-->
         </header>
         <main role="main">
-            <br><br><br><br>
+            <br><br>
+            <div class="container my-5">
+                <input type="button" class="btn btn-primary" value="Voltar" onClick="history.go(-1)"> 
+            </div>
             <div class="container">
                 <h1> <center>Treinamento de <?php echo $categoria ?></center></h1>
             </div>

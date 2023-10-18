@@ -123,10 +123,14 @@
             <!--fim modal para sair-->
         </header>
         <main role="main">
-            <br><br><br>
+        <br><br><br><br>
             <!-- Marketing messaging and featurettes
             ================================================== -->
             <!-- Wrap the rest of the page in another container to center all the content. -->
+            <div class="container">
+                <h1> <center>Treinamento Interno </center></h1>
+            </div>
+            <br><br><br><br>
             <div class="container marketing">
                 <!-- Three columns of text below the carousel -->
                 <div class="row">

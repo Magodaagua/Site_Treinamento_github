@@ -134,11 +134,23 @@
               <td><?php echo $row_usuario['senha']?></td>
             </tr>
           </table>
+
+          <script>                        
+            function show() {
+              var senha = document.getElementById("inputPassword3");
+              if (senha.type === "password") {
+                senha.type = "text";
+              } else {
+                senha.type = "password";
+              }
+            }
+          </script>
           <br>
           <div class="container theme-showcase" role="main">
             <form method="POST" action="alteracao.php">
               <label for="InputPassword3">Password:&nbsp;&nbsp;</label>
-              <input type="password" name="password" id="inputPassword3" placeholder="Password">&nbsp;&nbsp;
+              <input type="password" id="inputPassword3" placeholder="Preencha o campo">
+              <input type="checkbox" onclick="show()">&nbsp;&nbsp;
               <input type="hidden" name="id" value="<?php echo $row_usuario['ID_usuario']; ?>">
               <button type="submit" class="btn btn-danger">Alterar</button>  
             </form>

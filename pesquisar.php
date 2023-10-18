@@ -165,7 +165,7 @@
                     <div class="container">
 			            <div class="row">
                             <?php while($rows_cursos = mysqli_fetch_assoc($resultado_cursos)) { 
-                                    if($rows_cursos['Categoria'] != $categoria){
+                                    if($rows_cursos['Categoria']){
                                         echo "<center>Curso não econtrado</center><br><br><br>";
                                     }else{
                             ?>
