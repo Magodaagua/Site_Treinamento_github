@@ -18,8 +18,14 @@
         $result_curso = "SELECT * FROM curso WHERE Categoria = '$categoria'";
         $resultado_curso = mysqli_query($conn, $result_curso);
 
+        // Contar o total de cursos na categoria
+        $result_contagem = "SELECT COUNT(*) AS total FROM categoria WHERE Nome_cat = '$categoria'";
+        $contagem_resultado = mysqli_query($conn, $result_contagem);
+        $contagem = mysqli_fetch_assoc($contagem_resultado);
+        $total_cursos = $contagem['total'];
+
         //Contar o total de cursos
-        $total_cursos = mysqli_num_rows($resultado_curso);
+        //$total_cursos = mysqli_num_rows($resultado_curso);
 
         //Seta a quantidade de cursos por pagina
         $quantidade_pg = 9;
@@ -65,6 +71,12 @@
             .bd-placeholder-img-lg {
             font-size: 3.5rem;
             }
+
+        .page-item.active {
+            background-color: #007bff; /* Cor azul de destaque */
+            color: #fff; /* Cor do texto em destaque */
+        }
+
         }
         </style>
         <!-- Custom styles for this template -->
@@ -124,7 +136,8 @@
         <main role="main">
             <br><br>
             <div class="container my-5">
-                <input type="button" class="btn btn-primary" value="Voltar" onClick="history.go(-1)"> 
+                <!--<button class="btn btn-primary" value="Voltar" href="interno.php?Nome_cat=<?php //echo $categoria;?>">-->
+                <!--<input type="button" class="btn btn-primary" value="Voltar" onClick="history.go(-1)">-->
             </div>
             <div class="container">
                 <h1> <center>Treinamento de <?php echo $categoria ?></center></h1>
@@ -201,11 +214,18 @@
                                 </li>
                                 <?php 
                                 //Apresentar a paginacao
-                                for($i = 1; $i < $num_pagina+1; $i++){ ?>
-                                    <li class="page-item active">
-                                        <a class="page-link" href="curso.php?Nome_cat=<?php echo $categoria?>&pagina=<?php echo $i; ?>"><?php echo $i; ?></a>
-                                    </li>
-                                <?php } ?>
+                                //for($i = 1; $i < $num_pagina + 1; $i++){ ?>
+                                    <!--<li class="page-item active">
+                                        <a class="page-link" href="interno.php?pagina=<?php //echo $i; ?>/<?php //echo $rows_categoria['Nome_cat'];?>"><?php //echo $i; ?></a>
+                                    </li>-->
+
+                                <?php for ($i = 1; $i <= $num_pagina; $i++) : ?>
+                                <li class="page-item <?php echo ($i == $pagina) ? 'active' : ''; ?>">
+                                    <a class="page-link" href="curso.php?pagina=<?php echo $i; ?>&Nome_cat=<?php echo $categoria;?>"><?php echo $i; ?></a>
+                                </li>
+                                <?php endfor; ?>
+
+                                <?php //} ?>
                                 <li class="page-item">
                                     <?php
                                     if($pagina_posterior <= $num_pagina){ ?>
