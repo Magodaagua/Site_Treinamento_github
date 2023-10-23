@@ -191,8 +191,12 @@
                                 //}else{
                                 while($rows_cursos = mysqli_fetch_assoc($resultado_cursos)) { 
                                     if($rows_cursos['Categoria'] != $categoria or $valor_pesquisar == ''){
-                                        if($teste > 0){
+                                        if($teste > 0 or $valor_pesquisar != ''){
                                             break;
+                                            if($valor_pesquisar != mysqli_num_rows($resultado_cursos)){
+                                                echo "<center>Curso não econtrado</center><br><br><br>";
+                                                break;
+                                            }
                                         }
                                         else{
                                             echo "<center>Curso não econtrado</center><br><br><br>";

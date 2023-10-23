@@ -47,6 +47,23 @@
           font-size: 3.5rem;
         }
       }
+
+      #icon{
+        position: absolute;
+        top: 105%;
+        right: 559px;
+        transform: translateY(-50%);
+        background: url('img/show.png');
+        background-size: cover;
+        width: 30px;
+        height: 30px;
+        cursor: pointer;
+      }
+
+      #icon.hide{
+        background: url('img/hide.png');
+        background-size: cover;
+      }
     </style>
 
     <!-- Custom styles for this template -->
@@ -135,7 +152,7 @@
             </tr>
           </table>
 
-          <script>                        
+          <!--<script>                        
             function show() {
               var senha = document.getElementById("inputPassword3");
               if (senha.type === "password") {
@@ -144,13 +161,14 @@
                 senha.type = "password";
               }
             }
-          </script>
+          </script>-->
           <br>
           <div class="container theme-showcase" role="main">
             <form method="POST" action="alteracao.php">
-              <label for="InputPassword3">Password:&nbsp;&nbsp;</label>
+              <label for="InputPassword3">Password:&nbsp;</label>
               <input type="password" id="inputPassword3" placeholder="Preencha o campo">
-              <input type="checkbox" onclick="show()">&nbsp;&nbsp;
+              <div id="icon" onclick="showHide()"></div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              <!--<input type="checkbox" onclick="show()">&nbsp;&nbsp;-->
               <input type="hidden" name="id" value="<?php echo $row_usuario['ID_usuario']; ?>">
               <button type="submit" class="btn btn-danger">Alterar</button>  
             </form>
@@ -191,6 +209,7 @@
     <script>window.jQuery || document.write('<script src="javascript/jquery.slim.min.js"><\/script>')</script><script src="javascript/bootstrap.bundle.min.js"></script>  
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <!--<script src="javascript/bootstrap.min.js"></script>-->
+    <script src="javascript/senha.js"></script>
     <script src="javascript/bootstrap.bundle.min.js"></script>
   </body>
 </html>
