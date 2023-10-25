@@ -1,13 +1,12 @@
-const password = document.getElementById('inputPassword3');
-const icon = document.getElementById('icon');
+function mostrarSenha(){
+    var inputPass = document.getElementById('inputPassword3');
+    var btnShowPass = document.getElementById('btn-senha');
 
-function showHide(){
-    if(password.type === 'password'){
-        password.setAttribute('type', 'text');
-        icon.classList.add('hide');
-    }
-    else{
-        password.setAttribute('type', 'password');
-        icon.classList.remove('hide');
+    if(inputPass.type === 'password'){
+        inputPass.setAttribute('type', 'text');
+        btnShowPass.classList.replace('bi-eye-fill', 'bi-eye-slash-fill');
+    }else{
+        inputPass.setAttribute('type', 'password');
+        btnShowPass.classList.replace('bi-eye-slash-fill', 'bi-eye-fill');
     }
 }

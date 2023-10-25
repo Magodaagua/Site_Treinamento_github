@@ -18,6 +18,7 @@
     <title>Site de Treinamento - usuário</title>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
     <link rel="canonical" href="https://getbootstrap.com/docs/4.6/examples/carousel/">
 
     <!-- Bootstrap core CSS -->
@@ -48,21 +49,21 @@
         }
       }
 
-      #icon{
-        position: absolute;
-        top: 105%;
-        right: 559px;
-        transform: translateY(-50%);
-        background: url('img/show.png');
-        background-size: cover;
-        width: 30px;
-        height: 30px;
-        cursor: pointer;
+      .senha-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-right: 10px;
       }
 
-      #icon.hide{
-        background: url('img/hide.png');
-        background-size: cover;
+      .senha-container .bi {
+        cursor: pointer;
+        margin-left: 10px;
+        margin-right: 10px;
+      } 
+
+      .senha-container .bi:hover {
+        color: #007bff; /* Cor do link do Bootstrap, você pode personalizar conforme desejado */
       }
     </style>
 
@@ -151,45 +152,17 @@
               <td><?php echo $row_usuario['senha']?></td>
             </tr>
           </table>
-
-          <!--<script>                        
-            function show() {
-              var senha = document.getElementById("inputPassword3");
-              if (senha.type === "password") {
-                senha.type = "text";
-              } else {
-                senha.type = "password";
-              }
-            }
-          </script>-->
           <br>
-          <div class="container theme-showcase" role="main">
+          <div role="main">
             <form method="POST" action="alteracao.php">
-              <label for="InputPassword3">Password:&nbsp;</label>
-              <input type="password" id="inputPassword3" placeholder="Preencha o campo">
-              <div id="icon" onclick="showHide()"></div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-              <!--<input type="checkbox" onclick="show()">&nbsp;&nbsp;-->
+            <div class="senha-container">
+              <label for="inputPassword3">Password:</label>&nbsp;&nbsp;
+              <input type="password" id="inputPassword3" placeholder="Preencha o campo" required>
+              <i class="bi bi-eye-fill" id="btn-senha" onclick="mostrarSenha()"></i>
               <input type="hidden" name="id" value="<?php echo $row_usuario['ID_usuario']; ?>">
               <button type="submit" class="btn btn-danger">Alterar</button>  
+            </div>
             </form>
-
-<!--
-            <h1>Alterar senha</h1>
-            <form  method="POST" action="alteracao.php" display="inline-block">
-              <div class="form-group">
-                <label for="InputPassword3" class="col-sm-2 control-label">Password</label>
-                <div class="col-sm-10">
-                  <input type="password" name="password" class="form-control" id="inputPassword3" placeholder="Password">
-                </div>
-              </div>
-              <input type="hidden" name="id" value="<?php echo $row_usuario['ID_usuario']; ?>">
-              <div class="form-group">
-                <div class="col-sm-offset-2 col-sm-10">
-                  <button type="submit" class="btn btn-danger">Alterar</button>
-                </div>  
-              </div>
-            </form>
-    -->
           </div>
         </center>
       </div>

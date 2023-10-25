@@ -11,48 +11,48 @@
     while($row_usuario = mysqli_fetch_assoc($resultado_usuario)){
         $row_usuario['ID_usuario']."<br>";		
         $row_usuario['senha']."<br>";
-    //Verificar se está sendo passado na URL a página atual, senao é atribuido a pagina 
-    $pagina = (isset($_GET['pagina']))? $_GET['pagina'] : 1;
+        //Verificar se está sendo passado na URL a página atual, senao é atribuido a pagina 
+        $pagina = (isset($_GET['pagina']))? $_GET['pagina'] : 1;
 
-    if(!isset($_GET['pesquisar'])){
-        header("Location: #");
-    }else{
-        //$categoria = $_GET['Nome_cat'];
-        $valor_pesquisar = $_GET['pesquisar'];
-        $categoria = $_GET['categoria'];
-    }
+        if(!isset($_GET['pesquisar'])){
+            header("Location: #");
+        }else{
+            $valor_pesquisar = $_GET['pesquisar'];
+            $categoria = $_GET['categoria'];
+        }
 
-    //Selecionar todos os cursos da tabela
-    $result_curso = "SELECT * FROM curso WHERE Nome LIKE '%$valor_pesquisar%'";
-    $resultado_curso = mysqli_query($conn, $result_curso);
+        //Selecionar todos os cursos da tabela
+        $result_curso = "SELECT * FROM curso WHERE Nome LIKE '%$valor_pesquisar%'";
+        $resultado_curso = mysqli_query($conn, $result_curso);
 
-    // Inicialize a variável de teste
-    $teste = 0;
+        // Contar o total de cursos na categoria
+        $result_contagem = "SELECT COUNT(*) AS total FROM categoria WHERE Nome_cat = '$categoria'";
+        $contagem_resultado = mysqli_query($conn, $result_contagem);
+        $contagem = mysqli_fetch_assoc($contagem_resultado);
+        $total_cursos = $contagem['total'];
 
-    // Verifica se há cursos correspondentes à pesquisa
-    if($total_cursos > 0) {
-        $teste = 1;
-    }
+        //Seta a quantidade de cursos por pagina
+        $quantidade_pg = 6;
 
-    // Contar o total de cursos na categoria
-    $result_contagem = "SELECT COUNT(*) AS total FROM categoria WHERE Nome_cat = '$categoria'";
-    $contagem_resultado = mysqli_query($conn, $result_contagem);
-    $contagem = mysqli_fetch_assoc($contagem_resultado);
-    $total_cursos = $contagem['total'];
+        //calcular o número de pagina necessárias para apresentar os cursos
+        $num_pagina = ceil($total_cursos/$quantidade_pg);
 
-    //Seta a quantidade de cursos por pagina
-    $quantidade_pg = 6;
+        //Calcular o inicio da visualizacao
+        $inicio = ($quantidade_pg*$pagina)-$quantidade_pg;
 
-    //calcular o número de pagina necessárias para apresentar os cursos
-    $num_pagina = ceil($total_cursos/$quantidade_pg);
+        //Selecionar os cursos a serem apresentados na página
+        $result_cursos = "SELECT * FROM curso WHERE Nome LIKE '%$valor_pesquisar%' limit $inicio, $quantidade_pg";
+        $resultado_cursos = mysqli_query($conn, $result_cursos);
+        $total_cursos = mysqli_num_rows($resultado_cursos);
 
-    //Calcular o inicio da visualizacao
-    $inicio = ($quantidade_pg*$pagina)-$quantidade_pg;
+        // Inicialize a variável de teste
+        $teste = 0;
 
-    //Selecionar os cursos a serem apresentado na página
-    $result_cursos = "SELECT * FROM curso WHERE Nome LIKE '%$valor_pesquisar%'  limit $inicio, $quantidade_pg";
-    $resultado_cursos = mysqli_query($conn, $result_cursos);
-    $total_cursos = mysqli_num_rows($resultado_cursos);
+        // Verifica se há cursos correspondentes à pesquisa
+        if(mysqli_num_rows($resultado_curso) > 0) {
+            $teste = 1;
+        }
+        
 ?>
 <!doctype html>
 <html lang="pt-br">
@@ -182,28 +182,22 @@
                     <div class="container">
 			            <div class="row">
                             <?php 
-                                //$rows_cursos = mysqli_fetch_assoc($resultado_cursos);
-                                //if($teste <= 0){
-                                    //echo "<center>Curso não econtrado</center><br><br><br>";
-                                //}
-                                /*elseif ($valor_pesquisar == '') {
-                                    echo "<center>Curso não econtrado</center><br><br><br>";*/
-                                //}else{
-                                while($rows_cursos = mysqli_fetch_assoc($resultado_cursos)) { 
-                                    if($rows_cursos['Categoria'] != $categoria or $valor_pesquisar == ''){
-                                        if($teste > 0 or $valor_pesquisar != ''){
-                                            break;
-                                            if($valor_pesquisar != mysqli_num_rows($resultado_cursos)){
-                                                echo "<center>Curso não econtrado</center><br><br><br>";
-                                                break;
-                                            }
-                                        }
-                                        else{
-                                            echo "<center>Curso não econtrado</center><br><br><br>";
-                                            break;
-                                        }
-                                    }else{
+                                $cursosEncontrados = false;
+                               // Exibir mensagem "Curso não encontrado" se a pesquisa não retornar resultados
+                                //if ($teste <= 0) {
+                                    //echo "<center>Curso não encontrado</center><br><br><br>";
+                                //} else {
+                                    // Se houver cursos, você pode continuar com o loop para exibi-los
+                                    while ($rows_cursos = mysqli_fetch_assoc($resultado_cursos)) {
+                                        // ... seu código para exibir cursos
+                                        if ($rows_cursos['Categoria'] == $categoria || empty($categoria)) {
+                                            // Apenas exibe cursos que correspondem à categoria ou não tem categoria definida
+                                            // O uso de 'empty($categoria)' permite exibir todos os cursos se nenhum filtro de categoria estiver definido
+                                            $cursosEncontrados = true;
+                                        
+                                    
                             ?>
+                        
                             <div class="col-md-4">
                                 <div class="card mb-4 shadow-sm">
                                     <img src="admin/imagem/<?php echo $rows_cursos['ID_curso'];?>/<?php echo $rows_cursos['imagem'];?>" width="100%" height="225">
@@ -221,7 +215,12 @@
                             </div>
                             <?php } ?>
                             <?php } ?>
-                            <?php //} ?>
+                            <?php //}
+                                if (!$cursosEncontrados) {
+                                    echo "<center>Curso não encontrado</center><br><br><br>";
+                                }
+
+                            ?>
                         </div>
                         <?php
                             //Verificar a pagina anterior e posterior
