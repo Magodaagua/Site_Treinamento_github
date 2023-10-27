@@ -144,7 +144,8 @@
                             <h4>Listar Cursos Internos</h4>
                         </div>
                         <div>
-                            <form action="" method="POST">   
+                            <!-- Formulário de seleção de categoria -->
+                            <form action="javascript:void(0);" method="POST" id="categoria-form">
                                 <label for="Categoria" class="col-form-label">Categoria:</label>
                                 <select name="id_categoria" id="id_categoria">
                                     <option value="">Escolha a Categoria</option>

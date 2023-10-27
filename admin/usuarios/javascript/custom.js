@@ -133,3 +133,21 @@ async function apagarUsuarioDados(ID_usuario){
         }
     }
 }
+
+// Função para listar usuários por categoria
+const listarUsuariosPorCategoria = async (categoria, pagina) => {
+    const dados = await fetch(`./lista.php?pagina=${pagina}&categoria=${categoria}`);
+    const resposta = await dados.text();
+    tbody.innerHTML = resposta;
+}
+
+// Evento de envio do formulário de seleção de categoria
+const categoriaForm = document.getElementById("categoria-form");
+categoriaForm.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const selectedCategoria = document.getElementById("id_categoria").value;
+    
+    // Define a página inicial (1) ao selecionar uma nova categoria
+    listarUsuariosPorCategoria(selectedCategoria, 1);
+});

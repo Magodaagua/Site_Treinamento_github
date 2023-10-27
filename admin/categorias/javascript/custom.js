@@ -127,3 +127,21 @@ async function apagarCategoriaDados(id){
         }
     }
 }
+
+// Função para listar cursos por categoria
+const listarCursosPorCategoria = async (categoria) => {
+    const dados = await fetch("./lista.php?pagina=1&tipo=" + categoria);
+    const resposta = await dados.text();
+    tbody.innerHTML = resposta;
+}
+
+// Evento de envio do formulário de seleção de categoria
+const categoriaForm = document.getElementById("categoria-form");
+categoriaForm.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const selectedCategoria = document.getElementById("id_categoria").value;
+
+    // Atualize a lista de cursos com base na categoria selecionada
+    listarCursosPorCategoria(selectedCategoria);
+});

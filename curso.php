@@ -134,12 +134,13 @@
         <!--fim modal para sair-->
         </header>
         <main role="main">
-            <br><br>
+            <br>
             <div class="container my-5">
                 <!--<button class="btn btn-primary" value="Voltar" href="interno.php?Nome_cat=<?php //echo $categoria;?>">-->
                 <!--<input type="button" class="btn btn-primary" value="Voltar" onClick="history.go(-1)">-->
             </div>
             <div class="container">
+            <input type="button" class="btn btn-primary" value="Voltar" onClick="history.go(-1)"> <br>
                 <h1> <center>Treinamento de <?php echo $categoria ?></center></h1>
             </div>
             <br><br><br><br>

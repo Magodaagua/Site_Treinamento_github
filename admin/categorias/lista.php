@@ -1,15 +1,32 @@
 <?php
-    include_once "../conexao.php";
+include_once "../conexao.php";
 
-    $pagina = filter_input(INPUT_GET, "pagina", FILTER_SANITIZE_NUMBER_INT);
+$pagina = filter_input(INPUT_GET, "pagina", FILTER_SANITIZE_NUMBER_INT);
+$tipo = filter_input(INPUT_GET, "tipo", FILTER_SANITIZE_STRING);
 
-    if(!empty($pagina)){
-        //Calcular o inicio visualização
-        $qnt_result_pg = 10;
-        $inicio = ($pagina * $qnt_result_pg) - $qnt_result_pg;
+if (!empty($pagina)) {
+    // Calcular o início da visualização
+    $qnt_result_pg = 10;
+    $inicio = ($pagina * $qnt_result_pg) - $qnt_result_pg;
 
-        $query_categoria = "SELECT id, Nome_cat, imagem, tipo FROM categoria ORDER BY id DESC LIMIT $inicio, $qnt_result_pg ";
-        $result_categoria = $conn->prepare($query_categoria);
+    // Construir a consulta SQL base
+    $query_categoria = "SELECT id, Nome_cat, imagem, tipo FROM categoria";
+
+    // Verificar se um tipo foi fornecido e ajustar a consulta SQL, se necessário
+    if (!empty($tipo)) {
+        $query_categoria .= " WHERE tipo = :tipo";
+    }
+
+    $query_categoria .= " ORDER BY id DESC LIMIT $inicio, $qnt_result_pg";
+
+    // Preparar a consulta
+    $result_categoria = $conn->prepare($query_categoria);
+
+    // Vincular o parâmetro de tipo, se fornecido
+    if (!empty($tipo)) {
+        $result_categoria->bindParam(':tipo', $tipo, PDO::PARAM_STR);
+    }
+
         $result_categoria->execute();
 
         $dados = "<div class='table-responsive'>

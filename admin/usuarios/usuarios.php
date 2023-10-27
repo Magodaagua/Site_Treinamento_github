@@ -144,6 +144,37 @@
                             <h4>Listar Usuários Cadastrados</h4>
                         </div>
                         <div>
+                            <!-- Formulário de seleção de categoria -->
+                            <form action="javascript:void(0);" method="POST" id="categoria-form">
+                                <label for="Categoria" class="col-form-label">Cargo:</label>
+                                <select name="id_categoria" id="id_categoria">
+                                    <option value="">Escolha o Cargo</option>
+                                    <?php
+                                        $result_cat_post = "SELECT * FROM categoria ORDER BY Nome_cat";
+                                        $resultado_cat_post = mysqli_query($con, $result_cat_post);
+                                        while($row_cat_post = mysqli_fetch_assoc($resultado_cat_post) ) {
+                                            echo '<option value="'.$row_cat_post['Nome_cat'].'">'.$row_cat_post['Nome_cat'].'</option>';
+                                        }
+                                    ?>
+                                </select>
+                                <input type="submit" value="Pesquisar">
+                            </form>
+                            <?php
+                                if($_SERVER['REQUEST_METHOD']=='POST'){
+                                    $id_categoria = $_POST['id_categoria'];
+                                    
+                                    $result_pesquisar = "SELECT Nome_cat FROM categoria WHERE Nome_cat = '$id_categoria'";
+                                    
+                                    $resultado_pesquisar = mysqli_query($con, $result_pesquisar);
+                                    
+                                    while ($row_pesquisar = mysqli_fetch_assoc($resultado_pesquisar)){
+                                        echo "Empresa: ".$row_pesquisar['Nome_cat'] . "<br>";
+                                    }
+                                    
+                                }
+                            ?>
+                        </div>
+                        <div>
                             <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#cadUsuarioModal">
                                 Cadastrar
                             </button>
