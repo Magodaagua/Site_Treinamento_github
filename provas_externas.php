@@ -63,9 +63,43 @@
 
         @media (min-width: 768px) {
             .bd-placeholder-img-lg {
-            font-size: 3.5rem;
+                font-size: 3.5rem;
             }
         }
+
+        .col-md-4{
+            justify-content: center;
+            text-align: center;
+            margin-bottom: 20px;
+            /*border: 1px solid #000;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0px 4px 12px grey;*/
+        }
+
+        .shadow-sm{
+            border-radius: 8px;
+            box-shadow: 4px 4px 12px grey;
+
+            box-shadow: 0 5px 10px 0px rgba(0, 0, 0, 0.1);
+            -moz-box-shadow: 0 5px 10px 0px rgba(0, 0, 0, 0.1);
+            -webkit-box-shadow: 0 5px 10px 0px rgba(0, 0, 0, 0.1);
+            -o-box-shadow: 0 5px 10px 0px rgba(0, 0, 0, 0.1);
+            -ms-box-shadow: 0 5px 10px 0px rgba(0, 0, 0, 0.1);
+        }
+
+        #button1{
+            justify-content: left;
+            align: left;
+            margin-right: 30px;
+        }
+
+        #button2_<?php echo $rows_parceiro['ID_parceiro']; ?>{
+            justify-content: right;
+            align: right;
+            margin-left: 30px;
+        }
+
         </style>
         <!-- Custom styles for this template -->
         <link href="css/carousel.css" rel="stylesheet">
@@ -129,18 +163,50 @@
                 <h1> <center>Treinamento Externo </center></h1>
             </div>
             <br><br><br><br>
-            <div class="container marketing">
-                <!-- Three columns of text below the carousel -->
-                <div class="row">
-                    <?php while($rows_parceiro = mysqli_fetch_assoc($resultado_parceiro)){?>
-                    <div class="col-lg-4">
-                        <img src="admin/externo/<?php echo $rows_parceiro['ID_parceiro'];?>/<?php echo $rows_parceiro['imagem'];?>" class="bd-placeholder-img rounded-square" width="140" height="140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 140x140" preserveAspectRatio="xMidYMid slice" focusable="false">
-                        <h2><?php echo $rows_parceiro['Nome'];?></h2>
-                        <p><?php echo $rows_parceiro['Descricao'];?></p>
-                        <p><a class="btn btn-primary" href="<?php echo $rows_parceiro['link'];?>">Clique para ver o site &raquo;</a></p>
-                    </div><!-- /.col-lg-4 -->
-                    <?php }?>    
-                </div><!-- /.row -->
+            <div class="album py-5 bg-light">
+                <div class="container">
+                    <!-- Three columns of text below the carousel -->
+                    <div class="row">
+                        <?php while($rows_parceiro = mysqli_fetch_assoc($resultado_parceiro)){?>
+                        <div class="col-md-4">
+                            <div class="card mb-4 shadow-sm">
+                                <!--<div class="card mb-4 shadow-sm">-->
+                                <br>
+                                <center>
+                                    <img src="admin/externo/<?php echo $rows_parceiro['ID_parceiro'];?>/<?php echo $rows_parceiro['imagem'];?>" class="bd-placeholder-img rounded-square" width="140" height="140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 140x140" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#55595c"/>
+                                </center>
+                                <!--<div class="d-flex justify-content-between align-items-center">-->
+                                <div class="card-body">    
+                                    <h2><?php echo $rows_parceiro['Nome'];?></h2>
+                                    <p><?php echo mb_substr($rows_parceiro['Descricao'], 0, 100, 'utf-8'); ?>...</p>
+                                    <div class="btn-group">
+                                        <a class="btn btn-primary" id="button1" href="<?php echo $rows_parceiro['link'];?>" target="_blank">Acesse aqui &raquo;</a>&nbsp;&nbsp;&nbsp;&nbsp;
+                                        <button class="btn btn-primary" id="button2_<?php echo $rows_parceiro['ID_parceiro']; ?>" data-toggle="modal" data-target="#privacydetalhes_<?php echo $rows_parceiro['ID_parceiro']; ?>">Detalhes</button>
+                                    </div>
+                                </div>
+                            </div><!-- /.card mb-4 shadow-sm -->
+                        </div><!-- /.col-md-4 -->
+                            <!-- Modal -->
+                            <div class="modal fade" id="privacydetalhes_<?php echo $rows_parceiro['ID_parceiro']; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">Detalhes do Parceiro</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div> 
+                                    <div class="modal-body">
+                                        <?php echo $rows_parceiro['Descricao'];?>
+                                    </div>
+                                    </div>
+                                </div>
+                            </div> 
+                            <!--fim modal-->
+                        <?php }?>    
+                    </div><!-- /.row -->
+                </div>
+                <br>
                 <?php
                             //Verificar a pagina anterior e posterior
                             $pagina_anterior = $pagina - 1;

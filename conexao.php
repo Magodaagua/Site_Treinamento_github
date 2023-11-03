@@ -11,6 +11,7 @@
 		
 		//Criar a conexão
 		$conn = mysqli_connect($servidor, $usuario, $senha, $dbname);
+		
 	?>
 	<!-- Início da sessão e confirmação de que o usuário está logado -->
 	<?php
