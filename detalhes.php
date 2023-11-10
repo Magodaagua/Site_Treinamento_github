@@ -117,7 +117,7 @@
                 border: 1px solid #ccc;
                 margin: 5px;
                 position: relative;
-                width: 950px; /* Defina a largura desejada */
+                width: 1000px; /* Defina a largura desejada */
             }
 
             .aulas {
@@ -126,7 +126,7 @@
                 border: 1px solid #ddd;
                 margin: 5px;
                 margin-top: -6px;
-                width: 950px; /* Largura igual à dos módulos */
+                width: 1000px; /* Largura igual à dos módulos */
             }
 
             .seta {
@@ -199,15 +199,15 @@
         </header> <br>
         <!--TESTE-->
         <div class="container my-5">
-        <input type="button" class="btn btn-primary" value="Voltar" onClick="history.go(-1)">
-        <div class="p-5 text-center bg-body-tertiary rounded-3">
-            <img src="admin/imagem/<?php echo $row_cursos['ID_curso'];?>/<?php echo $row_cursos['imagem'];?>" class="bi mt-4 mb-3" style="color: var(--bs-indigo);" width="200px" height="200px">
-            <h1 class="text-body-emphasis"><?php echo $row_cursos['Nome']; ?></h1>
-            <p class="col-lg-8 mx-auto fs-5 text-muted">
-                <?php echo $row_cursos['Descricao']; ?>
-            </p>
+            <input type="button" class="btn btn-primary" value="Voltar" onClick="history.go(-1)">
+            <div class="p-5 text-center bg-body-tertiary rounded-3">
+                <img src="admin/imagem/<?php echo $row_cursos['ID_curso'];?>/<?php echo $row_cursos['imagem'];?>" class="bi mt-4 mb-3" style="color: var(--bs-indigo);" width="200px" height="200px">
+                <h1 class="text-body-emphasis"><?php echo $row_cursos['Nome']; ?></h1>
+                <p class="col-lg-8 mx-auto fs-5 text-muted">
+                    <?php echo $row_cursos['Descricao']; ?>
+                </p>
+            </div>
         </div>
-    </div>
     <div class="b-example-divider"></div>
     <div class="container my-5">
         <div class="position-relative p-5 text-center text-muted bg-body border border-dashed rounded-5">
