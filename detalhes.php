@@ -113,11 +113,16 @@
             .modulo {
                 cursor: pointer;
                 padding: 10px;
-                background-color: #f0f0f0;
+                background-color: #01DFA5; /* Altera a cor de fundo para verde */
                 border: 1px solid #ccc;
                 margin: 5px;
                 position: relative;
                 width: 1000px; /* Defina a largura desejada */
+                border-radius: 10px; /* Adiciona bordas arredondadas */
+            }
+
+            .modulo h2 {
+                color: #fff; /* Cor branca para o texto */
             }
 
             .aulas {
@@ -127,24 +132,55 @@
                 margin: 5px;
                 margin-top: -6px;
                 width: 1000px; /* Largura igual à dos módulos */
+                border-radius: 10px; /* Adiciona bordas arredondadas */
             }
 
             .seta {
                 position: absolute;
-                top: 13px;
+                top: 10px;
                 right: 15px;
                 transition: transform 0.3s;
+                fill: #fff; /* Cor branca para a imagem da seta */
+            }
+
+            .seta-texto {
+                position: absolute;
+                top: 0px;
+                right: 30px;
+                color: #fff; /* Cor branca para o texto */
             }
 
             .seta.aberta {
                 transform: rotate(90deg);
             }
+
+            .num-aulas {
+                position: absolute;
+                top: 50%;
+                right: 60px; /* Ajuste a posição conforme necessário */
+                transform: translateY(-50%);
+                color: #fff; /* Cor do texto */
+                font-size: 14px; /* Tamanho da fonte */
+            }
+
+            .fundo-transparente {
+                position: absolute;
+                background-color: rgba(0, 0, 0, 0.5); /* Ajuste a opacidade conforme necessário */
+                width: 15%;
+                height: 50px; /* Ajuste a altura conforme necessário */
+                top: 7px;
+                bottom: 7px;
+                right: 2%;
+                border-radius: 10px; /* Adiciona bordas arredondadas */
+            }
+
         </style>
         <!-- Custom styles for this template -->
         <link href="css/carousel.css" rel="stylesheet">
         <link href="css/informatica.css" rel="stylesheet">
         <link href="css/heroes.css" rel="stylesheet">
         <link href="css/jumbotrons.css" rel="stylesheet">
+        <link href="css/progresso.css" rel="stylesheet">
     </head>
 	<body>
 		<header>
@@ -208,65 +244,100 @@
                 </p>
             </div>
         </div>
-    <div class="b-example-divider"></div>
-    <div class="container my-5">
-        <div class="position-relative p-5 text-center text-muted bg-body border border-dashed rounded-5">
-            <img src="img/arquivo.png" class="bi mt-5 mb-3" width="120px" height="120px">
-            <use xlink:href="#check2-circle"/>
-            </img>
-            <h1 class="text-body-emphasis">Aulas</h1>
-            <p class="col-lg-6 mx-auto mb-4">
-                <!-- Aqui você pode inserir o código PHP que exibe as aulas e módulos de acordo com a estrutura anterior -->
-                <?php
-                    $pdo = new PDO('mysql:host=localhost;dbname=testes', 'root', '');
+        <div class="b-example-divider"></div>
+        <div class="container my-5">
+            <div class="position-relative p-5 text-center text-muted bg-body border border-dashed rounded-5">
+                <img src="img/certificado.png" class="bi mt-5 mb-3" width="120px" height="120px">
+                <use xlink:href="#check2-circle"/>
+                </img>
+                <h1 class="text-body-emphasis">Porcentagem de conclusão</h1>
+                <p class="col-lg-6 mx-auto mb-4">
+                <div class="contain">
+                    <div class="progress" style="--i:85;--clr:#43f94a;">
+                        <h3>50<span>%</span></h3>
+                        <h4>Progresso</h4>
+                    </div>
+                </div><br>
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Baixar Diploma
+                    </button>
+                </p>
+            </div>
+        </div>
+        <div class="b-example-divider"></div>
+        <div class="container my-5">
+            <div class="position-relative p-5 text-center text-muted bg-body border border-dashed rounded-5">
+                <img src="img/arquivo.png" class="bi mt-5 mb-3" width="120px" height="120px">
+                <use xlink:href="#check2-circle"/>
+                </img>
+                <h1 class="text-body-emphasis">Aulas</h1>
+                <p class="col-lg-6 mx-auto mb-4">
+                    <!-- Aqui você pode inserir o código PHP que exibe as aulas e módulos de acordo com a estrutura anterior -->
+                    <?php
+                        $pdo = new PDO('mysql:host=localhost;dbname=testes', 'root', '');
 
-                    // Recupere as aulas e módulos do curso no BD
-                    $query_aulas = "SELECT aul.id id_aul, aul.titulo, aul.ordem, 
-                                    mdu.id id_mdu, mdu.nome nome_mdu
-                                    FROM aulas aul 
-                                    INNER JOIN modulos AS mdu ON mdu.id = aul.modulo_id 
-                                    WHERE mdu.curso_id=:curso_id 
-                                    ORDER BY mdu.ordem, aul.ordem ASC";
-                    $result_aulas = $pdo->prepare($query_aulas);
-                    $result_aulas->bindParam(':curso_id', $id_curso);
-                    $result_aulas->execute();
+                        // Recupere as aulas e módulos do curso no BD
+                        $query_aulas = "SELECT aul.id id_aul, aul.titulo, aul.ordem, 
+                        mdu.id id_mdu, mdu.nome nome_mdu
+                        FROM aulas aul 
+                        INNER JOIN modulos AS mdu ON mdu.id = aul.modulo_id 
+                        WHERE mdu.curso_id=:curso_id 
+                        ORDER BY mdu.ordem, aul.ordem ASC";
+                        $result_aulas = $pdo->prepare($query_aulas);
+                        $result_aulas->bindParam(':curso_id', $id_curso);
+                        $result_aulas->execute();
 
-                    // Use um loop para exibir os módulos e aulas
-                    $id_modulo_cont = 0;
+                        // Use um loop para exibir os módulos e aulas
+                        if (($result_aulas) and ($result_aulas->rowCount() != 0)) {
+                            $modulo_anterior = null;
+                            $num_aulas_modulo = 0; // Contador de aulas para o módulo atual
 
-                    if (($result_aulas) and ($result_aulas->rowCount() != 0)) {
-                        $modulo_anterior = null;
-                        while ($row_aula = $result_aulas->fetch(PDO::FETCH_ASSOC)) {
-                            extract($row_aula);
+                            while ($row_aula = $result_aulas->fetch(PDO::FETCH_ASSOC)) {
+                                extract($row_aula);
 
-                            if ($modulo_anterior != $nome_mdu) {
-                                if (!is_null($modulo_anterior)) {
-                                    echo "</div>";
+                                if ($modulo_anterior !== $id_mdu) {
+                                    if (!is_null($modulo_anterior)) {
+                                        // Adicione um texto atrás da seta com o número de aulas no módulo
+                                        //echo "<div class='num-aulas'>Aulas: $num_aulas_modulo</div>";
+                                        echo "</div>";
+                                    }
+
+                                    // Inicialize o contador de aulas para o novo módulo
+                                    //$num_aulas_modulo = 0;
+
+                                    echo "<div class='modulo'>
+                                            <h2>Nome do módulo: $nome_mdu</h2>
+                                            <div class='fundo-transparente'>
+                                            <img class='seta' src='img/seta.png' width='30' height='30'>
+                                            <div class='num-aulas'>Aulas: $num_aulas_modulo</div>
+                                            </div>
+                                        </div>";
+                                    echo "<div class='aulas' style='display: none'>";
                                 }
-                                echo "<div class='modulo'>
-                                        <h2>Nome do módulo: $nome_mdu</h2>
-                                        <img class='seta' src='img/direita.png' width='40' height='40'>
-                                      </div>";
-                                echo "<div class='aulas' style='display: none'>";
+
+                                // Incrementa o contador de aulas para o módulo atual
+                                //$num_aulas_modulo++;
+
+                                echo "  <div class='aula'>
+                                            <div class='aula-inner'>
+                                                <p class='aula-titulo'>Título da aula: $titulo</p>
+                                                <p class='aula-ordem'>Ordem da aula: $ordem</p>
+                                                <a class='btn btn-primary' href='visualizar_aula.php?id=$id_aul'>Detalhes da aula</a>
+                                            </div>
+                                        </div>";
+
+                                $modulo_anterior = $id_mdu;
                             }
 
-                            echo "<div class='aula'>
-                                    <div class='aula-inner'>
-                                        <p class='aula-titulo'>Título da aula: $titulo</p>
-                                        <p class='aula-ordem'>Ordem da aula: $ordem</p>
-                                        <a class='btn btn-primary' href='visualizar_aula.php?id=$id_aul'>Detalhes da aula</a>
-                                    </div>
-                                  </div><hr>";
-                            $modulo_anterior = $nome_mdu;
+                            // Adiciona o texto para o último módulo
+                            //echo "<div class='num-aulas'>Aulas: $num_aulas_modulo</div>";
+                            echo "</div>"; // Fecha o último módulo
+                        } else {
+                            echo "<p style='color: #f00;'>Erro: Nenhuma aula encontrada!</p>";
                         }
-                        echo "</div>"; // Fecha o último módulo
-                    } else {
-                        echo "<p style='color: #f00;'>Erro: Nenhuma aula encontrada!</p>";
-                    }
-                ?>
-            </p>
-        </div>
-    </div><br><br>
+                    ?>
+                </p>
+            </div>
+        </div><br><br>
 		<!--inicio Botão de voltar ao topo-->
 		<?php 
             require("Botaodevoltaraotopo.php");

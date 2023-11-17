@@ -48,11 +48,12 @@
             .modulo {
                 cursor: pointer;
                 padding: 10px;
-                background-color: gray;
+                background-color: #01DFA5; /* Altera a cor de fundo para verde */
                 border: 1px solid #ccc;
-                margin: 5px;
+                margin: 20px;
                 position: relative;
-                width: 100%; /* Largura dos módulos */
+                width: 90%; /* Largura dos módulos */
+                border-radius: 10px; /* Adiciona bordas arredondadas */
             }
 
             .nome-mdu {
@@ -63,16 +64,18 @@
             .aulas {
                 display: none;
                 padding: 10px;
+                background-color: gray;
                 border: 1px solid #ddd;
-                margin: 5px;
+                margin: 20px;
                 margin-top: -6px;
-                width: 100%; /* Largura das aulas */
+                width: 90%; /* Largura das aulas */
+                border-radius: 10px; /* Adiciona bordas arredondadas */
             }
 
             .seta {
                 position: absolute;
-                top: 25px;
-                right: 15px;
+                top: 30px;
+                right: 10px;
                 transition: transform 0.3s;
             }
 
@@ -90,6 +93,7 @@
                 color: #fff;
                 overflow-y: auto; /* Adiciona uma barra de rolagem vertical */
                 transition: right 0.3s; /* Adicione uma transição suave à animação */
+
             }
 
             #menu-lateral.show {
@@ -228,15 +232,15 @@
                                         </div>
                                     </div>
                                     <div class="tab-pane fade" id="pdf" role="tabpanel" aria-labelledby="nav-profile-tab">
-                                        <div style="padding-top:20px;">
-                                        <form class="form-horizontal"  action="" method="POST">
+                                        <div class="text-center" style="padding-top: 20px;">
+                                            <form class="form-horizontal" action="" method="POST">
                                                 <div class="form-group">
                                                     <h1 class="text-body-emphasis">&nbsp;PDF</h1><br>
-                                                    <div class="col-sm-10">
+                                                    <div class="col-sm-10 offset-sm-1"> <!-- Adicionado a classe mx-auto -->
                                                         <?php 
                                                             if($pdf != ''){
                                                                 echo "$pdf";
-                                                            }else{
+                                                            } else {
                                                                 echo "Não há pdf cadastrado nesta aula";
                                                             };
                                                         ?>
@@ -280,31 +284,31 @@
                                         $result_aulas->execute();
                                         // Acessa o IF quando encontrar alguma aula do curso no BD
                                         $id_modulo_cont = 0;
-                                        if (($result_aulas) and ($result_aulas->rowCount() != 0)) {
+                                        if ($result_aulas && $result_aulas->rowCount() != 0) {
                                             $modulo_anterior = null;
                                             while ($row_aula = $result_aulas->fetch(PDO::FETCH_ASSOC)) {
                                                 //var_dump($row_aula);
                                                 extract($row_aula);
 
-                                                if ($modulo_anterior!= $id_mdu) {
+                                                if ($modulo_anterior != $id_mdu) {
                                                     if (!is_null($modulo_anterior)) {
                                                         echo "</div>";
                                                     }
                                                     echo "<div class='modulo'>
                                                             <h3>Nome do módulo: <span class='nome-mdu'>$nome_mdu</span></h3>
-                                                            <img class='seta' src='img/direita.png' width='40' height='40'>
+                                                            <img class='seta' src='img/seta.png' width='30' height='30'>
                                                         </div>";
                                                     echo "<div class='aulas' style='display: none'>";
                                                 }
-                                                echo "<div class='aula'>
-                                                <div class='aula-inner'>
-                                                    <p class='aula-titulo'>Título da aula: $titulo</p>
-                                                    <p class='aula-ordem'>Ordem da aula: $ordem</p>
-                                                    <a class='btn btn-primary' href='visualizar_aula.php?id=$id_aul'>Detalhes da aula</a>
-                                                </div>
-                                            </div><hr>";
+                                                echo "  <div class='aula'>
+                                                            <div class='aula-inner'>
+                                                                <p class='aula-titulo'>Título da aula: $titulo</p>
+                                                                <p class='aula-ordem'>Ordem da aula: $ordem</p>
+                                                                <a class='btn btn-primary' href='visualizar_aula.php?id=$id_aul'>Detalhes da aula</a>
+                                                            </div>
+                                                        </div>";
+                                                $modulo_anterior = $id_mdu;
 
-                                            $modulo_anterior = $id_mdu;
                                             }
                                         } else {
                                             echo "<p style='color: #f00;'>Erro: Nenhuma aula encontrada!</p>";

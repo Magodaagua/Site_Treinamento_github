@@ -1,0 +1,87 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+*
+{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family:'Poppins', sans-serif;
+}
+body
+{
+    /*display: flex;*/
+    justify-content: center;
+    align-items: center;
+    /*min-height: 100vh;
+    background: #222;*/
+}
+.contain
+{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 40px;
+}
+.contain .progress
+{
+    position: relative;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    color: #fff;
+    background: #444 linear-gradient(to right, transparent 50%, var(--clr) 0);
+}
+.contain .progress h3{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 2.5em;
+    z-index: 1;
+    font-weight: 500;
+}
+.contain .progress h3 span
+{
+    font-size: 0.65em;
+    font-weight:400;
+}
+.contain .progress h4
+{
+    position: absolute;
+    top: 62%;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1;
+    font-weight: 500;
+    color: var(--clr);
+    text-transform: uppercase;
+}
+.contain .progress::before
+{
+    content: '';
+    display: block;
+    height: 100%;
+    margin-left: 50%;
+    transform-origin: left;
+    border-radius: 0 100% 100% 0/50%;
+}
+.contain .progress::after
+{
+    content: '';
+    position: absolute;
+    inset: 10px;
+    border-radius: 50%;
+    background:#222;
+}
+.contain .progress::before
+{
+    background: var(--clr) ;
+    transform: rotate(calc(((var(--i) - 50) * 0.01turn)));
+}
+/*if value is less than 50%, then */
+.contain .progress.less::before
+{
+    background: #444 ;
+    transform: rotate(calc(((var(--i) - 0) * 0.01turn)));
+}
