@@ -39,7 +39,7 @@
         //$categoria = $_GET['Nome_cat'];
 
         //Selecionar os cursos a serem apresentado na página
-        $result_cursos = "SELECT ID_curso, Nome, Categoria, Subcategoria, Descricao, Datadecriacao, imagem FROM curso WHERE Categoria = '$categoria' limit $inicio, $quantidade_pg";
+        $result_cursos = "SELECT ID_curso, Nome, Categoria, Subcategoria, Descricao, Datadecriacao, imagem, conclusao FROM curso WHERE Categoria = '$categoria' limit $inicio, $quantidade_pg";
         $resultado_cursos = mysqli_query($conn, $result_cursos);
         $total_cursos = mysqli_num_rows($resultado_cursos);
 
@@ -180,10 +180,33 @@
                                     <img src="admin/imagem/<?php echo $rows_cursos['ID_curso'];?>/<?php echo $rows_cursos['imagem'];?>" width="100%" height="225">
                                     <div class="card-body">
                                         <p class="card-text"><?php echo $rows_cursos['Nome']; ?></p>
+                                        <p><?php echo mb_substr($rows_cursos['Descricao'], 0, 33, 'utf-8'); ?>...</p>
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <?php 
+
+                                                $testador = $rows_cursos['conclusao'];
+                                                if($testador == 1){
+                                                    echo "Status: <font color= green> Concluído </font>";
+                                                } elseif ($testador == 2) {
+                                                    echo "Status: <font color=#FFBF00> Em andamento</font>";
+                                                } else {
+                                                    echo "Status: <font color=red> Não concluído</font>";
+                                                }
+                                            ?>
+                                        </div><br>
                                         <div class="d-flex justify-content-between align-items-center">
                                             <div class="btn-group">
-                                                <a href="detalhes.php?ID_curso=<?php echo $rows_cursos['ID_curso']; ?>"><button type="button" class="btn btn-sm btn-outline-primary">Começar</button> </a>
-                                                <!--<button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>-->
+                                            <?php 
+
+                                                $testador = $rows_cursos['conclusao'];
+                                                if($testador == 1){
+                                                    echo "<a href='detalhes.php?ID_curso={$rows_cursos['ID_curso']}'><button type='button' class='btn btn-sm btn-outline-primary'>Finalizado</button> </a>";
+                                                }elseif($testador == 2){
+                                                    echo "<a href='detalhes.php?ID_curso={$rows_cursos['ID_curso']}'><button type='button' class='btn btn-sm btn-outline-primary'>Continuar</button> </a>";
+                                                } else {
+                                                    echo "<a href=\"detalhes.php?ID_curso={$rows_cursos['ID_curso']}\"><button type=\"button\" class=\"btn btn-sm btn-outline-primary\">Começar</button> </a>";
+                                                }
+                                            ?>
                                             </div>
                                             <small class="text-muted">Data de criação <br><?php echo date('d/m/Y', strtotime($rows_cursos['Datadecriacao'])); ?></small>
                                         </div>

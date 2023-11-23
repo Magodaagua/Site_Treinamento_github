@@ -174,6 +174,16 @@
                 border-radius: 10px; /* Adiciona bordas arredondadas */
             }
 
+            .circulo-verde {
+                display: inline-block;
+                width: 20px;
+                height: 20px;
+                border-radius: 50%;
+                background-color: green;
+                margin-left: 5px; /* Ajuste conforme necessário para o espaçamento desejado */
+                margin-right: 5px; /* Adicione margem à direita para espaçamento */
+            }
+
         </style>
         <!-- Custom styles for this template -->
         <link href="css/carousel.css" rel="stylesheet">
@@ -250,10 +260,11 @@
                 <img src="img/certificado.png" class="bi mt-5 mb-3" width="120px" height="120px">
                 <use xlink:href="#check2-circle"/>
                 </img>
+                <!--circulo de conclusão-->
                 <h1 class="text-body-emphasis">Porcentagem de conclusão</h1>
                 <p class="col-lg-6 mx-auto mb-4">
                 <div class="contain">
-                    <div class="progress" style="--i:85;--clr:#43f94a;">
+                    <div class="progress" style="--i:100;--clr:#43f94a;">
                         <h3>50<span>%</span></h3>
                         <h4>Progresso</h4>
                     </div>
@@ -261,6 +272,7 @@
                     <button type="button" class="btn btn-primary" data-dismiss="modal">Baixar Diploma
                     </button>
                 </p>
+                <!--circulo de conclusão-->
             </div>
         </div>
         <div class="b-example-divider"></div>
@@ -319,9 +331,9 @@
 
                                 echo "  <div class='aula'>
                                             <div class='aula-inner'>
-                                                <p class='aula-titulo'>Título da aula: $titulo</p>
-                                                <p class='aula-ordem'>Ordem da aula: $ordem</p>
-                                                <a class='btn btn-primary' href='visualizar_aula.php?id=$id_aul'>Detalhes da aula</a>
+                                                <p class='aula-titulo'>Aulas: $ordem | Título: $titulo | <a class='btn btn-primary' href='visualizar_aula.php?id=$id_aul'>Detalhes da aula</a></p>
+                                                <div class='circulo-verde'></div>
+                                                <hr>
                                             </div>
                                         </div>";
 

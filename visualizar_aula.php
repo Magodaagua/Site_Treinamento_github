@@ -181,7 +181,7 @@
             <div class="p-5 text-center bg-body-tertiary rounded-3">
 
                 <?php
-                    $query_aula = "SELECT aul.titulo, aul.conteudo, aul.pdf, aul.resumo,
+                    $query_aula = "SELECT aul.titulo, aul.conteudo, aul.pdf, aul.resumo, aul.modulo_id,
                                 mdu.curso_id
                                 FROM aulas aul
                                 INNER JOIN modulos AS mdu ON mdu.id=aul.modulo_id
@@ -197,6 +197,7 @@
                         //var_dump($row_aula);
                         extract($row_aula);
                         echo "<h1 class='text-body-emphasis'>Título da aula: $titulo </h1><br>";
+                        $moduloid = $modulo_id;
                         echo "<h3> Conteúdo da aula: $conteudo <br>";
                         echo "</h3>";
                 ?>
@@ -270,6 +271,16 @@
                             <font color="white">
                                 <h2>Módulos e Aulas</h2>
                                 <br>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div class="btn-group">
+                                        <span class="ml-2">Módulo <?php echo"$moduloid"; ?>:</span>
+                                    </div>
+                                    <div class="progress" style="width: 60%; margin: 0 10px;">
+                                        <div class="progress-bar progress-bar-striped progress-bar-animated bg-success" role="progressbar" style="width: 75%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                    <span class="mr-4">75%</span>
+                                </div>
+                                <br>
                                 <ul class="list-unstyled">
                                     <?php
                                         // Recuperar as aulas do curso do BD
@@ -302,10 +313,10 @@
                                                 }
                                                 echo "  <div class='aula'>
                                                             <div class='aula-inner'>
-                                                                <p class='aula-titulo'>Título da aula: $titulo</p>
-                                                                <p class='aula-ordem'>Ordem da aula: $ordem</p>
-                                                                <a class='btn btn-primary' href='visualizar_aula.php?id=$id_aul'>Detalhes da aula</a>
-                                                            </div>
+                                                            <p class='aula-titulo'>Aula: $ordem | Título: $titulo | <a class='btn btn-primary' href='visualizar_aula.php?id=$id_aul'>Detalhes da aula</a></p>
+                                                            <!--<p class='aula-titulo'>Ordem da aula: $ordem</p>-->
+                                                            <!--<p class='aula-ordem'>Ordem da aula: $ordem</p>-->
+                                                            <!--<a class='btn btn-primary' href='visualizar_aula.php?id=$id_aul'>Detalhes da aula</a>--></div>
                                                         </div>";
                                                 $modulo_anterior = $id_mdu;
 
