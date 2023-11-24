@@ -113,7 +113,7 @@
             .modulo {
                 cursor: pointer;
                 padding: 10px;
-                background-color: #01DFA5; /* Altera a cor de fundo para verde */
+                background-color: #6a5acd; /* Altera a cor de fundo para verde */
                 border: 1px solid #ccc;
                 margin: 5px;
                 position: relative;
@@ -178,8 +178,31 @@
                 display: inline-block;
                 width: 20px;
                 height: 20px;
+                border: 2px solid #000000;
                 border-radius: 50%;
                 background-color: green;
+                margin-left: 0px; /* Ajuste conforme necessário para o espaçamento desejado */
+                margin-right: 0px; /* Adicione margem à direita para espaçamento */
+            }
+
+            .circulo-amarelo {
+                display: inline-block;
+                width: 20px;
+                height: 20px;
+                border: 2px solid #000000;
+                border-radius: 50%;
+                background-color: yellow;
+                margin-left: 5px; /* Ajuste conforme necessário para o espaçamento desejado */
+                margin-right: 5px; /* Adicione margem à direita para espaçamento */
+            }
+
+            .circulo-branco {
+                display: inline-block;
+                width: 20px;
+                height: 20px;
+                border: 2px solid #000000;
+                border-radius: 50%;
+                background-color: red;
                 margin-left: 5px; /* Ajuste conforme necessário para o espaçamento desejado */
                 margin-right: 5px; /* Adicione margem à direita para espaçamento */
             }
@@ -288,7 +311,7 @@
                         $pdo = new PDO('mysql:host=localhost;dbname=testes', 'root', '');
 
                         // Recupere as aulas e módulos do curso no BD
-                        $query_aulas = "SELECT aul.id id_aul, aul.titulo, aul.ordem, 
+                        $query_aulas = "SELECT aul.id id_aul, aul.titulo, aul.ordem, aul.assistido,
                         mdu.id id_mdu, mdu.nome nome_mdu
                         FROM aulas aul 
                         INNER JOIN modulos AS mdu ON mdu.id = aul.modulo_id 
@@ -314,7 +337,7 @@
                                     }
 
                                     // Inicialize o contador de aulas para o novo módulo
-                                    //$num_aulas_modulo = 0;
+                                    $num_aulas_modulo = 0;
 
                                     echo "<div class='modulo'>
                                             <h2>Nome do módulo: $nome_mdu</h2>
@@ -327,15 +350,31 @@
                                 }
 
                                 // Incrementa o contador de aulas para o módulo atual
-                                //$num_aulas_modulo++;
+                                $num_aulas_modulo++;
 
-                                echo "  <div class='aula'>
-                                            <div class='aula-inner'>
-                                                <p class='aula-titulo'>Aulas: $ordem | Título: $titulo | <a class='btn btn-primary' href='visualizar_aula.php?id=$id_aul'>Detalhes da aula</a></p>
-                                                <div class='circulo-verde'></div>
-                                                <hr>
-                                            </div>
-                                        </div>";
+                                if($assistido == 1){
+                                    echo "  <div class='aula'>
+                                                <div class='aula-inner'>
+                                                    <p class='aula-titulo'>Aulas: $ordem | Título: $titulo | <a class='btn btn-primary' href='visualizar_aula.php?id=$id_aul'>Detalhes da aula</a> | Status: <font color= green> Concluído </font>
+                                                    <!--<div class='circulo-verde'></div>--> </p>
+                                                </div>
+                                            </div>";
+                                } elseif($assistido == 2){
+                                    echo "  <div class='aula'>
+                                                <div class='aula-inner'>
+                                                    <p class='aula-titulo'>Aulas: $ordem | Título: $titulo | <a class='btn btn-primary' href='visualizar_aula.php?id=$id_aul'>Detalhes da aula</a> | Status: <font color= #FFBF00> Em andamento </font> </p>
+                                                    <!--<div class='circulo-amarelo'></div>-->
+                                                </div>
+                                            </div>";
+                                }else{
+                                    echo "  <div class='aula'>
+                                                <div class='aula-inner'>
+                                                    <p class='aula-titulo'>Aulas: $ordem | Título: $titulo | <a class='btn btn-primary' href='visualizar_aula.php?id=$id_aul'>Detalhes da aula</a> | Status: <font color= red> Não iniciado </font> </p>
+                                                    <!--<div class='circulo-branco'></div>-->
+                                                </div>
+                                            </div>";
+                                }
+                                //echo"<hr>";
 
                                 $modulo_anterior = $id_mdu;
                             }
